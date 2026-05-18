@@ -200,10 +200,10 @@ setup() {
   ! is_snap_curl
 }
 
-@test "setup_tmp: creates FLEDGING_TMP directory" {
-  FLEDGING_TMP="$(mktemp -d)/fledging-test-tmp"
+@test "setup_tmp: creates FLEDGING_TMP at ~/.fledging/tmp" {
+  ignore rm -rf "$HOME/.fledging/tmp"
   setup_tmp
-  [ -d "$FLEDGING_TMP" ]
+  [ -d "$HOME/.fledging/tmp" ]
 }
 
 @test "download_file: uses wget when curl is snap" {
