@@ -81,6 +81,29 @@ ignore() {
 }
 
 # ============================================================
+# Environment recovery
+# ============================================================
+recover_env() {
+  # USER is defined by login(1) which is not always executed (e.g. containers)
+  USER="${USER:-$(id -u -n)}"
+  export USER
+
+  # HOME multi-level recovery: getent (Linux) → eval echo ~USER (macOS/all)
+  # The || true prevents set -e from aborting when getent is absent (e.g. macOS)
+  HOME="${HOME:-$(getent passwd "$USER" 2>/dev/null | cut -d: -f6 || true)}"
+  HOME="${HOME:-$(eval echo ~"$USER")}"
+  export HOME
+
+  # POSIXLY_CORRECT changes bash word splitting and disables arrays.
+  # Our script relies on bash arrays; abort with an explanation.
+  if [[ -n "${POSIXLY_CORRECT+1}" ]]; then
+    error "POSIXLY_CORRECT is set. Please unset it and re-run:"
+    error "  unset POSIXLY_CORRECT && bash install.sh"
+    exit 1
+  fi
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null

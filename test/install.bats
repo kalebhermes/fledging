@@ -55,3 +55,28 @@ setup() {
   run bash -c 'source install.sh; info "hello" 2>&1 >/dev/null'
   [[ "$output" =~ "hello" ]]  # stderr has content
 }
+
+@test "recover_env: sets USER from id -u -n when unset" {
+  (
+    unset USER
+    source "${BATS_TEST_DIRNAME}/../install.sh"
+    recover_env
+    [ -n "$USER" ]
+  )
+}
+
+@test "recover_env: sets HOME from eval echo ~USER when unset" {
+  (
+    source "${BATS_TEST_DIRNAME}/../install.sh"
+    unset HOME
+    recover_env
+    [ -n "$HOME" ]
+    [[ "$HOME" == /* ]]  # must be an absolute path
+  )
+}
+
+@test "recover_env: aborts if POSIXLY_CORRECT is set" {
+  run bash -c "POSIXLY_CORRECT=1 source \"${BATS_TEST_DIRNAME}/../install.sh\"; recover_env"
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "POSIXLY_CORRECT" ]]
+}
