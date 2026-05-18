@@ -454,3 +454,39 @@ JSON
   [[ "$output" =~ "Manually add" ]]
   [[ "$output" =~ "/some/bin" ]]
 }
+
+@test "main: calls steps in correct order with fvm path" {
+  local call_log=()
+  stub_fn recover_env       'call_log+=(recover_env)'
+  stub_fn parse_args        'call_log+=(parse_args)'
+  stub_fn detect_platform   'call_log+=(detect_platform); FLEDGING_OS=macos; FLEDGING_ARCH=arm64'
+  stub_fn install_xcode_clt 'call_log+=(xcode_clt)'
+  stub_fn install_homebrew  'call_log+=(homebrew)'
+  stub_fn install_via_fvm   'call_log+=(fvm)'
+  stub_fn persist_path      'call_log+=(persist_path)'
+  stub_fn _handoff_to_dart  'call_log+=(handoff)'
+  NO_FVM=false
+  main
+  [ "${call_log[0]}" = "recover_env" ]
+  [ "${call_log[1]}" = "parse_args" ]
+  [ "${call_log[2]}" = "detect_platform" ]
+  [ "${call_log[3]}" = "xcode_clt" ]
+  [ "${call_log[4]}" = "homebrew" ]
+  [ "${call_log[5]}" = "fvm" ]
+  [ "${call_log[6]}" = "persist_path" ]
+  [ "${call_log[7]}" = "handoff" ]
+}
+
+@test "main: calls install_flutter_direct when --no-fvm" {
+  stub_fn recover_env         'true'
+  stub_fn parse_args          'NO_FVM=true'
+  stub_fn detect_platform     'FLEDGING_OS=macos; FLEDGING_ARCH=arm64'
+  stub_fn install_xcode_clt   'true'
+  stub_fn install_homebrew    'true'
+  local direct_called=false
+  install_flutter_direct() { direct_called=true; }
+  stub_fn persist_path        'true'
+  stub_fn _handoff_to_dart    'true'
+  main
+  [ "$direct_called" = "true" ]
+}

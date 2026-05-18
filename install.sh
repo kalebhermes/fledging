@@ -621,7 +621,75 @@ persist_path() {
 }
 
 # ============================================================
+# Dart tool handoff
+# ============================================================
+
+# Separated for testability
+_handoff_to_dart() {
+  if [[ "$NO_FVM" == "true" ]]; then
+    ensure dart pub global activate fledging
+    ensure dart pub global run fledging
+  else
+    ensure fvm dart pub global activate fledging
+    ensure fvm dart pub global run fledging
+  fi
+}
+
+# ============================================================
+# Main
+# ============================================================
+
+main() {
+  recover_env
+  parse_args "$@"
+  detect_platform
+
+  # macOS only for Phase 1
+  if [[ "$FLEDGING_OS" != "macos" ]]; then
+    error "Linux support is coming soon. Only macOS is supported in Phase 1."
+    exit 1
+  fi
+
+  if [[ "$VERBOSE" == "true" ]]; then
+    set -x
+  fi
+
+  if [[ "$HEADLESS" == "false" ]]; then
+    info "This script will install:"
+    info "  - Xcode Command Line Tools"
+    info "  - Homebrew"
+    if [[ "$NO_FVM" == "true" ]]; then
+      info "  - Flutter ${FLUTTER_VERSION:-latest stable} (direct download)"
+    else
+      info "  - fvm (Flutter version manager)"
+      info "  - Flutter ${FLUTTER_VERSION:-latest stable} via fvm"
+    fi
+    info ""
+    info "Press ENTER to continue or Ctrl-C to cancel."
+    set +e; read -r < /dev/tty; set -e
+  fi
+
+  install_xcode_clt
+  install_homebrew
+
+  if [[ "$NO_FVM" == "true" ]]; then
+    install_flutter_direct
+    persist_path "${HOME}/development/flutter/bin"
+  else
+    install_via_fvm
+    persist_path "${HOME}/fvm/default/bin"
+  fi
+
+  info ""
+  info "Flutter is installed. Handing off to fledging..."
+  info ""
+
+  _handoff_to_dart
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
+# when sourced; falls through to main when executed directly
 # ============================================================
 return 0 2>/dev/null
 
