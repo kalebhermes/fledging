@@ -288,3 +288,46 @@ setup() {
   install_homebrew
   [ "$captured_env" = "1" ]
 }
+
+@test "install_via_fvm: skips brew install when fvm already present" {
+  stub_fn _fvm_installed 'return 0'
+  local brew_called=false
+  _brew_install_fvm() { brew_called=true; }
+  stub_fn _fvm_install 'return 0'
+  stub_fn _fvm_global 'return 0'
+  stub_fn _dart_installed 'return 0'
+  install_via_fvm
+  [ "$brew_called" = "false" ]
+}
+
+@test "install_via_fvm: passes flutter version to fvm install when set" {
+  stub_fn _fvm_installed 'return 0'
+  FLUTTER_VERSION="3.19.0"
+  local installed_version=""
+  _fvm_install() { installed_version="$1"; }
+  stub_fn _fvm_global 'return 0'
+  stub_fn _dart_installed 'return 0'
+  install_via_fvm
+  [ "$installed_version" = "3.19.0" ]
+}
+
+@test "install_via_fvm: installs stable when no version flag" {
+  stub_fn _fvm_installed 'return 0'
+  FLUTTER_VERSION=""
+  local installed_version=""
+  _fvm_install() { installed_version="$1"; }
+  stub_fn _fvm_global 'return 0'
+  stub_fn _dart_installed 'return 0'
+  install_via_fvm
+  [ "$installed_version" = "stable" ]
+}
+
+@test "install_via_fvm: exits 1 if dart not in PATH after install" {
+  stub_fn _fvm_installed 'return 0'
+  stub_fn _fvm_install 'return 0'
+  stub_fn _fvm_global 'return 0'
+  stub_fn _dart_installed 'return 1'
+  run install_via_fvm
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "dart not found" ]]
+}

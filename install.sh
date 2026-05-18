@@ -388,6 +388,44 @@ install_homebrew() {
 }
 
 # ============================================================
+# FVM + Flutter install
+# ============================================================
+
+_fvm_installed()  { command -v fvm > /dev/null 2>&1; }
+_dart_installed() { command -v dart > /dev/null 2>&1; }
+_brew_install_fvm() { ensure brew install fvm; }
+_fvm_install() { ensure fvm install "$1"; }
+_fvm_global()  { ensure fvm global "$1"; }
+
+install_via_fvm() {
+  if ! _fvm_installed; then
+    info "Installing fvm..."
+    _brew_install_fvm
+  else
+    info "fvm already installed"
+  fi
+
+  local version="${FLUTTER_VERSION:-stable}"
+  info "Installing Flutter ${version} via fvm..."
+
+  _fvm_install "$version"
+  _fvm_global "$version"
+
+  # Expose flutter/dart binaries in this session.
+  # fvm global creates $HOME/fvm/default → symlink to the active version.
+  export PATH="${HOME}/fvm/default/bin:${PATH}"
+
+  if ! _dart_installed; then
+    error "dart not found after fvm install."
+    error "Expected it at: ${HOME}/fvm/default/bin/dart"
+    error "Try running: fvm global ${version}"
+    exit 1
+  fi
+
+  info "Flutter ${version} installed via fvm"
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null
