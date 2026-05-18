@@ -513,13 +513,14 @@ install_flutter_direct() {
   verify_sha256 "$zip_path" "$sha256"
 
   info "Extracting Flutter..."
+  need_cmd unzip
   local install_dir="${HOME}/development"
   mkdir -p "$install_dir"
   ensure unzip -q "$zip_path" -d "$install_dir"
   ignore rm -f "$zip_path"
 
-  # chmod before moving into place — a killed process between mv and chmod
-  # would leave a non-executable binary at the target path
+  # unzip doesn't always preserve execute bits (especially on Linux when the
+  # zip was created on macOS). Set them explicitly before using the binaries.
   ensure chmod +x "${install_dir}/flutter/bin/flutter"
   ensure chmod +x "${install_dir}/flutter/bin/dart"
 
