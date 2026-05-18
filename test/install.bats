@@ -80,3 +80,57 @@ setup() {
   [ "$status" -eq 1 ]
   [[ "$output" =~ "POSIXLY_CORRECT" ]]
 }
+
+@test "parse_args: --no-fvm sets NO_FVM=true" {
+  parse_args --no-fvm
+  [ "$NO_FVM" = "true" ]
+}
+
+@test "parse_args: --flutter-version sets FLUTTER_VERSION" {
+  parse_args --flutter-version 3.19.0
+  [ "$FLUTTER_VERSION" = "3.19.0" ]
+}
+
+@test "parse_args: --flutter-version requires a value" {
+  run parse_args --flutter-version
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "--flutter-version requires a value" ]]
+}
+
+@test "parse_args: --headless sets HEADLESS=true" {
+  parse_args --headless
+  [ "$HEADLESS" = "true" ]
+}
+
+@test "parse_args: -y sets HEADLESS=true" {
+  parse_args -y
+  [ "$HEADLESS" = "true" ]
+}
+
+@test "parse_args: -v sets VERBOSE=true" {
+  parse_args -v
+  [ "$VERBOSE" = "true" ]
+}
+
+@test "parse_args: --verbose sets VERBOSE=true" {
+  parse_args --verbose
+  [ "$VERBOSE" = "true" ]
+}
+
+@test "parse_args: unknown flag exits 1" {
+  run parse_args --does-not-exist
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "Unknown flag: --does-not-exist" ]]
+}
+
+@test "parse_args: FLEDGING_NONINTERACTIVE=1 env var sets HEADLESS" {
+  FLEDGING_NONINTERACTIVE=1 parse_args
+  [ "$HEADLESS" = "true" ]
+}
+
+@test "parse_args: accepts multiple flags together" {
+  parse_args --no-fvm --flutter-version 3.19.0 -v
+  [ "$NO_FVM" = "true" ]
+  [ "$FLUTTER_VERSION" = "3.19.0" ]
+  [ "$VERBOSE" = "true" ]
+}

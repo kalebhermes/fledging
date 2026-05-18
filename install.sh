@@ -106,6 +106,46 @@ recover_env() {
 }
 
 # ============================================================
+# Arg parsing
+# ============================================================
+parse_args() {
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --no-fvm)
+        NO_FVM=true
+        shift
+        ;;
+      --flutter-version)
+        if [[ $# -lt 2 || "$2" == --* ]]; then
+          error "--flutter-version requires a value (e.g. --flutter-version 3.19.0)"
+          exit 1
+        fi
+        FLUTTER_VERSION="$2"
+        shift 2
+        ;;
+      --headless|-y)
+        HEADLESS=true
+        shift
+        ;;
+      -v|--verbose)
+        VERBOSE=true
+        shift
+        ;;
+      *)
+        error "Unknown flag: $1"
+        error "Usage: install.sh [--no-fvm] [--flutter-version <ver>] [--headless|-y] [-v]"
+        exit 1
+        ;;
+    esac
+  done
+
+  # Honor env var override
+  if [[ "${FLEDGING_NONINTERACTIVE:-}" == "1" ]]; then
+    HEADLESS=true
+  fi
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null
