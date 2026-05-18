@@ -6,7 +6,9 @@ set -euo pipefail
 # ============================================================
 
 FLEDGING_VERSION="0.1.0"
-FLEDGING_TMP="${HOME}/.fledging/tmp"
+# FLEDGING_TMP is initialized in setup_tmp() after recover_env() runs,
+# so HOME is guaranteed to be set when this path is constructed.
+FLEDGING_TMP=""
 
 FLUTTER_RELEASES_BASE="https://storage.googleapis.com/flutter_infra_release/releases"
 

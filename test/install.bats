@@ -16,8 +16,8 @@ setup() {
   [ -n "${FLEDGING_VERSION:-}" ]
 }
 
-@test "FLEDGING_TMP is under HOME" {
-  [[ "${FLEDGING_TMP:-}" == "$HOME"* ]]
+@test "FLEDGING_TMP starts empty (initialized lazily in setup_tmp after recover_env)" {
+  [ -z "${FLEDGING_TMP:-}" ]
 }
 
 @test "need_cmd: exits 1 for missing command" {
