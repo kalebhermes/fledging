@@ -249,3 +249,22 @@ setup() {
   [[ "$output" =~ "SHA256 mismatch" ]]
   [ ! -f "$tmpfile" ]  # file was cleaned up
 }
+
+@test "install_xcode_clt: skips when already installed" {
+  stub_fn xcode-select 'return 0'  # simulates xcode-select -p succeeding
+  run install_xcode_clt
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ "already installed" ]]
+}
+
+@test "install_xcode_clt: in headless mode calls softwareupdate" {
+  # Simulate CLT not installed
+  xcode-select() { return 1; }
+  HEADLESS=true
+  local su_called=false
+  softwareupdate() { su_called=true; return 0; }
+  # Also stub the wait loop
+  stub_fn _xcode_clt_installed 'return 0'
+  install_xcode_clt
+  [ "$su_called" = "true" ]
+}

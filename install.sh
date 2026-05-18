@@ -280,6 +280,71 @@ verify_sha256() {
 }
 
 # ============================================================
+# Xcode Command Line Tools
+# ============================================================
+
+# Thin wrapper for testability
+_xcode_clt_installed() {
+  xcode-select -p > /dev/null 2>&1
+}
+
+install_xcode_clt() {
+  if xcode-select -p > /dev/null 2>&1; then
+    info "Xcode Command Line Tools already installed"
+    return 0
+  fi
+
+  info "Installing Xcode Command Line Tools..."
+
+  if [[ "$HEADLESS" == "true" ]]; then
+    # Headless install via softwareupdate (no GUI dialog)
+    # Create the placeholder file that triggers CLT availability in the catalog
+    local placeholder="/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress"
+    ensure touch "$placeholder"
+
+    # Run softwareupdate -l as a direct call (not command substitution) so that
+    # any shell-function stubs take effect in the current scope, then parse output
+    local tmplist
+    tmplist="$(mktemp)"
+    softwareupdate -l > "$tmplist" 2>&1
+    local clt_label
+    clt_label="$(grep -B 1 "Command Line Tools" "$tmplist" \
+      | awk -F'*' '/^\*/ {print $2}' \
+      | sed -e 's/^ Label: //' -e 's/^ *//' \
+      | sort -V \
+      | tail -n1 || true)"
+    ignore rm -f "$tmplist"
+    ignore rm -f "$placeholder"
+
+    if [[ -n "$clt_label" ]]; then
+      ensure softwareupdate -i "$clt_label" --agree-to-license
+    else
+      # Fallback: install all available updates (works on some macOS versions)
+      warn "Could not find a specific CLT label; attempting softwareupdate --install-rosetta workaround"
+      ensure softwareupdate --install --all --agree-to-license
+    fi
+  else
+    # Interactive: trigger the system dialog and wait
+    xcode-select --install 2>/dev/null || true
+    info "A dialog appeared to install Xcode Command Line Tools."
+    info "Complete the installation, then press ENTER to continue."
+    set +e; read -r < /dev/tty; set -e
+
+    # Poll until installed (max 5 min)
+    local elapsed=0
+    until _xcode_clt_installed; do
+      sleep 5; elapsed=$((elapsed + 5))
+      if [[ $elapsed -ge 300 ]]; then
+        error "Timed out waiting for Xcode Command Line Tools."
+        exit 1
+      fi
+    done
+  fi
+
+  info "Xcode Command Line Tools installed"
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null
