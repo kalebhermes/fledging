@@ -320,7 +320,7 @@ install_xcode_clt() {
       ensure softwareupdate -i "$clt_label" --agree-to-license
     else
       # Fallback: install all available updates (works on some macOS versions)
-      warn "Could not find a specific CLT label; attempting softwareupdate --install-rosetta workaround"
+      warn "Could not find a specific CLT label in softwareupdate catalog; falling back to --install --all"
       ensure softwareupdate --install --all --agree-to-license
     fi
   else
