@@ -116,7 +116,7 @@ parse_args() {
         shift
         ;;
       --flutter-version)
-        if [[ $# -lt 2 || "$2" == --* ]]; then
+        if [[ $# -lt 2 || "$2" == -* ]]; then
           error "--flutter-version requires a value (e.g. --flutter-version 3.19.0)"
           exit 1
         fi
@@ -133,7 +133,7 @@ parse_args() {
         ;;
       *)
         error "Unknown flag: $1"
-        error "Usage: install.sh [--no-fvm] [--flutter-version <ver>] [--headless|-y] [-v]"
+        error "Usage: install.sh [--no-fvm] [--flutter-version <ver>] [--headless|-y] [-v|--verbose]"
         exit 1
         ;;
     esac

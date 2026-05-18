@@ -97,6 +97,12 @@ setup() {
   [[ "$output" =~ "--flutter-version requires a value" ]]
 }
 
+@test "parse_args: --flutter-version rejects single-dash flag as value" {
+  run parse_args --flutter-version -y
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "--flutter-version requires a value" ]]
+}
+
 @test "parse_args: --headless sets HEADLESS=true" {
   parse_args --headless
   [ "$HEADLESS" = "true" ]
