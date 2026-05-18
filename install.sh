@@ -426,6 +426,115 @@ install_via_fvm() {
 }
 
 # ============================================================
+# Direct Flutter download (--no-fvm path)
+# ============================================================
+
+_flutter_installed() { command -v flutter > /dev/null 2>&1; }
+
+# Parse the Flutter releases JSON and print: archive sha256 base_url (one per line)
+# Exits 1 with a message if the requested version/arch combo is not found.
+# Usage: _parse_flutter_release <releases_json_path>
+# Reads: FLEDGING_ARCH, FLUTTER_VERSION (globals)
+_parse_flutter_release() {
+  local json_file="$1"
+  need_cmd python3
+
+  python3 - "$json_file" "$FLEDGING_ARCH" "${FLUTTER_VERSION:-}" <<'PYEOF'
+import json, sys
+
+json_file = sys.argv[1]
+dart_arch = sys.argv[2]
+requested_version = sys.argv[3]
+
+with open(json_file) as f:
+    data = json.load(f)
+
+base_url = data["base_url"]
+stable_hash = data["current_release"]["stable"]
+
+for r in data["releases"]:
+    # Flutter releases JSON uses "x64" for Intel and "arm64" for Apple Silicon.
+    # Entries without dart_sdk_arch are x64 (older format).
+    release_arch = r.get("dart_sdk_arch", "x64")
+    if release_arch != dart_arch:
+        continue
+    if requested_version:
+        if r.get("version") == requested_version:
+            print(r["archive"])
+            print(r["sha256"])
+            print(base_url)
+            sys.exit(0)
+    else:
+        if r["hash"] == stable_hash:
+            print(r["archive"])
+            print(r["sha256"])
+            print(base_url)
+            sys.exit(0)
+
+if requested_version:
+    print(f"ERROR: Flutter {requested_version} not found for {dart_arch}", file=sys.stderr)
+else:
+    print(f"ERROR: No stable Flutter release found for {dart_arch}", file=sys.stderr)
+sys.exit(1)
+PYEOF
+}
+
+install_flutter_direct() {
+  if _flutter_installed; then
+    info "Flutter already installed"
+    return 0
+  fi
+
+  setup_tmp
+
+  local releases_url="${FLUTTER_RELEASES_BASE}/releases_${FLEDGING_OS}.json"
+  local releases_json="${FLEDGING_TMP}/releases.json"
+
+  info "Fetching Flutter release information..."
+  download_file "$releases_url" "$releases_json"
+
+  local archive sha256 base_url
+  # _parse_flutter_release prints three lines; read them into variables
+  { read -r archive; read -r sha256; read -r base_url; } \
+    < <(_parse_flutter_release "$releases_json") || {
+      error "Could not find a matching Flutter release."
+      [[ -n "${FLUTTER_VERSION:-}" ]] && \
+        error "Version '${FLUTTER_VERSION}' may not exist for ${FLEDGING_ARCH}."
+      exit 1
+    }
+
+  local zip_url="${base_url}/${archive}"
+  local zip_path="${FLEDGING_TMP}/flutter.zip"
+
+  info "Downloading Flutter..."
+  download_file "$zip_url" "$zip_path"
+
+  info "Verifying download..."
+  verify_sha256 "$zip_path" "$sha256"
+
+  info "Extracting Flutter..."
+  local install_dir="${HOME}/development"
+  mkdir -p "$install_dir"
+  ensure unzip -q "$zip_path" -d "$install_dir"
+  ignore rm -f "$zip_path"
+
+  # chmod before moving into place — a killed process between mv and chmod
+  # would leave a non-executable binary at the target path
+  ensure chmod +x "${install_dir}/flutter/bin/flutter"
+  ensure chmod +x "${install_dir}/flutter/bin/dart"
+
+  export PATH="${install_dir}/flutter/bin:${PATH}"
+
+  if ! _flutter_installed; then
+    error "Flutter install completed but 'flutter' is not in PATH."
+    error "Expected it at: ${install_dir}/flutter/bin/flutter"
+    exit 1
+  fi
+
+  info "Flutter installed to ${install_dir}/flutter"
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null

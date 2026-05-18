@@ -331,3 +331,58 @@ setup() {
   [ "$status" -eq 1 ]
   [[ "$output" =~ "dart not found" ]]
 }
+
+@test "install_flutter_direct: skips when flutter already in PATH" {
+  stub_fn _flutter_installed 'return 0'
+  run install_flutter_direct
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ "already installed" ]]
+}
+
+@test "_parse_flutter_release: returns archive, sha256, base_url for stable" {
+  # Create a minimal releases JSON fixture
+  local json
+  json="$(mktemp)"
+  cat > "$json" <<'JSON'
+{
+  "base_url": "https://storage.example.com/releases",
+  "current_release": { "stable": "abc123" },
+  "releases": [
+    {
+      "hash": "abc123",
+      "channel": "stable",
+      "version": "3.19.0",
+      "archive": "stable/macos/flutter_macos_arm64_3.19.0-stable.zip",
+      "sha256": "deadbeef",
+      "dart_sdk_arch": "arm64"
+    }
+  ]
+}
+JSON
+  FLEDGING_ARCH="arm64"
+  FLUTTER_VERSION=""
+  run _parse_flutter_release "$json"
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ "stable/macos/flutter_macos_arm64_3.19.0-stable.zip" ]]
+  [[ "$output" =~ "deadbeef" ]]
+  [[ "$output" =~ "https://storage.example.com/releases" ]]
+  rm -f "$json"
+}
+
+@test "_parse_flutter_release: exits 1 when requested version not found" {
+  local json
+  json="$(mktemp)"
+  cat > "$json" <<'JSON'
+{
+  "base_url": "https://storage.example.com/releases",
+  "current_release": { "stable": "abc123" },
+  "releases": []
+}
+JSON
+  FLEDGING_ARCH="x64"
+  FLUTTER_VERSION="9.99.99"
+  run _parse_flutter_release "$json"
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "not found" ]]
+  rm -f "$json"
+}
