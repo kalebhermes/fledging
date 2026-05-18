@@ -199,3 +199,53 @@ setup() {
   stub_fn _get_curl_path 'echo /usr/bin/curl'
   ! is_snap_curl
 }
+
+@test "setup_tmp: creates FLEDGING_TMP directory" {
+  FLEDGING_TMP="$(mktemp -d)/fledging-test-tmp"
+  setup_tmp
+  [ -d "$FLEDGING_TMP" ]
+}
+
+@test "download_file: uses wget when curl is snap" {
+  stub_fn is_snap_curl 'return 0'
+  # wget stub that creates the .part output file (arg $2 is --output-document=<path>)
+  stub_fn wget 'local f="${2#--output-document=}"; touch "$f"; return 0'
+  local dest
+  dest="$(mktemp)"
+  run download_file "http://example.com/file" "$dest"
+  [ "$status" -eq 0 ]
+}
+
+@test "download_file: exits 1 when neither curl nor wget available" {
+  stub_fn is_snap_curl 'return 0'
+  # Remove wget from PATH
+  wget() { return 127; }
+  command() {
+    if [[ "$2" == "wget" ]]; then return 1; fi
+    builtin command "$@"
+  }
+  run download_file "http://example.com/file" "/tmp/test-out"
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "Neither curl nor wget" ]]
+}
+
+@test "verify_sha256: passes when hash matches" {
+  local tmpfile
+  tmpfile="$(mktemp)"
+  echo -n "hello" > "$tmpfile"
+  # sha256 of "hello" (no newline)
+  local expected="2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+  run verify_sha256 "$tmpfile" "$expected"
+  [ "$status" -eq 0 ]
+  rm -f "$tmpfile"
+}
+
+@test "verify_sha256: exits 1 and removes file on mismatch" {
+  local tmpfile
+  tmpfile="$(mktemp)"
+  echo "hello" > "$tmpfile"
+  run verify_sha256 "$tmpfile" "000000000000000000000000000000000000000000000000000000000000dead"
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "SHA256 mismatch" ]]
+  [ ! -f "$tmpfile" ]  # file was cleaned up
+}

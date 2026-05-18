@@ -221,6 +221,65 @@ is_musl() {
 }
 
 # ============================================================
+# Download helpers
+# ============================================================
+
+setup_tmp() {
+  FLEDGING_TMP="${HOME}/.fledging/tmp"
+  mkdir -p "$FLEDGING_TMP"
+  # Clean up temp dir on any exit — success or failure
+  trap 'ignore rm -rf "$FLEDGING_TMP"' EXIT
+}
+
+# Download a URL to a destination path.
+# Uses curl if available and not a snap package; falls back to wget.
+# Downloads to <dest>.part first; renames to <dest> only on success.
+# Usage: download_file <url> <dest>
+download_file() {
+  local url="$1" dest="$2"
+  local part="${dest}.part"
+
+  mkdir -p "$(dirname "$dest")"
+
+  if command -v curl > /dev/null 2>&1 && ! is_snap_curl; then
+    ensure curl --fail --location --show-error --retry 3 \
+      --output "$part" "$url"
+  elif command -v wget > /dev/null 2>&1; then
+    ensure wget --quiet --output-document="$part" "$url"
+  else
+    error "Neither curl nor wget found. Please install one and re-run."
+    exit 1
+  fi
+
+  mv "$part" "$dest"
+}
+
+# Verify the SHA256 of a file against an expected hex digest.
+# Deletes the file and exits 1 on mismatch.
+# Usage: verify_sha256 <file> <expected_sha256>
+verify_sha256() {
+  local file="$1" expected="$2"
+  local actual
+
+  if command -v shasum > /dev/null 2>&1; then
+    actual="$(shasum -a 256 "$file" | cut -d' ' -f1)"
+  elif command -v sha256sum > /dev/null 2>&1; then
+    actual="$(sha256sum "$file" | cut -d' ' -f1)"
+  else
+    warn "No SHA256 tool found (shasum/sha256sum). Skipping integrity check."
+    return 0
+  fi
+
+  if [[ "$actual" != "$expected" ]]; then
+    error "SHA256 mismatch for $(basename "$file")"
+    error "  Expected: $expected"
+    error "  Actual:   $actual"
+    ignore rm -f "$file"
+    exit 1
+  fi
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null
