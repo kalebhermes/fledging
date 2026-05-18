@@ -146,6 +146,81 @@ parse_args() {
 }
 
 # ============================================================
+# Platform detection — thin wrappers around system calls so
+# tests can override them via function shadowing
+# ============================================================
+_get_raw_os()          { uname -s; }
+_get_raw_arch()        { uname -m; }
+_get_proc_translated() { sysctl -n sysctl.proc_translated 2>/dev/null || echo "0"; }
+_get_long_bit()        { getconf LONG_BIT 2>/dev/null || echo "64"; }
+_get_curl_path()       { command -v curl 2>/dev/null || echo ""; }
+
+detect_platform() {
+  # Windows check before uname — reliable under Git Bash/MSYS2
+  if [[ "${OS:-}" == "Windows_NT" ]]; then
+    error "Windows is not yet supported. Please use install.ps1 (coming soon)."
+    exit 1
+  fi
+
+  local os arch
+  os="$(_get_raw_os)"
+  arch="$(_get_raw_arch)"
+
+  case "$os" in
+    Darwin)
+      FLEDGING_OS="macos"
+      # Rosetta 2: uname -m returns x86_64 even on Apple Silicon when the
+      # shell itself is running under Rosetta. sysctl.proc_translated=1 means
+      # this process is translated, so the real hardware is arm64.
+      if [[ "$arch" == "x86_64" && "$(_get_proc_translated)" == "1" ]]; then
+        arch="arm64"
+      fi
+      ;;
+    Linux)
+      FLEDGING_OS="linux"
+      # 64-bit kernel with 32-bit userspace: uname -m returns x86_64 but
+      # getconf LONG_BIT reveals the actual userspace word size is 32.
+      if [[ "$arch" == "x86_64" && "$(_get_long_bit)" == "32" ]]; then
+        error "Unsupported architecture: 32-bit userspace on 64-bit kernel (x32 ABI)"
+        exit 1
+      fi
+      ;;
+    *)
+      error "Unsupported OS: $os. Only macOS and Linux are supported."
+      exit 1
+      ;;
+  esac
+
+  # Normalize arch: both Linux (aarch64) and macOS (arm64) mean the same thing
+  case "$arch" in
+    arm64|aarch64) FLEDGING_ARCH="arm64" ;;
+    x86_64)        FLEDGING_ARCH="x64" ;;
+    *)
+      error "Unsupported architecture: $arch"
+      exit 1
+      ;;
+  esac
+}
+
+# Returns true if curl lives under /snap/ (Ubuntu snap curl has broken SSL)
+is_snap_curl() {
+  local path
+  path="$(_get_curl_path)"
+  [[ "$path" == /snap/* ]]
+}
+
+# Returns true if the system uses musl libc (Alpine Linux etc.)
+is_musl() {
+  if command -v ldd > /dev/null 2>&1; then
+    ldd /bin/ls 2>/dev/null | grep -q musl
+  elif [[ -f /etc/alpine-release ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null

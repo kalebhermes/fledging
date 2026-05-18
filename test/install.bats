@@ -140,3 +140,62 @@ setup() {
   [ "$FLUTTER_VERSION" = "3.19.0" ]
   [ "$VERBOSE" = "true" ]
 }
+
+@test "detect_platform: arm64 arch sets FLEDGING_ARCH=arm64" {
+  stub_fn _get_raw_os 'echo Darwin'
+  stub_fn _get_raw_arch 'echo arm64'
+  stub_fn _get_proc_translated 'echo 0'
+  detect_platform
+  [ "$FLEDGING_ARCH" = "arm64" ]
+  [ "$FLEDGING_OS" = "macos" ]
+}
+
+@test "detect_platform: aarch64 also maps to arm64" {
+  stub_fn _get_raw_os 'echo Linux'
+  stub_fn _get_raw_arch 'echo aarch64'
+  stub_fn _get_long_bit 'echo 64'
+  detect_platform
+  [ "$FLEDGING_ARCH" = "arm64" ]
+}
+
+@test "detect_platform: x86_64 maps to x64" {
+  stub_fn _get_raw_os 'echo Darwin'
+  stub_fn _get_raw_arch 'echo x86_64'
+  stub_fn _get_proc_translated 'echo 0'
+  detect_platform
+  [ "$FLEDGING_ARCH" = "x64" ]
+}
+
+@test "detect_platform: Rosetta 2 remaps x86_64 to arm64" {
+  stub_fn _get_raw_os 'echo Darwin'
+  stub_fn _get_raw_arch 'echo x86_64'
+  stub_fn _get_proc_translated 'echo 1'
+  detect_platform
+  [ "$FLEDGING_ARCH" = "arm64" ]
+}
+
+@test "detect_platform: Linux 64-bit kernel with 32-bit userspace exits 1" {
+  stub_fn _get_raw_os 'echo Linux'
+  stub_fn _get_raw_arch 'echo x86_64'
+  stub_fn _get_long_bit 'echo 32'
+  run detect_platform
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "Unsupported architecture" ]]
+}
+
+@test "detect_platform: unsupported OS exits 1" {
+  stub_fn _get_raw_os 'echo FreeBSD'
+  run detect_platform
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "Unsupported OS" ]]
+}
+
+@test "is_snap_curl: returns true when curl is in /snap/" {
+  stub_fn _get_curl_path 'echo /snap/bin/curl'
+  is_snap_curl && true || false
+}
+
+@test "is_snap_curl: returns false for normal curl" {
+  stub_fn _get_curl_path 'echo /usr/bin/curl'
+  ! is_snap_curl
+}
