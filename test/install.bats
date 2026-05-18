@@ -258,13 +258,16 @@ setup() {
 }
 
 @test "install_xcode_clt: in headless mode calls softwareupdate" {
-  # Simulate CLT not installed
-  xcode-select() { return 1; }
   HEADLESS=true
   local su_called=false
   softwareupdate() { su_called=true; return 0; }
-  # Also stub the wait loop
-  stub_fn _xcode_clt_installed 'return 0'
+  # First call returns 1 (not installed → triggers install path),
+  # subsequent calls return 0 (installed → poll loop exits)
+  local _clt_call_count=0
+  _xcode_clt_installed() {
+    _clt_call_count=$((_clt_call_count + 1))
+    [[ $_clt_call_count -gt 1 ]]
+  }
   install_xcode_clt
   [ "$su_called" = "true" ]
 }
@@ -339,7 +342,7 @@ setup() {
   [[ "$output" =~ "already installed" ]]
 }
 
-@test "_parse_flutter_release: returns archive, sha256, base_url for stable" {
+@test "_parse_flutter_release: returns archive and sha256 for stable" {
   # Create a minimal releases JSON fixture
   local json
   json="$(mktemp)"
@@ -365,7 +368,8 @@ JSON
   [ "$status" -eq 0 ]
   [[ "$output" =~ "stable/macos/flutter_macos_arm64_3.19.0-stable.zip" ]]
   [[ "$output" =~ "deadbeef" ]]
-  [[ "$output" =~ "https://storage.example.com/releases" ]]
+  # base_url is intentionally not printed — we use FLUTTER_RELEASES_BASE instead
+  [[ ! "$output" =~ "storage.example.com" ]]
   rm -f "$json"
 }
 

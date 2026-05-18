@@ -22,6 +22,14 @@ FLUTTER_VERSION=""
 HEADLESS=false
 VERBOSE=false
 
+# Accumulator for paths to clean up on EXIT. Use _register_cleanup instead of
+# calling trap directly — multiple trap calls overwrite each other.
+_CLEANUP_PATHS=()
+_cleanup_on_exit() { for _p in "${_CLEANUP_PATHS[@]:-}"; do ignore rm -rf "$_p"; done; }
+trap '_cleanup_on_exit' EXIT
+
+_register_cleanup() { _CLEANUP_PATHS+=("$1"); }
+
 # ============================================================
 # TTY detection — evaluated once at startup, subshell-safe.
 # Subshells always have fd 1 as a pipe, so [ -t 1 ] inside
@@ -227,8 +235,7 @@ is_musl() {
 setup_tmp() {
   FLEDGING_TMP="${HOME}/.fledging/tmp"
   mkdir -p "$FLEDGING_TMP"
-  # Clean up temp dir on any exit — success or failure
-  trap 'ignore rm -rf "$FLEDGING_TMP"' EXIT
+  _register_cleanup "$FLEDGING_TMP"
 }
 
 # Download a URL to a destination path.
@@ -289,7 +296,7 @@ _xcode_clt_installed() {
 }
 
 install_xcode_clt() {
-  if xcode-select -p > /dev/null 2>&1; then
+  if _xcode_clt_installed; then
     info "Xcode Command Line Tools already installed"
     return 0
   fi
@@ -437,10 +444,12 @@ install_via_fvm() {
 
 _flutter_installed() { command -v flutter > /dev/null 2>&1; }
 
-# Parse the Flutter releases JSON and print: archive sha256 base_url (one per line)
+# Parse the Flutter releases JSON and print: archive sha256 (one per line)
 # Exits 1 with a message if the requested version/arch combo is not found.
 # Usage: _parse_flutter_release <releases_json_path>
 # Reads: FLEDGING_ARCH, FLUTTER_VERSION (globals)
+# Note: base_url is intentionally NOT read from the JSON — we use our own
+# FLUTTER_RELEASES_BASE constant to avoid trusting a URL from a remote source.
 _parse_flutter_release() {
   local json_file="$1"
   need_cmd python3
@@ -455,7 +464,6 @@ requested_version = sys.argv[3]
 with open(json_file) as f:
     data = json.load(f)
 
-base_url = data["base_url"]
 stable_hash = data["current_release"]["stable"]
 
 for r in data["releases"]:
@@ -468,13 +476,11 @@ for r in data["releases"]:
         if r.get("version") == requested_version:
             print(r["archive"])
             print(r["sha256"])
-            print(base_url)
             sys.exit(0)
     else:
         if r["hash"] == stable_hash:
             print(r["archive"])
             print(r["sha256"])
-            print(base_url)
             sys.exit(0)
 
 if requested_version:
@@ -499,9 +505,11 @@ install_flutter_direct() {
   info "Fetching Flutter release information..."
   download_file "$releases_url" "$releases_json"
 
-  local archive sha256 base_url
-  # _parse_flutter_release prints three lines; read them into variables
-  { read -r archive; read -r sha256; read -r base_url; } \
+  local archive sha256
+  # _parse_flutter_release prints two lines; read them into variables.
+  # The download base URL comes from our own FLUTTER_RELEASES_BASE constant,
+  # not from the JSON, so we never follow a URL provided by a remote source.
+  { read -r archive; read -r sha256; } \
     < <(_parse_flutter_release "$releases_json") || {
       error "Could not find a matching Flutter release."
       [[ -n "${FLUTTER_VERSION:-}" ]] && \
@@ -509,7 +517,7 @@ install_flutter_direct() {
       exit 1
     }
 
-  local zip_url="${base_url}/${archive}"
+  local zip_url="${FLUTTER_RELEASES_BASE}/${archive}"
   local zip_path="${FLEDGING_TMP}/flutter.zip"
 
   info "Downloading Flutter..."
