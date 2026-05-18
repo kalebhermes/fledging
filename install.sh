@@ -352,7 +352,13 @@ _brew_installed() {
   command -v brew > /dev/null 2>&1
 }
 
-# Thin wrapper so tests can override without a network call
+# Thin wrapper so tests can override without a network call.
+# Security note: this fetches Homebrew's install script from HEAD and pipes it to bash
+# with no hash pinning. This is the same risk every developer accepts when following
+# Homebrew's own published install instructions. Pinning to a specific commit SHA would
+# require manual bumps on every Homebrew installer release and wouldn't meaningfully
+# change the trust model — a compromised Homebrew infra would also serve a compromised
+# SHA. Accepted tradeoff; revisit if the project's threat model changes.
 _run_brew_installer() {
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
@@ -578,8 +584,11 @@ persist_path() {
 
   # Dedup: skip if this directory or a known flutter/fvm path is already present.
   # Uses [ -f ] || [ -h ] to handle symlinked config files (chezmoi, stow, etc.)
+  # $dir is checked with -F (fixed string) to avoid ERE metacharacter issues in paths
+  # (e.g. dots in usernames like john.doe would over-match as a regex).
   if ([[ -f "$config_file" ]] || [[ -h "$config_file" ]]) && \
-     grep -qE "(${dir}|fvm/default/bin|development/flutter/bin)" "$config_file" 2>/dev/null; then
+     { grep -qF "$dir" "$config_file" 2>/dev/null || \
+       grep -qE "(fvm/default/bin|development/flutter/bin)" "$config_file" 2>/dev/null; }; then
     info "PATH already configured in ${config_file}"
     return 0
   fi
