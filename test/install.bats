@@ -386,3 +386,71 @@ JSON
   [[ "$output" =~ "not found" ]]
   rm -f "$json"
 }
+
+@test "persist_path: skips when dir already in config" {
+  local config
+  config="$(mktemp)"
+  echo 'export PATH="/home/user/fvm/default/bin:$PATH"' > "$config"
+  stub_fn _shell_config_file 'echo '"$config"
+  stub_fn _shell_name 'echo zsh'
+  run persist_path "/home/user/fvm/default/bin"
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ "already configured" ]]
+  rm -f "$config"
+}
+
+@test "persist_path: appends export PATH for bash" {
+  local config
+  config="$(mktemp)"
+  stub_fn _shell_config_file 'echo '"$config"
+  stub_fn _shell_name 'echo bash'
+  FLEDGING_OS="macos"
+  persist_path "/home/user/.fledging/bin"
+  grep -q 'export PATH="/home/user/.fledging/bin' "$config"
+  rm -f "$config"
+}
+
+@test "persist_path: uses fish_add_path syntax for fish" {
+  local config
+  config="$(mktemp)"
+  stub_fn _shell_config_file 'echo '"$config"
+  stub_fn _shell_name 'echo fish'
+  persist_path "/home/user/.fledging/bin"
+  grep -q 'fish_add_path "/home/user/.fledging/bin"' "$config"
+  rm -f "$config"
+}
+
+@test "persist_path: creates a timestamped backup before modifying" {
+  local config
+  config="$(mktemp)"
+  echo "# existing content" > "$config"
+  stub_fn _shell_config_file 'echo '"$config"
+  stub_fn _shell_name 'echo zsh'
+  persist_path "/some/new/bin"
+  # At least one backup file should exist alongside the config
+  local backup_count
+  backup_count="$(ls "${config}.pre-fledging-"* 2>/dev/null | wc -l)"
+  [ "$backup_count" -ge 1 ]
+  rm -f "$config" "${config}.pre-fledging-"*
+}
+
+@test "persist_path: handles symlinked config files" {
+  local real_config link_config
+  real_config="$(mktemp)"
+  link_config="$(mktemp)"
+  rm -f "$link_config"
+  ln -s "$real_config" "$link_config"
+  stub_fn _shell_config_file 'echo '"$link_config"
+  stub_fn _shell_name 'echo zsh'
+  persist_path "/some/bin"
+  grep -q 'export PATH="/some/bin' "$real_config"
+  rm -f "$real_config" "$link_config"
+}
+
+@test "persist_path: prints manual instructions for unknown shell" {
+  stub_fn _shell_name 'echo tcsh'
+  run persist_path "/some/bin"
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ "Manually add" ]]
+  [[ "$output" =~ "/some/bin" ]]
+}

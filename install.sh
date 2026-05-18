@@ -536,6 +536,91 @@ install_flutter_direct() {
 }
 
 # ============================================================
+# PATH persistence
+# ============================================================
+
+_shell_name() { basename "${SHELL:-bash}"; }
+
+# Returns the config file path for the current shell.
+# Separated out so tests can stub it.
+_shell_config_file() {
+  local shell
+  shell="$(_shell_name)"
+  case "$shell" in
+    zsh)  echo "${ZDOTDIR:-$HOME}/.zshrc" ;;
+    bash)
+      if [[ "${FLEDGING_OS:-}" == "macos" ]]; then
+        echo "${HOME}/.bash_profile"
+      else
+        echo "${HOME}/.bashrc"
+      fi
+      ;;
+    fish) echo "${HOME}/.config/fish/config.fish" ;;
+    *)    echo "" ;;
+  esac
+}
+
+# Append <dir> to the active shell's config file if not already present.
+# Usage: persist_path <dir>
+persist_path() {
+  local dir="$1"
+  local shell config_file
+  shell="$(_shell_name)"
+  config_file="$(_shell_config_file)"
+
+  if [[ -z "$config_file" ]]; then
+    warn "Unknown shell: $shell. Manually add the following to your shell config:"
+    warn "  export PATH=\"${dir}:\$PATH\""
+    return 0
+  fi
+
+  mkdir -p "$(dirname "$config_file")"
+
+  # Dedup: skip if this directory or a known flutter/fvm path is already present.
+  # Uses [ -f ] || [ -h ] to handle symlinked config files (chezmoi, stow, etc.)
+  if ([[ -f "$config_file" ]] || [[ -h "$config_file" ]]) && \
+     grep -qE "(${dir}|fvm/default/bin|development/flutter/bin)" "$config_file" 2>/dev/null; then
+    info "PATH already configured in ${config_file}"
+    return 0
+  fi
+
+  # Back up before modifying — timestamped so multiple runs don't collide
+  if [[ -f "$config_file" ]] || [[ -h "$config_file" ]]; then
+    local backup="${config_file}.pre-fledging-$(date +%Y-%m-%d_%H-%M-%S)"
+    cp "$config_file" "$backup"
+  fi
+
+  # Resolve symlinks so mv -f doesn't replace the symlink itself with a new file.
+  # If config_file is a symlink, we need to write to the real target so that tools
+  # like chezmoi or stow (which use symlinks) see the change.
+  local real_config
+  if [[ -h "$config_file" ]]; then
+    real_config="$(readlink -f "$config_file" 2>/dev/null || realpath "$config_file" 2>/dev/null || echo "$config_file")"
+  else
+    real_config="$config_file"
+  fi
+
+  # Atomic write: write to .tmp, then mv -f to the real (non-symlink) target.
+  # Never write to the config file in-place.
+  local tmp_config="${real_config}.fledging-tmp"
+  if [[ -f "$real_config" ]]; then
+    cp "$real_config" "$tmp_config"
+  else
+    touch "$tmp_config"
+  fi
+
+  if [[ "$shell" == "fish" ]]; then
+    printf '\n# Added by fledging installer\nfish_add_path "%s"\n' "$dir" >> "$tmp_config"
+  else
+    printf '\n# Added by fledging installer\nexport PATH="%s:$PATH"\n' "$dir" >> "$tmp_config"
+  fi
+
+  mv -f "$tmp_config" "$real_config"
+  info "Added ${dir} to PATH in ${config_file}"
+  info "Restart your shell or run: source ${config_file}"
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null
