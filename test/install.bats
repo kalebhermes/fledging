@@ -19,3 +19,39 @@ setup() {
 @test "FLEDGING_TMP is under HOME" {
   [[ "${FLEDGING_TMP:-}" == "$HOME"* ]]
 }
+
+@test "need_cmd: exits 1 for missing command" {
+  run need_cmd "definitely-not-a-real-cmd-xyz-abc"
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "Required command not found: definitely-not-a-real-cmd-xyz-abc" ]]
+}
+
+@test "need_cmd: succeeds for present command" {
+  run need_cmd bash
+  [ "$status" -eq 0 ]
+}
+
+@test "ensure: exits 1 when command fails" {
+  run ensure false
+  [ "$status" -eq 1 ]
+  [[ "$output" =~ "Command failed: false" ]]
+}
+
+@test "ensure: succeeds when command succeeds" {
+  run ensure true
+  [ "$status" -eq 0 ]
+}
+
+@test "ignore: swallows errors from failing commands" {
+  run ignore false
+  [ "$status" -eq 0 ]
+}
+
+@test "info/warn/error: output goes to stderr" {
+  run bash -c 'source install.sh; info "hello" 2>/dev/null'
+  [ "$status" -eq 0 ]
+  [ -z "$output" ]  # stdout is empty
+
+  run bash -c 'source install.sh; info "hello" 2>&1 >/dev/null'
+  [[ "$output" =~ "hello" ]]  # stderr has content
+}

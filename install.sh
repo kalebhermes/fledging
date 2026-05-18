@@ -21,6 +21,66 @@ HEADLESS=false
 VERBOSE=false
 
 # ============================================================
+# TTY detection — evaluated once at startup, subshell-safe.
+# Subshells always have fd 1 as a pipe, so [ -t 1 ] inside
+# $(...) always returns false. Baking the result here fixes that.
+# ============================================================
+if [ -t 1 ]; then
+  is_tty() { true; }
+else
+  is_tty() { false; }
+fi
+
+# ============================================================
+# Colors — empty strings when not a TTY; no per-call branching
+# ============================================================
+if is_tty; then
+  BOLD="\033[1m"
+  RED="\033[31m"
+  GREEN="\033[32m"
+  YELLOW="\033[33m"
+  CYAN="\033[36m"
+  RESET="\033[0m"
+else
+  BOLD="" RED="" GREEN="" YELLOW="" CYAN="" RESET=""
+fi
+
+# ============================================================
+# Output — ALL diagnostic output goes to stderr so stdout
+# stays clean for command substitution
+# ============================================================
+info()  { command printf "${CYAN}==>${RESET} ${BOLD}%s${RESET}\n" "$*" >&2; }
+warn()  { command printf "${YELLOW}Warning${RESET}: %s\n" "$*" >&2; }
+error() { command printf "${RED}Error${RESET}: %s\n" "$*" >&2; }
+
+# ============================================================
+# Utility wrappers
+# ============================================================
+
+# Exit 1 if a required command is not in PATH
+need_cmd() {
+  if ! command -v "$1" > /dev/null 2>&1; then
+    error "Required command not found: $1"
+    exit 1
+  fi
+}
+
+# Run a command; exit 1 with a clear message if it fails.
+# Use for operations that should never fail.
+ensure() {
+  if ! "$@"; then
+    error "Command failed: $*"
+    exit 1
+  fi
+}
+
+# Run a command, swallowing all errors.
+# Use in error-path cleanup so cleanup never masks the real error.
+ignore() {
+  "$@" 2>/dev/null || true
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null
