@@ -466,6 +466,7 @@ JSON
   stub_fn persist_path      'call_log+=(persist_path)'
   stub_fn _handoff_to_dart  'call_log+=(handoff)'
   NO_FVM=false
+  HEADLESS=true  # avoid /dev/tty dependency in test environment
   main
   [ "${call_log[0]}" = "recover_env" ]
   [ "${call_log[1]}" = "parse_args" ]
@@ -479,7 +480,7 @@ JSON
 
 @test "main: calls install_flutter_direct when --no-fvm" {
   stub_fn recover_env         'true'
-  stub_fn parse_args          'NO_FVM=true'
+  stub_fn parse_args          'NO_FVM=true; HEADLESS=true'
   stub_fn detect_platform     'FLEDGING_OS=macos; FLEDGING_ARCH=arm64'
   stub_fn install_xcode_clt   'true'
   stub_fn install_homebrew    'true'
@@ -489,4 +490,20 @@ JSON
   stub_fn _handoff_to_dart    'true'
   main
   [ "$direct_called" = "true" ]
+}
+
+@test "_handoff_to_dart: uses bare dart when NO_FVM=true" {
+  NO_FVM=true
+  local dart_cmd=""
+  dart() { dart_cmd="dart $*"; }
+  _handoff_to_dart
+  [[ "$dart_cmd" =~ "dart pub global" ]]
+}
+
+@test "_handoff_to_dart: uses fvm dart when NO_FVM=false" {
+  NO_FVM=false
+  local fvm_dart_cmd=""
+  fvm() { fvm_dart_cmd="fvm $*"; }
+  _handoff_to_dart
+  [[ "$fvm_dart_cmd" =~ "fvm dart pub global" ]]
 }
