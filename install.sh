@@ -345,6 +345,49 @@ install_xcode_clt() {
 }
 
 # ============================================================
+# Homebrew
+# ============================================================
+
+_brew_installed() {
+  command -v brew > /dev/null 2>&1
+}
+
+# Thin wrapper so tests can override without a network call
+_run_brew_installer() {
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+install_homebrew() {
+  if _brew_installed; then
+    info "Homebrew already installed"
+    return 0
+  fi
+
+  info "Installing Homebrew..."
+
+  if [[ "$HEADLESS" == "true" ]]; then
+    NONINTERACTIVE=1 _run_brew_installer
+  else
+    _run_brew_installer
+  fi
+
+  # Make brew available in this session (Homebrew doesn't update PATH itself)
+  if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -f "/usr/local/bin/brew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+
+  if ! _brew_installed; then
+    error "Homebrew installation succeeded but 'brew' is still not in PATH."
+    error "Open a new terminal and re-run the installer."
+    exit 1
+  fi
+
+  info "Homebrew installed"
+}
+
+# ============================================================
 # Sourceable for testing — return exits without running main
 # ============================================================
 return 0 2>/dev/null

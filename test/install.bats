@@ -268,3 +268,23 @@ setup() {
   install_xcode_clt
   [ "$su_called" = "true" ]
 }
+
+@test "install_homebrew: skips when brew already in PATH" {
+  stub_fn _brew_installed 'return 0'
+  run install_homebrew
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ "already installed" ]]
+}
+
+@test "install_homebrew: in headless mode sets NONINTERACTIVE=1" {
+  local _brew_call_count=0
+  _brew_installed() {
+    _brew_call_count=$((_brew_call_count + 1))
+    [[ $_brew_call_count -gt 1 ]]  # false on first call, true (brew "installed") after
+  }
+  HEADLESS=true
+  local captured_env=""
+  _run_brew_installer() { captured_env="${NONINTERACTIVE:-unset}"; }
+  install_homebrew
+  [ "$captured_env" = "1" ]
+}
