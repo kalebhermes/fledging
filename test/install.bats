@@ -11,3 +11,11 @@ setup() {
   # We verify it's empty, proving main() did not execute
   [ -z "${FLEDGING_OS:-}" ]
 }
+
+@test "FLEDGING_VERSION constant is defined" {
+  [ -n "${FLEDGING_VERSION:-}" ]
+}
+
+@test "FLEDGING_TMP is under HOME" {
+  [[ "${FLEDGING_TMP:-}" == "$HOME"* ]]
+}
