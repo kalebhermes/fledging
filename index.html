@@ -437,7 +437,7 @@
         <div class="feature-chip"><span class="chip-dot"></span> Homebrew</div>
         <div class="feature-chip"><span class="chip-dot"></span> Flutter via fvm</div>
         <div class="feature-chip"><span class="chip-dot"></span> Dart CLI</div>
-        <div class="feature-chip"><span class="chip-dot"></span> Apple Silicon aware</div>
+        <div class="feature-chip"><span class="chip-dot"></span> Intel + Apple Silicon</div>
         <div class="feature-chip"><span class="chip-dot"></span> Headless / CI ready</div>
       </div>
     </div>
@@ -470,21 +470,6 @@
       return 'macos';
     }
 
-    function detectArch() {
-      // Modern browsers expose this via userAgentData
-      const uad = navigator.userAgentData;
-      if (uad && uad.getHighEntropyValues) {
-        uad.getHighEntropyValues(['architecture']).then(data => {
-          if (data.architecture === 'arm') {
-            const notice = document.getElementById('detection-notice');
-            if (notice && currentOS === 'macos') {
-              notice.innerHTML = '<span class="dot"></span>Detected: macOS &middot; Apple Silicon';
-            }
-          }
-        }).catch(() => {});
-      }
-    }
-
     function selectOS(os) {
       currentOS = os;
 
@@ -506,12 +491,7 @@
 
       // Detection notice
       const notice = document.getElementById('detection-notice');
-      if (os === 'macos') {
-        notice.innerHTML = '<span class="dot"></span>Detected: macOS · auto-detecting architecture…';
-        detectArch();
-      } else {
-        notice.innerHTML = '';
-      }
+      notice.innerHTML = os === 'macos' ? '<span class="dot"></span>Detected: macOS' : '';
 
       // Options note
       const optNote = document.getElementById('options-note');
