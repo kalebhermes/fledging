@@ -290,20 +290,93 @@
 
     .coming-soon-box a:hover { text-decoration: underline; }
 
-    /* ── Options note ── */
-    .options-note {
-      font-size: 12px;
+    /* ── Flags bar ── */
+    .flags-bar {
+      display: none;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .flags-bar.visible { display: flex; }
+
+    .flag-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1.5px solid var(--gray-200);
+      background: white;
       color: var(--gray-400);
-      margin-bottom: 36px;
+      font-family: "SF Mono", "Fira Code", "Fira Mono", monospace;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
     }
 
-    .options-note a {
+    .flag-toggle:hover {
+      border-color: var(--blue-800);
       color: var(--blue-800);
-      text-decoration: none;
-      font-weight: 500;
     }
 
-    .options-note a:hover { text-decoration: underline; }
+    .flag-toggle.active {
+      background: var(--blue-100);
+      border-color: var(--blue-800);
+      color: var(--blue-800);
+      font-weight: 600;
+    }
+
+    .flag-toggle .toggle-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gray-200);
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+
+    .flag-toggle.active .toggle-dot { background: var(--blue-800); }
+
+    .version-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 20px;
+      background: white;
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+
+    .version-wrap:focus-within {
+      border-color: var(--blue-800);
+    }
+
+    .version-label {
+      font-family: "SF Mono", "Fira Code", "Fira Mono", monospace;
+      font-size: 11px;
+      color: var(--gray-400);
+      padding: 5px 8px 5px 12px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .version-input {
+      font-family: "SF Mono", "Fira Code", "Fira Mono", monospace;
+      font-size: 11px;
+      color: var(--blue-800);
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 5px 12px 5px 0;
+      width: 90px;
+    }
+
+    .version-input::placeholder { color: var(--gray-200); }
 
     /* ── Feature chips ── */
     .features {
@@ -415,7 +488,7 @@
         <div id="cmd-macos" class="command-box" style="display:none;">
           <span class="command-prompt">$</span>
           <span class="command-text" id="cmd-macos-text">curl -fsSL https://raw.githubusercontent.com/kalebhermes/fledging/main/install.sh | bash</span>
-          <button class="copy-btn" onclick="copyCommand('macos')">
+          <button class="copy-btn" onclick="copyCommand()">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
             </svg>
@@ -433,7 +506,21 @@
         </div>
       </div>
 
-      <p class="options-note" id="options-note"></p>
+      <!-- Flags bar (macOS only) -->
+      <div class="flags-bar" id="flags-bar">
+        <button class="flag-toggle" id="flag-no-fvm" onclick="toggleFlag('no-fvm')">
+          <span class="toggle-dot"></span>--no-fvm
+        </button>
+        <button class="flag-toggle" id="flag-headless" onclick="toggleFlag('headless')">
+          <span class="toggle-dot"></span>--headless
+        </button>
+        <div class="version-wrap">
+          <span class="version-label">--flutter-version</span>
+          <input class="version-input" id="flutter-version-input"
+                 type="text" placeholder="e.g. 3.19.0"
+                 oninput="updateCommand()" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
 
       <!-- Feature chips -->
       <div class="features">
@@ -455,15 +542,10 @@
   </footer>
 
   <script>
-    const COMMANDS = {
-      macos: 'curl -fsSL https://raw.githubusercontent.com/kalebhermes/fledging/main/install.sh | bash',
-    };
-
-    const OPTIONS_NOTES = {
-      macos: 'Optional flags: <a href="https://github.com/kalebhermes/fledging#flags" target="_blank"><code>--no-fvm</code></a>, <a href="https://github.com/kalebhermes/fledging#flags" target="_blank"><code>--flutter-version</code></a>, <a href="https://github.com/kalebhermes/fledging#flags" target="_blank"><code>--headless</code></a>',
-    };
+    const BASE_URL = 'https://raw.githubusercontent.com/kalebhermes/fledging/main/install.sh';
 
     let currentOS = null;
+    const flagState = { 'no-fvm': false, 'headless': false };
 
     function detectOS() {
       const ua = navigator.userAgent;
@@ -472,6 +554,30 @@
       if (/Win/.test(platform) || /Windows/.test(ua)) return 'windows';
       if (/Linux/.test(platform) || /Linux/.test(ua)) return 'linux';
       return 'macos';
+    }
+
+    function buildCommand() {
+      const flags = [];
+      if (flagState['no-fvm'])  flags.push('--no-fvm');
+      const ver = (document.getElementById('flutter-version-input').value || '').trim();
+      if (ver) flags.push(`--flutter-version ${ver}`);
+      if (flagState['headless']) flags.push('--headless');
+
+      const base = `curl -fsSL ${BASE_URL}`;
+      return flags.length === 0
+        ? `${base} | bash`
+        : `${base} | bash -s -- ${flags.join(' ')}`;
+    }
+
+    function updateCommand() {
+      const el = document.getElementById('cmd-macos-text');
+      if (el) el.textContent = buildCommand();
+    }
+
+    function toggleFlag(flag) {
+      flagState[flag] = !flagState[flag];
+      document.getElementById(`flag-${flag}`).classList.toggle('active', flagState[flag]);
+      updateCommand();
     }
 
     function selectOS(os) {
@@ -487,27 +593,21 @@
         if (el) el.style.display = 'none';
       });
       const target = document.getElementById(`cmd-${os}`);
-      if (target) target.style.display = 'flex';
-      // coming-soon boxes use block not flex
-      if (os === 'linux' || os === 'windows') {
-        target.style.display = 'block';
-      }
+      if (target) target.style.display = os === 'macos' ? 'flex' : 'block';
 
       // Detection notice
-      const notice = document.getElementById('detection-notice');
-      notice.innerHTML = os === 'macos' ? '<span class="dot"></span>Detected: macOS' : '';
+      document.getElementById('detection-notice').innerHTML =
+        os === 'macos' ? '<span class="dot"></span>Detected: macOS' : '';
 
-      // Options note
-      const optNote = document.getElementById('options-note');
-      optNote.innerHTML = OPTIONS_NOTES[os] || '';
+      // Show flags bar only for macOS
+      document.getElementById('flags-bar').classList.toggle('visible', os === 'macos');
     }
 
-    function copyCommand(os) {
-      const cmd = COMMANDS[os];
-      if (!cmd) return;
+    function copyCommand() {
+      const cmd = buildCommand();
       navigator.clipboard.writeText(cmd).then(() => {
-        const btn = document.querySelector(`#cmd-${os} .copy-btn`);
-        const label = document.getElementById(`copy-label-${os}`);
+        const btn = document.querySelector('#cmd-macos .copy-btn');
+        const label = document.getElementById('copy-label-macos');
         if (btn) btn.classList.add('copied');
         if (label) label.textContent = 'Copied!';
         setTimeout(() => {
@@ -515,23 +615,20 @@
           if (label) label.textContent = 'Copy';
         }, 2000);
       }).catch(() => {
-        // Fallback for older browsers
         const ta = document.createElement('textarea');
         ta.value = cmd;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
+        ta.style.cssText = 'position:fixed;opacity:0';
         document.body.appendChild(ta);
         ta.select();
         document.execCommand('copy');
         document.body.removeChild(ta);
-        const label = document.getElementById(`copy-label-${os}`);
+        const label = document.getElementById('copy-label-macos');
         if (label) { label.textContent = 'Copied!'; setTimeout(() => label.textContent = 'Copy', 2000); }
       });
     }
 
     // Init on load
-    const detected = detectOS();
-    selectOS(detected);
+    selectOS(detectOS());
   </script>
 
 </body>
