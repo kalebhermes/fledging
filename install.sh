@@ -713,9 +713,20 @@ main() {
 }
 
 # ============================================================
-# Sourceable for testing — return exits without running main
-# when sourced; falls through to main when executed directly
+# Sourceable for testing.
+#
+# Three execution contexts:
+#   sourced (. install.sh)   — BASH_SOURCE[0] is set and differs from $0
+#                              → return to skip main (used by BATS tests)
+#   run as file (bash install.sh / ./install.sh)
+#                            — BASH_SOURCE[0] == $0 → fall through to main
+#   piped (curl ... | bash)  — BASH_SOURCE[0] is empty → fall through to main
+#
+# The old pattern "return 0 2>/dev/null; main" silently exits when piped
+# because bash treats stdin-fed scripts like sourced scripts.
 # ============================================================
-return 0 2>/dev/null
+if [[ -n "${BASH_SOURCE[0]:-}" && "${BASH_SOURCE[0]}" != "${0}" ]]; then
+  return 0
+fi
 
 main "$@"
