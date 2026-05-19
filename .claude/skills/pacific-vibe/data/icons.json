@@ -1,0 +1,1658 @@
+[
+  {
+    "name": "Add",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Add"
+  },
+  {
+    "name": "AddCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Add Circle"
+  },
+  {
+    "name": "AddCircleStroke",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Add Circle"
+  },
+  {
+    "name": "AlertCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Alert Circle"
+  },
+  {
+    "name": "ArrowDown",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Arrow Down"
+  },
+  {
+    "name": "ArrowLeft",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Arrow Left"
+  },
+  {
+    "name": "ArrowRight",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Arrow Right"
+  },
+  {
+    "name": "ArrowUp",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Arrow Up"
+  },
+  {
+    "name": "Calendar",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Calendar"
+  },
+  {
+    "name": "CalendarAlert",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Calendar Alert"
+  },
+  {
+    "name": "CalendarCheckmark",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Calendar Checkmark"
+  },
+  {
+    "name": "Camera",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Camera"
+  },
+  {
+    "name": "CashBack",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Cash Back"
+  },
+  {
+    "name": "Chat",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Chat"
+  },
+  {
+    "name": "Check",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Check"
+  },
+  {
+    "name": "Checkmark",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Checkmark"
+  },
+  {
+    "name": "CheckmarkCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "CheckMarkCircle"
+  },
+  {
+    "name": "CheckmarkCircleStroke",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Checkmark Circle"
+  },
+  {
+    "name": "ChevronDown",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Chevron Down"
+  },
+  {
+    "name": "ChevronDownThick",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "ChevronDownThick"
+  },
+  {
+    "name": "ChevronLeft",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Chevron Left"
+  },
+  {
+    "name": "ChevronRight",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Chevron Right"
+  },
+  {
+    "name": "ChevronUp",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Chevron Up"
+  },
+  {
+    "name": "ChevronUpThick",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "ChevronUpThick"
+  },
+  {
+    "name": "Clock",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Clock"
+  },
+  {
+    "name": "Close",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Close"
+  },
+  {
+    "name": "CloseCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "CloseCircle"
+  },
+  {
+    "name": "CoachChat",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Coach Chat"
+  },
+  {
+    "name": "Copy",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Copy"
+  },
+  {
+    "name": "DollarSignCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Dollar Sign Circle"
+  },
+  {
+    "name": "DollarSignCircleFilled",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Dollar Sign Circle"
+  },
+  {
+    "name": "Download",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Download"
+  },
+  {
+    "name": "Edit",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Edit"
+  },
+  {
+    "name": "Eye",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Eye"
+  },
+  {
+    "name": "EyeHidden",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Eye Hidden"
+  },
+  {
+    "name": "EyeHiddenStroke",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Eye Hidden Stroke"
+  },
+  {
+    "name": "EyeStroke",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Eye Stroke"
+  },
+  {
+    "name": "Filter",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Filter"
+  },
+  {
+    "name": "FilterAsc",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Filter Asc"
+  },
+  {
+    "name": "FilterDesc",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Filter Desc"
+  },
+  {
+    "name": "Grid",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Eye Stroke"
+  },
+  {
+    "name": "HelpCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Help Circle"
+  },
+  {
+    "name": "Home",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Home"
+  },
+  {
+    "name": "HomeFilled",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Home Filled"
+  },
+  {
+    "name": "Information",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Information"
+  },
+  {
+    "name": "InformationStroke",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Information"
+  },
+  {
+    "name": "Lightbulb",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Lightbulb"
+  },
+  {
+    "name": "Link",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Link"
+  },
+  {
+    "name": "List",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "List"
+  },
+  {
+    "name": "LoadingDataError",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Loading Data Error"
+  },
+  {
+    "name": "LoadingError",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Loading Error"
+  },
+  {
+    "name": "Lock",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Lock"
+  },
+  {
+    "name": "LockOpen",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Lock Open"
+  },
+  {
+    "name": "LockStroke",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Lock Stroke"
+  },
+  {
+    "name": "Mail",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Mail"
+  },
+  {
+    "name": "Minimize",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Minimize"
+  },
+  {
+    "name": "More",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "More"
+  },
+  {
+    "name": "MoreCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "More Circle"
+  },
+  {
+    "name": "Notification",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Notification"
+  },
+  {
+    "name": "NotificationUnread",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Notification Unread"
+  },
+  {
+    "name": "Open",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Open"
+  },
+  {
+    "name": "Phone",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Phone"
+  },
+  {
+    "name": "Profile",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Profile"
+  },
+  {
+    "name": "ProfileFilled",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Profile"
+  },
+  {
+    "name": "QRCode",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "QRCode"
+  },
+  {
+    "name": "Question",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Question"
+  },
+  {
+    "name": "Receive",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Send"
+  },
+  {
+    "name": "ReceiveCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Receive Circle"
+  },
+  {
+    "name": "RemoveCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Remove Circle"
+  },
+  {
+    "name": "RemoveCircleStroke",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Remove Circle"
+  },
+  {
+    "name": "Renew",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Renew"
+  },
+  {
+    "name": "Remove",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Remove"
+  },
+  {
+    "name": "Search",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Search"
+  },
+  {
+    "name": "SendCircle",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Send Circle"
+  },
+  {
+    "name": "Settings",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Settings"
+  },
+  {
+    "name": "Share",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Share"
+  },
+  {
+    "name": "Star",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Star"
+  },
+  {
+    "name": "StarStroke",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Star"
+  },
+  {
+    "name": "TextMessage",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "TextMessage"
+  },
+  {
+    "name": "Transfer",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Transfer"
+  },
+  {
+    "name": "TrendFlat",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Trend Flat"
+  },
+  {
+    "name": "Trash",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Trash"
+  },
+  {
+    "name": "Withdraw",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "Withdraw"
+  },
+  {
+    "name": "TableSortAscending",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "TableSortAscending"
+  },
+  {
+    "name": "TableSortDescending",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "TableSortDescending"
+  },
+  {
+    "name": "TableSortDefault",
+    "category": "Interface",
+    "iconType": "solid",
+    "iconTitle": "TableSortDefault"
+  },
+  {
+    "name": "Bank",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Bank"
+  },
+  {
+    "name": "BankFees",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Bank Fees"
+  },
+  {
+    "name": "Bed",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Bed"
+  },
+  {
+    "name": "Building",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Building"
+  },
+  {
+    "name": "BuildingRent",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Building Rent"
+  },
+  {
+    "name": "Business",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Business"
+  },
+  {
+    "name": "Car",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Car"
+  },
+  {
+    "name": "Card",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Card"
+  },
+  {
+    "name": "CardFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Card"
+  },
+  {
+    "name": "CashHand",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Cash Hand"
+  },
+  {
+    "name": "Coach",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Coach"
+  },
+  {
+    "name": "College",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "College"
+  },
+  {
+    "name": "CreditCard",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Credit Card"
+  },
+  {
+    "name": "CreditCardFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Credit Card"
+  },
+  {
+    "name": "DebtPayment",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Debt Payment"
+  },
+  {
+    "name": "Dining",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Dining"
+  },
+  {
+    "name": "Document",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Document"
+  },
+  {
+    "name": "DocumentTax",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Document Tax"
+  },
+  {
+    "name": "EarlyPay",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Early Pay"
+  },
+  {
+    "name": "Emergency",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Emergency"
+  },
+  {
+    "name": "Entertainment",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Entertainment"
+  },
+  {
+    "name": "EqualHousingLender",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Equal Housing Lender"
+  },
+  {
+    "name": "Family",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Family"
+  },
+  {
+    "name": "Gift",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Gift"
+  },
+  {
+    "name": "GovernmentNonProfit",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Government & Non-Profit"
+  },
+  {
+    "name": "GreenCard",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Green Card"
+  },
+  {
+    "name": "HealthWellness",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Health & Wellness"
+  },
+  {
+    "name": "House",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "House"
+  },
+  {
+    "name": "Insurance",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Insurance"
+  },
+  {
+    "name": "Invest",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Invest"
+  },
+  {
+    "name": "InvestAccountTypeCrypto",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "InvestAccountTypeCrypto"
+  },
+  {
+    "name": "InvestFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Invest"
+  },
+  {
+    "name": "IPO",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "IPO"
+  },
+  {
+    "name": "Kids",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Kids"
+  },
+  {
+    "name": "Loan",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Loan"
+  },
+  {
+    "name": "LoanDiscount",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Loan Discount"
+  },
+  {
+    "name": "LoanFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Loan Filled"
+  },
+  {
+    "name": "Loans",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Loans"
+  },
+  {
+    "name": "LoansFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Loans"
+  },
+  {
+    "name": "Money",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Money"
+  },
+  {
+    "name": "MoneyFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Money"
+  },
+  {
+    "name": "Relay",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Relay"
+  },
+  {
+    "name": "RelayFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Relay"
+  },
+  {
+    "name": "NonPermanentResident",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Green Card"
+  },
+  {
+    "name": "PayIn4",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "PayIn4"
+  },
+  {
+    "name": "Pencil",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Pencil"
+  },
+  {
+    "name": "Person",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Person"
+  },
+  {
+    "name": "PiggyBank",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Piggy Bank"
+  },
+  {
+    "name": "Rewards",
+    "category": "Products",
+    "iconType": "illustration",
+    "iconTitle": "Rewards"
+  },
+  {
+    "name": "RewardsDefault",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Rewards"
+  },
+  {
+    "name": "RewardsFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Rewards"
+  },
+  {
+    "name": "Services",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Services"
+  },
+  {
+    "name": "ShieldLock",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Shield Lock"
+  },
+  {
+    "name": "Shopping",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Shopping"
+  },
+  {
+    "name": "SofiPlus",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "SofiPlus"
+  },
+  {
+    "name": "SofiPlusFilled",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "SofiPlusFilled"
+  },
+  {
+    "name": "SofiLogo",
+    "category": "Products",
+    "iconType": "illustration",
+    "iconTitle": "SoFi Logo"
+  },
+  {
+    "name": "Travel",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Travel"
+  },
+  {
+    "name": "Truck",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Truck"
+  },
+  {
+    "name": "Unemployment",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Unemployment"
+  },
+  {
+    "name": "USFlag",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "US Flag"
+  },
+  {
+    "name": "Vault",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Vault"
+  },
+  {
+    "name": "Wallet",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Wallet"
+  },
+  {
+    "name": "Wedding",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Wedding"
+  },
+  {
+    "name": "Zelle",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Zelle"
+  },
+  {
+    "name": "Health",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Health"
+  },
+  {
+    "name": "Dental",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Dental"
+  },
+  {
+    "name": "Legal",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Legal"
+  },
+  {
+    "name": "MedicalProfessional",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "MedicalProfessional"
+  },
+  {
+    "name": "CryptoReceive",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Crypto Receive"
+  },
+  {
+    "name": "CryptoSend",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Crypto Send"
+  },
+  {
+    "name": "InvestWithdraw",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Invest Withdraw"
+  },
+  {
+    "name": "SmartCard",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "SmartCard"
+  },
+  {
+    "name": "CryptoBuy",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Crypto Buy"
+  },
+  {
+    "name": "CryptoSell",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Crypto Sell"
+  },
+  {
+    "name": "Cryptocurrency",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Cryptocurrency"
+  },
+  {
+    "name": "TransactionConvert",
+    "category": "Products",
+    "iconType": "solid",
+    "iconTitle": "Transaction Convert"
+  },
+  {
+    "name": "Facebook",
+    "category": "Social",
+    "iconType": "illustration",
+    "iconTitle": "Facebook"
+  },
+  {
+    "name": "Gmail",
+    "category": "Social",
+    "iconType": "illustration",
+    "iconTitle": "Gmail"
+  },
+  {
+    "name": "Instagram",
+    "category": "Social",
+    "iconType": "solid",
+    "iconTitle": "Instagram"
+  },
+  {
+    "name": "LinkedIn",
+    "category": "Social",
+    "iconType": "illustration",
+    "iconTitle": "Linkedin"
+  },
+  {
+    "name": "Pinterest",
+    "category": "Social",
+    "iconType": "illustration",
+    "iconTitle": "Pinterest"
+  },
+  {
+    "name": "Snapchat",
+    "category": "Social",
+    "iconType": "illustration",
+    "iconTitle": "Snapchat"
+  },
+  {
+    "name": "Twitter",
+    "category": "Social",
+    "iconType": "illustration",
+    "iconTitle": "Twitter"
+  },
+  {
+    "name": "Accounts",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Accounts"
+  },
+  {
+    "name": "Address",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Address"
+  },
+  {
+    "name": "Agent",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Agent"
+  },
+  {
+    "name": "AlertTriangle",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Alert Triangle"
+  },
+  {
+    "name": "ArrowDownCircle",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Arrow Down Circle"
+  },
+  {
+    "name": "ArrowUpCircle",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Arrow Up Circle"
+  },
+  {
+    "name": "At",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "At"
+  },
+  {
+    "name": "ATM",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "ATM"
+  },
+  {
+    "name": "Attach",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Attach"
+  },
+  {
+    "name": "Award",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Award"
+  },
+  {
+    "name": "BankFilled",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Bank"
+  },
+  {
+    "name": "Bill",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Bill"
+  },
+  {
+    "name": "Bookmark",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Bookmark"
+  },
+  {
+    "name": "CalendarAdd",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Calendar Addition"
+  },
+  {
+    "name": "CalendarBlock",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Calendar Block"
+  },
+  {
+    "name": "CalendarDollar",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Calendar Dollar"
+  },
+  {
+    "name": "CalendarRenew",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Calendar Renew"
+  },
+  {
+    "name": "Cancel",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Cancel"
+  },
+  {
+    "name": "CardBroken",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Broken"
+  },
+  {
+    "name": "CardCancel",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Cancel"
+  },
+  {
+    "name": "CardCheckmark",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Checkmark"
+  },
+  {
+    "name": "CardDollar",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Dollar"
+  },
+  {
+    "name": "CardFlag",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Flag"
+  },
+  {
+    "name": "CardLock",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Lock"
+  },
+  {
+    "name": "CardPhone",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Phone"
+  },
+  {
+    "name": "CardRenew",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Renew"
+  },
+  {
+    "name": "CardShieldAdd",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Card Shield Add"
+  },
+  {
+    "name": "Cash",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Cash"
+  },
+  {
+    "name": "CashStack",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Cash Stack"
+  },
+  {
+    "name": "Charging",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Charging"
+  },
+  {
+    "name": "Coins",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Coins"
+  },
+  {
+    "name": "Comment",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Comment"
+  },
+  {
+    "name": "Crypto",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Crypto"
+  },
+  {
+    "name": "CryptoStaking",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Crypto Staking"
+  },
+  {
+    "name": "Delete",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Delete"
+  },
+  {
+    "name": "DeltaDown",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Delta Down"
+  },
+  {
+    "name": "DeltaUp",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Delta Up"
+  },
+  {
+    "name": "DirectDeposit",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "DirectDeposit"
+  },
+  {
+    "name": "DocumentCheckmark",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "DocumentCheckmark"
+  },
+  {
+    "name": "DocumentUpload",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "DocumentUpload"
+  },
+  {
+    "name": "DollarSign",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Dollar Sign"
+  },
+  {
+    "name": "Encryption",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Encryption"
+  },
+  {
+    "name": "ExpandDiagonal",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Expand Diagonal"
+  },
+  {
+    "name": "ExpandHorizontal",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Expand Horizontal"
+  },
+  {
+    "name": "Hamburger",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Hamburger"
+  },
+  {
+    "name": "Files",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Files"
+  },
+  {
+    "name": "Fitness",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Car"
+  },
+  {
+    "name": "Flash",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Flash"
+  },
+  {
+    "name": "FlashOff",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "FlashOff"
+  },
+  {
+    "name": "Football",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Football"
+  },
+  {
+    "name": "GraphPie",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Pie Graph"
+  },
+  {
+    "name": "Groceries",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Groceries"
+  },
+  {
+    "name": "Hash",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Hash"
+  },
+  {
+    "name": "Household",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Household"
+  },
+  {
+    "name": "Id",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Id"
+  },
+  {
+    "name": "Image",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Image"
+  },
+  {
+    "name": "ImageNone",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "ImageNone"
+  },
+  {
+    "name": "Income",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Income"
+  },
+  {
+    "name": "Key",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Key"
+  },
+  {
+    "name": "Law",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Law"
+  },
+  {
+    "name": "LimitBuy",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Limit Buy"
+  },
+  {
+    "name": "LimitSell",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Limit Sell"
+  },
+  {
+    "name": "LinkBroken",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "LinkBroken"
+  },
+  {
+    "name": "LocationDollar",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "LocationDollar"
+  },
+  {
+    "name": "LocationPin",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "LocationPin"
+  },
+  {
+    "name": "LockPassword",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Lock Password"
+  },
+  {
+    "name": "LockPhone",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Lock Phone"
+  },
+  {
+    "name": "LockScan",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "LockScan"
+  },
+  {
+    "name": "Logout",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Logout"
+  },
+  {
+    "name": "MagnifyingGlassPlus",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Magnifying Glass"
+  },
+  {
+    "name": "Medical",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Medical"
+  },
+  {
+    "name": "Megaphone",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Megaphone"
+  },
+  {
+    "name": "Meter",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Meter"
+  },
+  {
+    "name": "Night",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Night"
+  },
+  {
+    "name": "Options",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Options"
+  },
+  {
+    "name": "ParentPlus",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Parent Plus"
+  },
+  {
+    "name": "Percent",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Percent"
+  },
+  {
+    "name": "PercentCircle",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Percent Circle"
+  },
+  {
+    "name": "PhoneCard",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Phone Card"
+  },
+  {
+    "name": "PiggyBankCoin",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Piggy Bank Coin"
+  },
+  {
+    "name": "Pets",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Pets"
+  },
+  {
+    "name": "Print",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Print"
+  },
+  {
+    "name": "Products",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Products"
+  },
+  {
+    "name": "ReactAdd",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "React Add"
+  },
+  {
+    "name": "Read",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Read"
+  },
+  {
+    "name": "Receipt",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Receipt"
+  },
+  {
+    "name": "Refresh",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Refresh"
+  },
+  {
+    "name": "Rocket",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Rocket"
+  },
+  {
+    "name": "SearchFilled",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Search"
+  },
+  {
+    "name": "Send",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Send"
+  },
+  {
+    "name": "Shield",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Shield"
+  },
+  {
+    "name": "ShieldAuto",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Shield Auto"
+  },
+  {
+    "name": "ShieldCheckmark",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Shield Checkmark"
+  },
+  {
+    "name": "ShieldDollar",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Shield Dollar"
+  },
+  {
+    "name": "ShieldHome",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Shield Home"
+  },
+  {
+    "name": "ShieldMedical",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Shield Medical"
+  },
+  {
+    "name": "Shutter",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Shutter"
+  },
+  {
+    "name": "StopLimitBuy",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Stop Limit Buy"
+  },
+  {
+    "name": "StopLimitSell",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Stop Limit Sell"
+  },
+  {
+    "name": "SwapCircle",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Swap Circle"
+  },
+  {
+    "name": "Target",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Target"
+  },
+  {
+    "name": "TransferCircle",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Transfer Circle"
+  },
+  {
+    "name": "TrendDown",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Trend Down"
+  },
+  {
+    "name": "TrendUp",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Trend Up"
+  },
+  {
+    "name": "Umbrella",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Umbrella"
+  },
+  {
+    "name": "Unlock",
+    "category": "SoFiX",
+    "iconType": "solid",
+    "iconTitle": "Unlock"
+  }
+]

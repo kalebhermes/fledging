@@ -1,0 +1,6441 @@
+[
+  {
+    "name": "Typography",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "TypographyProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Typography/Typography.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "as",
+        "type": "| 'h1'\n    | 'h2'\n    | 'h3'\n    | 'h4'\n    | 'h5'\n    | 'h6'\n    | 'p'\n    | 'li'\n    | 'ul'\n    | 'ol'\n    | 'span'\n    | 'div'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "TooltipButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "TooltipButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Tooltip/TooltipButton.tsx",
+    "figmaGroup": "Tooltip",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "setIsOpen",
+        "type": "(open: boolean) => void",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isOpen",
+        "type": "boolean",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Tooltip"
+  },
+  {
+    "name": "Tooltip",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "TooltipProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Tooltip/Tooltip.tsx",
+    "figmaGroup": "Tooltip",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "placement",
+        "type": "Placement",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "tooltipButtonStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "tooltipContent",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "tooltipPanelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Tooltip"
+  },
+  {
+    "name": "ToastProvider",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "ToastProviderProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Toast/ToastProvider.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "renderToasts",
+        "type": "boolean",
+        "required": false,
+        "description": "Determines if toasts will be rendered, setting to false allows custom toast rendering. Defaults to true",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Toast"
+  },
+  {
+    "name": "TabPanels",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "TabPanelsProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Tabs/TabPanels.tsx",
+    "figmaGroup": "Tabs",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Tabs"
+  },
+  {
+    "name": "TabPanel",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "TabPanelProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Tabs/TabPanel.tsx",
+    "figmaGroup": "Tabs",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Tabs"
+  },
+  {
+    "name": "TabList",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "TabListProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Tabs/TabList.tsx",
+    "figmaGroup": "Tabs",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "vertical",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, the orientation of the TabList will be vertical, otherwise it will be horizontal.",
+        "default": null
+      },
+      {
+        "name": "styleType",
+        "type": "'primary' | 'secondary'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Tabs"
+  },
+  {
+    "name": "TabGroup",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "TabGroupProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Tabs/TabGroup.tsx",
+    "figmaGroup": "Tabs",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Tabs"
+  },
+  {
+    "name": "Tab",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "TabProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Tabs/Tab.tsx",
+    "figmaGroup": "Tabs",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'white' | 'bone'",
+        "required": false,
+        "description": "Set a variant to change background color",
+        "default": null
+      },
+      {
+        "name": "styleType",
+        "type": "'primary' | 'secondary'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Tabs"
+  },
+  {
+    "name": "Skeleton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SkeletonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Skeleton/Skeleton.tsx",
+    "figmaGroup": "Skeleton",
+    "props": [
+      {
+        "name": "as",
+        "type": "'div' | 'span'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "The children of the skeleton.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "RowLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "RowLinkProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Row/RowLink.tsx",
+    "figmaGroup": "Row",
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Rows"
+  },
+  {
+    "name": "RowIconButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "RowIconButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Row/RowIconButton.tsx",
+    "figmaGroup": "Row",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": true,
+        "description": "Optional icon name to be included",
+        "default": null
+      },
+      {
+        "name": "iconSize",
+        "type": "number",
+        "required": false,
+        "description": "Sets the size of icon",
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Rows"
+  },
+  {
+    "name": "RowGrid",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "RowGridProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Row/RowGrid.tsx",
+    "figmaGroup": "Row",
+    "props": [
+      {
+        "name": "align",
+        "type": "'center'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "isChevron",
+        "type": "boolean",
+        "required": false,
+        "description": "Adds the chevron",
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'controlRow' | 'displayRow' | 'spaceBetweenRow'",
+        "required": false,
+        "description": "Sets the style and purpose of the row",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Rows"
+  },
+  {
+    "name": "RowButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "RowButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Row/RowButton.tsx",
+    "figmaGroup": "Row",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Rows"
+  },
+  {
+    "name": "Row",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "RowProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Row/Row.tsx",
+    "figmaGroup": "Row",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "'transparent'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "html",
+        "type": "'div' | 'aside' | 'section' | 'article' | 'li'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'multiAction'",
+        "required": false,
+        "description": "Sets the style and purpose of the row",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Rows"
+  },
+  {
+    "name": "QuickActionLoader",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "QuickActionLoaderProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "QuickActions/QuickActionLoader.tsx",
+    "figmaGroup": "QuickActions",
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "Allows you to merges component props onto its immediate child.",
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": "Adds a label to the skeleton that describes what is loading.",
+        "default": null
+      },
+      {
+        "name": "position",
+        "type": "'firstItem' | 'lastItem' | 'singleItem'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'transparent' | 'surfaceElevatedDefault'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "A string or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "boolean",
+        "required": false,
+        "description": "If there is an icon show a custom a loading state",
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Action bar"
+  },
+  {
+    "name": "QuickActionLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "QuickActionLinkProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "QuickActions/QuickActionLink.tsx",
+    "figmaGroup": "QuickActions",
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "Allows you to merges component props onto its immediate child.",
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "A string or react/HTML element passed as a child element to the component",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Action bar"
+  },
+  {
+    "name": "QuickActionDivider",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "QuickActionDividerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "QuickActions/QuickActionDivider.tsx",
+    "figmaGroup": "QuickActions",
+    "props": [
+      {
+        "name": "variant",
+        "type": "'surfaceBase' | 'surfaceElevatedDefault'",
+        "required": false,
+        "description": "Change background color of the divider parent div",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Action bar"
+  },
+  {
+    "name": "QuickActionContainer",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "QuickActionContainerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "QuickActions/QuickActionContainer.tsx",
+    "figmaGroup": "QuickActions",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "html",
+        "type": "'div' | 'aside' | 'section' | 'article'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'surfaceBase' | 'surfaceElevatedDefault'",
+        "required": false,
+        "description": "Change background color of the action",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Action bar"
+  },
+  {
+    "name": "QuickActionButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "QuickActionButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "QuickActions/QuickActionButton.tsx",
+    "figmaGroup": "QuickActions",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "A string or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "Semantically disables the button, and applies \"grayed out\" styles.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Action bar"
+  },
+  {
+    "name": "Step",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "StepProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProgressStepper/Step.tsx",
+    "figmaGroup": "ProgressStepper",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or React/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "isLastStep",
+        "type": "boolean",
+        "required": false,
+        "description": "Removes the line from the last step",
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "'COMPLETE' | 'IN_PROGRESS' | 'INCOMPLETE' | 'WARNING'",
+        "required": true,
+        "description": "Sets the status of the step",
+        "default": null
+      },
+      {
+        "name": "lineStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "textContainerStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Steppers"
+  },
+  {
+    "name": "ProgressStepper",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "ProgressStepperProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProgressStepper/ProgressStepper.tsx",
+    "figmaGroup": "ProgressStepper",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or React/HTML element passed as a child element to the component",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Steppers"
+  },
+  {
+    "name": "SkipLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SkipLinkProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProductFlowHeader/SkipLink/SkipLink.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "skipLinkHref",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "skipLinkOnClick",
+        "type": "React.AnchorHTMLAttributes<HTMLAnchorElement>['onClick']",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "ProductName",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "ProductNameProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProductFlowHeader/ProductName/ProductName.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "Nav",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "NavProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProductFlowHeader/Nav/Nav.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "skipLinkHref",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "skipLinkOnClick",
+        "type": "React.MouseEventHandler<HTMLAnchorElement>",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "Header",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "HeaderProps",
+    "description": null,
+    "hasMatchingExport": false,
+    "sourceFile": "ProductFlowHeader/MenuRight/MenuRight.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "MenuRight",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "HeaderProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProductFlowHeader/MenuRight/MenuRight.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'transparent'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "Header",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "HeaderProps",
+    "description": null,
+    "hasMatchingExport": false,
+    "sourceFile": "ProductFlowHeader/MenuLeft/MenuLeft.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "MenuLeft",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "HeaderProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProductFlowHeader/MenuLeft/MenuLeft.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'transparent'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "Logo",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "LogoProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProductFlowHeader/Logo/Logo.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "link",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": "Accessible label describing where the link navigates.\nIMPORTANT: Since the logo link can navigate to different destinations,\nyou should provide a descriptive label based on where it goes.\n\nExamples: \"Home\", \"Dashboard\", \"Back to loans\", \"SoFi home\"",
+        "default": "\"Social Finance, LLC\" (backwards compatibility)"
+      },
+      {
+        "name": "mjs",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "qa",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "Header",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "HeaderProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ProductFlowHeader/Header/Header.tsx",
+    "figmaGroup": "ProductFlowHeader",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'transparent'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Global Header"
+  },
+  {
+    "name": "Pill",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "PillProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Pill/Pill.tsx",
+    "figmaGroup": "Pill",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or React/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "isLarge",
+        "type": "boolean",
+        "required": false,
+        "description": "Will increase the size of the pill",
+        "default": null
+      },
+      {
+        "name": "styleType",
+        "type": "PillStyle",
+        "required": false,
+        "description": "Determines which pill style to use",
+        "default": null
+      },
+      {
+        "name": "topPlacement",
+        "type": "boolean",
+        "required": false,
+        "description": "Whether or not the pill is placed on top of other content",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Control pill"
+  },
+  {
+    "name": "MenuPanel",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MenuPanelProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Menu/MenuPanel.tsx",
+    "figmaGroup": "Menu",
+    "props": [
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "MenuItemLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MenuItemLinkProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Menu/MenuItemLink.tsx",
+    "figmaGroup": "Menu",
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "Allows you to merges component props onto its immediate child.",
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "A string or react/HTML element passed as a child element to the component",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "MenuItemButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MenuItemButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Menu/MenuItemButton.tsx",
+    "figmaGroup": "Menu",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "MenuButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MenuButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Menu/MenuButton.tsx",
+    "figmaGroup": "Menu",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Menu",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MenuProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Menu/Menu.tsx",
+    "figmaGroup": "Menu",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "MarqueeTitle",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MarqueeTitleProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeTitle.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "as",
+        "type": "'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "MarqueeSubtitle",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MarqueeSubtitleProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeSubtitle.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "as",
+        "type": "'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "center",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "Marquee",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MarqueeProps",
+    "description": null,
+    "hasMatchingExport": false,
+    "sourceFile": "Marquee/MarqueeNumber.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "cents",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "dollarStyle",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "integer",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "integerTwo",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "integerStyle",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "separatorStyle",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "superscriptStyle",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "Dollar",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SharedProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeNumber.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "negative",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "Variant",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "Integer",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SharedProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeNumber.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "negative",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "Variant",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "Separator",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SharedProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeNumber.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "negative",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "Variant",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "Superscript",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SharedProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeNumber.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "negative",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "Variant",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "MarqueeNumber",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MarqueeProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeNumber.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "cents",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "dollarStyle",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "integer",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "integerTwo",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "integerStyle",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "separatorStyle",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "superscriptStyle",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "MarqueeDivider",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MarqueeDividerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeDivider.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "MarqueeContainer",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MarqueeContainerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Marquee/MarqueeContainer.tsx",
+    "figmaGroup": "Marquee",
+    "props": [
+      {
+        "name": "as",
+        "type": "'div' | 'aside' | 'section' | 'article'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "Main",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "MainProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Main/Main.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Loader",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "LoaderProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Loader/Loader.tsx",
+    "figmaGroup": "Loader",
+    "props": [
+      {
+        "name": "isFullPage",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "Variant",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Loaders"
+  },
+  {
+    "name": "TextLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SoFiLinkProps",
+    "description": "Tertiary navigation link styled as a text button. Use for low-emphasis navigation.",
+    "hasMatchingExport": true,
+    "sourceFile": "Links/TextLink/TextLink.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "Allows you to merges component props onto its immediate child.",
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "A string or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "isLarge",
+        "type": "boolean",
+        "required": false,
+        "description": "Will make the link noticeably larger.",
+        "default": null
+      },
+      {
+        "name": "isSmall",
+        "type": "boolean",
+        "required": false,
+        "description": "Will make the link noticeably smaller.",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": "Optional icon name to be included",
+        "default": null
+      },
+      {
+        "name": "isIconLeft",
+        "type": "boolean",
+        "required": false,
+        "description": "Where to display the icon in relation to the children",
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "OutlinedLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SoFiLinkProps",
+    "description": "Secondary navigation link styled as an outlined button. Use for less prominent navigation actions.",
+    "hasMatchingExport": true,
+    "sourceFile": "Links/OutlinedLink/OutlinedLink.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "Allows you to merges component props onto its immediate child.",
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "A string or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "isLarge",
+        "type": "boolean",
+        "required": false,
+        "description": "Will make the link noticeably larger.",
+        "default": null
+      },
+      {
+        "name": "isSmall",
+        "type": "boolean",
+        "required": false,
+        "description": "Will make the link noticeably smaller.",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": "Optional icon name to be included",
+        "default": null
+      },
+      {
+        "name": "isIconLeft",
+        "type": "boolean",
+        "required": false,
+        "description": "Where to display the icon in relation to the children",
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "InlineLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "InlineLinkProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Links/InlineLink/InlineLink.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "Allows you to merges component props onto its immediate child.",
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "A string or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": "Optional icon name to be included",
+        "default": null
+      },
+      {
+        "name": "isIconLeft",
+        "type": "boolean",
+        "required": false,
+        "description": "Where to display the icon in relation to the children",
+        "default": null
+      },
+      {
+        "name": "noUnderLine",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'contentLinkInline' | 'info' | 'tip' | 'caution' | 'warning'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "IconLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "IconLinkProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Links/IconLink/IconLink.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": true,
+        "description": "icon name to be included",
+        "default": null
+      },
+      {
+        "name": "isVisibleLabel",
+        "type": "boolean",
+        "required": false,
+        "description": "Shows the text added by the label prop and adjusts styles to accommodate the text.",
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Adds a visually hidden text to the a that describes the action of the a.",
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "iconCircleStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ContainedLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "SoFiLinkProps",
+    "description": "Primary navigation link styled as a filled button. Use when navigating to another page/URL with a prominent CTA appearance.",
+    "hasMatchingExport": true,
+    "sourceFile": "Links/ContainedLink/ContainedLink.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "Allows you to merges component props onto its immediate child.",
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "A string or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "isLarge",
+        "type": "boolean",
+        "required": false,
+        "description": "Will make the link noticeably larger.",
+        "default": null
+      },
+      {
+        "name": "isSmall",
+        "type": "boolean",
+        "required": false,
+        "description": "Will make the link noticeably smaller.",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": "Optional icon name to be included",
+        "default": null
+      },
+      {
+        "name": "isIconLeft",
+        "type": "boolean",
+        "required": false,
+        "description": "Where to display the icon in relation to the children",
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "FilterFieldsetLegend",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "FilterFieldsetLegendProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Filter/FilterLegend.tsx",
+    "figmaGroup": "Filter",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "isHiddenLegend",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Filter pill"
+  },
+  {
+    "name": "FilterFieldset",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "FilterFieldsetProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Filter/FilterFieldset.tsx",
+    "figmaGroup": "Filter",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Filter pill"
+  },
+  {
+    "name": "Filter",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "FilterProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Filter/Filter.tsx",
+    "figmaGroup": "Filter",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "Semantically disables the input, and applies \"grayed out\" styles.",
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "type",
+        "type": "'checkbox' | 'radio'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'white' | 'bone' | 'transparent'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Filter pill"
+  },
+  {
+    "name": "DialogHeading",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "DialogHeadingProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Dialog/DialogHeading.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Dialog"
+  },
+  {
+    "name": "DialogFooter",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "DialogFooterProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Dialog/DialogFooter.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Dialog"
+  },
+  {
+    "name": "DialogDescription",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "DialogDescriptionProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Dialog/DialogDescription.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Dialog"
+  },
+  {
+    "name": "DialogContent",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "DialogContentProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Dialog/DialogContent.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "placement",
+        "type": "'bottom' | 'center' | 'responsive'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Dialog"
+  },
+  {
+    "name": "DialogClose",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "DialogCloseProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Dialog/DialogClose.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "placement",
+        "type": "'bottom' | 'center' | 'responsive'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Dialog"
+  },
+  {
+    "name": "DialogContainer",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "DialogContainerProps",
+    "description": null,
+    "hasMatchingExport": false,
+    "sourceFile": "Dialog/Dialog.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Dialog"
+  },
+  {
+    "name": "Dialog",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "DialogContainerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Dialog/Dialog.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Dialog"
+  },
+  {
+    "name": "CardLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "CardLinkProps",
+    "description": "Props for the CardLink component.\nExtends standard anchor element attributes with additional styling and behavior options.",
+    "hasMatchingExport": true,
+    "sourceFile": "Card/CardLink.tsx",
+    "figmaGroup": "Card",
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, renders the child element as the link instead of wrapping it in an anchor tag.\nUses Radix UI's Slot pattern for component composition.",
+        "default": "false"
+      },
+      {
+        "name": "cardClickable",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, expands the clickable area to cover the entire parent Card.\nThe Card must have `position: relative` (which it does by default) for this to work.\nCreates a pseudo-element overlay that captures clicks while maintaining accessibility.",
+        "default": "false"
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content to render inside the link. Can be text or React elements.\nWhen `cardClickable` is true, this is typically the card's title or heading.",
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": "Typography style to apply to the link text.\nUses design system text tokens for consistent typography.",
+        "default": "'labelLarge'"
+      }
+    ],
+    "supernovaFile": "Card container"
+  },
+  {
+    "name": "Card",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "CardProps",
+    "description": "`Card` is a container component that provides a styled surface with rounded corners and drop shadow.\nUse `Card` to group related content and create visual hierarchy.\nThe companion `CardLink` component enables clickable card patterns.",
+    "hasMatchingExport": true,
+    "sourceFile": "Card/Card.tsx",
+    "figmaGroup": "Card",
+    "props": [
+      {
+        "name": "children",
+        "type": "any",
+        "required": true,
+        "description": "Content to render inside the card. Can be any React node including text, components, or complex layouts.",
+        "default": null
+      },
+      {
+        "name": "html",
+        "type": "T",
+        "required": false,
+        "description": "The underlying HTML element to render. Defaults to `li` for list semantics.\nUse `div` for general containers, `section` for thematic content groupings, or `article` for self-contained content.",
+        "default": "'li'"
+      },
+      {
+        "name": "rowContainer",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, removes internal padding. Use when the card contains `Row` components that handle their own padding.",
+        "default": "false"
+      },
+      {
+        "name": "variant",
+        "type": "\"primary\" | \"secondary\"",
+        "required": false,
+        "description": "Background color variant. Primary uses the default surface color, secondary uses a disabled/muted surface color for less emphasis.",
+        "default": "'primary'"
+      },
+      {
+        "name": "defaultChecked",
+        "type": "React.PropsWithoutRef<React.ComponentProps<T>>[\"defaultChecked\"]",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "defaultValue",
+        "type": "React.PropsWithoutRef<React.ComponentProps<T>>[\"defaultValue\"]",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "radioGroup",
+        "type": "React.PropsWithoutRef<React.ComponentProps<T>>[\"radioGroup\"]",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inlist",
+        "type": "React.PropsWithoutRef<React.ComponentProps<T>>[\"inlist\"]",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoCorrect",
+        "type": "React.PropsWithoutRef<React.ComponentProps<T>>[\"autoCorrect\"]",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoSave",
+        "type": "React.PropsWithoutRef<React.ComponentProps<T>>[\"autoSave\"]",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Card container"
+  },
+  {
+    "name": "TextButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "ButtonProps",
+    "description": "Tertiary action button with no border or fill, styled as text. Use for low-emphasis actions (e.g., Cancel, Skip).",
+    "hasMatchingExport": true,
+    "sourceFile": "Buttons/TextButton/TextButton.tsx",
+    "figmaGroup": "Buttons",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "Semantically disables the button, and applies \"grayed out\" styles.",
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'info' | 'tip' | 'caution' | 'warning'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Buttons v2"
+  },
+  {
+    "name": "OutlinedButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "ButtonProps",
+    "description": "Secondary action button with an outlined border and no fill. Use for secondary actions alongside a ContainedButton.",
+    "hasMatchingExport": true,
+    "sourceFile": "Buttons/OutlinedButton/OutlinedButton.tsx",
+    "figmaGroup": "Buttons",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "Semantically disables the button, and applies \"grayed out\" styles.",
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'info' | 'tip' | 'caution' | 'warning'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Buttons v2"
+  },
+  {
+    "name": "IconButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "IconButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Buttons/IconButton/IconButton.tsx",
+    "figmaGroup": "Buttons",
+    "props": [
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": true,
+        "description": "icon name to be included",
+        "default": null
+      },
+      {
+        "name": "isVisibleLabel",
+        "type": "boolean",
+        "required": false,
+        "description": "Shows the text added by the label prop and adjusts styles to accommodate the text.",
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Adds a visually hidden text to the button that describes the action of the button.",
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "iconCircleStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Buttons v2"
+  },
+  {
+    "name": "ContainedButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "ButtonProps",
+    "description": "Primary action button with a solid filled background. Use for the main call-to-action on a page (e.g., Submit, Sign in, Get started).",
+    "hasMatchingExport": true,
+    "sourceFile": "Buttons/ContainedButton/ContainedButton.tsx",
+    "figmaGroup": "Buttons",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "Semantically disables the button, and applies \"grayed out\" styles.",
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'info' | 'tip' | 'caution' | 'warning'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Buttons v2"
+  },
+  {
+    "name": "Button",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "ButtonProps",
+    "description": "Callout/annotation button for informational messages (info, tip, caution, warning). NOT for user actions — use ContainedButton, OutlinedButton, or TextButton instead.",
+    "hasMatchingExport": true,
+    "sourceFile": "Buttons/Button/Button.tsx",
+    "figmaGroup": "Buttons",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "String or react/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "Semantically disables the button, and applies \"grayed out\" styles.",
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'info' | 'tip' | 'caution' | 'warning'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Buttons v2"
+  },
+  {
+    "name": "BreadcrumbLink",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "BreadcrumbLinkProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Breadcrumb/Breadcrumb.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, renders the child element instead of an anchor tag, passing all props to it.\nUse for custom link components like React Router `Link` or Next.js `Link`.",
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "The text content displayed for the breadcrumb link. Should be concise and describe the navigation destination.",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": "Icon displayed before the link text.\nDefaults to `ArrowLeft`. Use icons from `@sofi-web-ui/icons` like `ChevronRight` or `HomeFilled`.",
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": "Typography style variant for the link text. Defaults to `bodyMedium`.\nUse smaller styles like `bodySmall` for compact layouts.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Breadcrumbs",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "BreadcrumbsProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Breadcrumb/Breadcrumb.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "One or more `BreadcrumbLink` components representing each level in the navigation hierarchy.\nThe last link should have `aria-current=\"page\"`.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Banner",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "BannerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Banner/Banner.tsx",
+    "figmaGroup": "Banner",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or React/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "ariaLive",
+        "type": "'off' | 'assertive' | 'polite'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "handleDismiss",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement | undefined",
+        "required": false,
+        "description": "Allows for an icon to be used.",
+        "default": null
+      },
+      {
+        "name": "iconSize",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isFullWidth",
+        "type": "boolean",
+        "required": false,
+        "description": "Changes the styles for a full width banner",
+        "default": null
+      },
+      {
+        "name": "isDismissable",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onMouseEnter",
+        "type": "() => void",
+        "required": false,
+        "description": "Custom function",
+        "default": null
+      },
+      {
+        "name": "onMouseLeave",
+        "type": "() => void",
+        "required": false,
+        "description": "Custom function",
+        "default": null
+      },
+      {
+        "name": "role",
+        "type": "'status' | 'alert'",
+        "required": true,
+        "description": "The value on aria attribute role - either status or alert",
+        "default": null
+      },
+      {
+        "name": "styleType",
+        "type": "BannerStyle",
+        "required": false,
+        "description": "Sets the style of the banner, INFO, TIP, CAUTION, WARNING.",
+        "default": null
+      },
+      {
+        "name": "contentStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "isOverlaid",
+        "type": "boolean",
+        "required": false,
+        "description": "Whether the banner should pull upwards to overlap the preceding element. Useful when placed immediately after a Card.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Banners"
+  },
+  {
+    "name": "AccordionPanel",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "AccordionPanelProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Accordion/AccordionPanel.tsx",
+    "figmaGroup": "Accordion",
+    "props": [
+      {
+        "name": "animate",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, enables smooth open/close transitions. Use for better UX in most cases.",
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "The collapsible content revealed when accordion is open. Can include any React elements.",
+        "default": null
+      },
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": "Glassbox session recording control. Use `sr-mask` to hide sensitive content from recordings.",
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles for the panel content container. Use for padding or background customization.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Accordion"
+  },
+  {
+    "name": "AccordionButton",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "AccordionButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Accordion/AccordionButton.tsx",
+    "figmaGroup": "Accordion",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "The button label text or elements. Should clearly describe the content being revealed.",
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": "Typography style for the button text. Defaults to `labelLarge`.",
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'transparent' | 'solid' | 'info'",
+        "required": false,
+        "description": "Visual style variant. Must match parent `Accordion` variant for consistent styling.",
+        "default": null
+      },
+      {
+        "name": "contentStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles for the text content container. Use for text alignment or spacing.",
+        "default": null
+      },
+      {
+        "name": "svgStyles",
+        "type": "stylex.StaticStyles",
+        "required": false,
+        "description": "StyleX styles for the chevron icon. Use to customize icon color or size.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Accordion"
+  },
+  {
+    "name": "Accordion",
+    "package": "@sofi-web-ui/core",
+    "importPath": "@sofi-web-ui/core",
+    "propsInterface": "AccordionProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Accordion/Accordion.tsx",
+    "figmaGroup": "Accordion",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Must include `AccordionButton` and `AccordionPanel` as children.",
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'transparent' | 'solid' | 'info'",
+        "required": false,
+        "description": "Visual style variant. Use `transparent` for minimal styling, `solid` for emphasis, or `info` for educational content.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Accordion"
+  },
+  {
+    "name": "Toggle",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ToggleProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Toggle/Toggle.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "circleStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'brand'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Toggle"
+  },
+  {
+    "name": "Textarea",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "TextareaProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Textarea/Textarea.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "React.TextareaHTMLAttributes<HTMLTextAreaElement>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onClear",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "React.HTMLAttributes<HTMLDivElement>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textAreaStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "TextInput",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "TextInputProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "TextInput/TextInput.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "BaseStyleXProps<React.InputHTMLAttributes<HTMLInputElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onClear",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "BaseStyleXProps<React.HTMLAttributes<HTMLDivElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "review",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "description": "If the input is in a loading state",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Text inputs"
+  },
+  {
+    "name": "SsnInput",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "SsnInputProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "SsnInput/SsnInput.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "BaseStyleXProps<React.InputHTMLAttributes<HTMLInputElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "BaseStyleXProps<React.HTMLAttributes<HTMLDivElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "SimpleInput",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "SimpleInputProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "SimpleInput/SimpleInput.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "BaseStyleXProps<React.InputHTMLAttributes<HTMLInputElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onClear",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "BaseStyleXProps<React.HTMLAttributes<HTMLDivElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isVisibleLabel",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "SelectorTile",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "SelectorTileProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "SelectorTiles/SelectorTile.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isSmall",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "React.HTMLAttributes<HTMLDivElement>",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Selector tile"
+  },
+  {
+    "name": "SelectOptions",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "SelectOptionsProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Select/SelectOptions.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "SelectOption",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "SelectOptionProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Select/SelectOption.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or React/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "childrenStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "SelectContainer",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "SelectContainerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Select/SelectContainer.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "SelectButton",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "SelectButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Select/SelectButton.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Selected value displayed to the user.",
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isHiddenLabel",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Label for select",
+        "default": null
+      },
+      {
+        "name": "childrenStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "wrapperStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "iconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Radio",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "RadioProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Radio/Radio.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "React.InputHTMLAttributes<HTMLInputElement>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isCenter",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isHiddenInput",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelProps",
+        "type": "React.LabelHTMLAttributes<HTMLLabelElement>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "mjs",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "rightRadio",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "tile",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'brand'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "checkboxStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Radio"
+  },
+  {
+    "name": "PhoneInput",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "PhoneInputProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "PhoneInput/PhoneInput.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "accept",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoComplete",
+        "type": "React.AutoFill | (string & {})",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "capture",
+        "type": "boolean | \"user\" | \"environment\"",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "form",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formAction",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formEncType",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formMethod",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formNoValidate",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formTarget",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "height",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "list",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "min",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "minLength",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "pattern",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "src",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "step",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "type",
+        "type": "\"number\" | \"hidden\" | \"color\" | \"text\" | \"email\" | \"tel\" | (string & {}) | \"button\" | \"checkbox\" | \"date\" | \"datetime-local\" | \"file\" | \"image\" | \"mon...",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "width",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "radioGroup",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inlist",
+        "type": "any",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoCorrect",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoSave",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "any",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "ariaDescribedby",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "example",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "Omit<React.InputHTMLAttributes<HTMLInputElement>, \"style\" | \"className\"> & { className?: \"sr-mask\" | \"sr-whitelist\"; style?: import(\"/Users/bchevalier...",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "mjs",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "showPlaceholder",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "Omit<React.HTMLAttributes<HTMLDivElement>, \"style\" | \"className\"> & { className?: \"sr-mask\" | \"sr-whitelist\"; style?: import(\"/Users/bchevalier/codez/...",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "false | Readonly<import(\"/Users/bchevalier/codez/sofi-web-ui/node_modules/@stylexjs/stylex/lib/cjs/types/StyleXTypes\")._GenStylePropType<Partial<Reado...",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Message",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "MessageProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Message/Message.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isError",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "MaskedInput",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "MaskedInputProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "MaskedInput/MaskedInput.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "autoZeroDate",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "ariaDescribedby",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "example",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "BaseStyleXProps<React.InputHTMLAttributes<HTMLInputElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "mjs",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onChange",
+        "type": "(event: React.ChangeEvent<HTMLInputElement>) => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onClear",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "pattern",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "showPlaceholder",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "BaseStyleXProps<React.HTMLAttributes<HTMLDivElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "InputMarquee",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "InputMarqueeProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "InputMarquee/InputMarquee.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorIcon",
+        "type": "IconElement",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorIconOnClick",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorIconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "BaseStyleXProps<React.InputHTMLAttributes<HTMLInputElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "hideLabel",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "backgroundVariant",
+        "type": "StyleXVar",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "allowDecimals",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "setInputValue",
+        "type": "React.Dispatch<React.SetStateAction<string>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelIcon",
+        "type": "IconElement",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelIconOnClick",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelIconStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "type",
+        "type": "'numerical' | 'currency' | 'percentage'",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Marquee"
+  },
+  {
+    "name": "HTMLSelect",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "HTMLSelectProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "HTMLSelect/HTMLSelect.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "BaseStyleXProps<React.SelectHTMLAttributes<HTMLSelectElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "BaseStyleXProps<React.HTMLAttributes<HTMLDivElement>>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isHiddenLabel",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "FileUploadSvg",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FileUploadSvgProps",
+    "description": null,
+    "hasMatchingExport": false,
+    "sourceFile": "FileUpload/FileUploadSvgs.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "FileUploadSecurityBanner",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FileUploadSecurityBannerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "FileUpload/FileUploadSecurityBanner.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "string",
+        "required": false,
+        "description": "Custom security message text.\nDefaults to \"We use bank-level TLS 1.2 encryption to keep your data safe.\"",
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles for customizing the banner appearance.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Banners"
+  },
+  {
+    "name": "FileUploadFileRows",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FileUploadFileRowsProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "FileUpload/FileUploadFileRow.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "files",
+        "type": "FileState[]",
+        "required": true,
+        "description": "Array of file states to render as rows. Managed by `useFileUpload` hook.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Rows"
+  },
+  {
+    "name": "FileUploadFileRow",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FileUploadFileRowProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "FileUpload/FileUploadFileRow.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "file",
+        "type": "FileState",
+        "required": true,
+        "description": "The file state object containing upload status, progress, and metadata.",
+        "default": null
+      },
+      {
+        "name": "maxSizeMB",
+        "type": "number",
+        "required": true,
+        "description": "Maximum file size in MB. Used to display error messages for oversized files.",
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "Custom StyleX styles for the file row container.",
+        "default": null
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "required": false,
+        "description": "URL to navigate to when the file row is clicked (for completed uploads).",
+        "default": null
+      },
+      {
+        "name": "target",
+        "type": "string",
+        "required": false,
+        "description": "Link target attribute (e.g., '_blank' for new tab).",
+        "default": null
+      },
+      {
+        "name": "onClick",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback fired when the file row is clicked.",
+        "default": null
+      },
+      {
+        "name": "canRemoveFile",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, shows the remove/cancel button. Defaults to true.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Rows"
+  },
+  {
+    "name": "FileUploadDropArea",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FileUploadDropAreaProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "FileUpload/FileUploadDropArea.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "accepts",
+        "type": "'images-jpg-png' | 'images-all' | string[]",
+        "required": true,
+        "description": "File types to accept. Use `'images-jpg-png'` for JPEG/PNG, `'images-all'` for all images,\nor pass a custom array of MIME types.",
+        "default": null
+      },
+      {
+        "name": "buttonText",
+        "type": "string",
+        "required": false,
+        "description": "Custom text for the upload button. Defaults to 'Upload from your device'.",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": true,
+        "description": "When true, disables the drop area and upload button.",
+        "default": null
+      },
+      {
+        "name": "dropAreaStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "Custom StyleX styles for the drop area container.",
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": "Helper text displayed below the upload button.\nDefaults to auto-generated text based on `accepts` and `maxSizeMB`.",
+        "default": null
+      },
+      {
+        "name": "maxSizeMB",
+        "type": "number",
+        "required": true,
+        "description": "Maximum file size allowed in megabytes.",
+        "default": null
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "required": true,
+        "description": "When true, allows multiple file uploads. When false, upload is disabled after one file.",
+        "default": null
+      },
+      {
+        "name": "onChange",
+        "type": "(files: File[]) => void",
+        "required": true,
+        "description": "Callback fired when files are selected via drag-drop or file picker.",
+        "default": null
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "required": true,
+        "description": "When true, indicates the field is required for form validation.",
+        "default": null
+      },
+      {
+        "name": "uniqueId",
+        "type": "string",
+        "required": true,
+        "description": "Unique identifier for the file input element. Auto-generated by `useFileUpload`.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "FileNameDisplay",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FileNameDisplayProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "FileUpload/FileNameDisplay.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "filename",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "minCharacter",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "target",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onClick",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "FieldsetLegend",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FieldsetLegendProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Fieldset/FieldsetLegend.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Fieldset",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FieldsetProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Fieldset/Fieldset.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorFieldset",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperFieldset",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "DateInput",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "DateInputProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "DateInput/DateInput.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "autoZeroDate",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "ariaDescribedby",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "example",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "Omit<React.InputHTMLAttributes<HTMLInputElement>, \"style\" | \"className\"> & { className?: \"sr-mask\" | \"sr-whitelist\"; style?: import(\"/Users/bchevalier...",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "mjs",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "pattern",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "showPlaceholder",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "wrapperProps",
+        "type": "Omit<React.HTMLAttributes<HTMLDivElement>, \"style\" | \"className\"> & { className?: \"sr-mask\" | \"sr-whitelist\"; style?: import(\"/Users/bchevalier/codez/...",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "false | Readonly<import(\"/Users/bchevalier/codez/sofi-web-ui/node_modules/@stylexjs/stylex/lib/cjs/types/StyleXTypes\")._GenStylePropType<Partial<Reado...",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "accept",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoComplete",
+        "type": "React.AutoFill | (string & {})",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "capture",
+        "type": "boolean | \"user\" | \"environment\"",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "form",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formAction",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formEncType",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formMethod",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formNoValidate",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "formTarget",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "height",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "list",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "min",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "minLength",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "src",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "step",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "type",
+        "type": "\"number\" | \"hidden\" | \"color\" | \"text\" | \"email\" | \"tel\" | (string & {}) | \"button\" | \"checkbox\" | \"date\" | \"datetime-local\" | \"file\" | \"image\" | \"mon...",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "width",
+        "type": "string | number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "radioGroup",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inlist",
+        "type": "any",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoCorrect",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoSave",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "any",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Simple31DayGrid",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "Simple31DayGridProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/Simple31DayGrid.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "selectedDay",
+        "type": "number",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onDaySelect",
+        "type": "(day: number) => void",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "SelectSwitchButton",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "SelectSwitchButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/SelectSwitchButton.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "isSelectOpen",
+        "type": "boolean",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onSwitch",
+        "type": "() => void",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "review",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "disabledSwitch",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Loader",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "LoaderProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/Loader.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Adds a label to the skeleton that describes what is loading.",
+        "default": null
+      }
+    ],
+    "supernovaFile": "Loaders"
+  },
+  {
+    "name": "FrequencySelect",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "FrequencySelectProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/FrequencySelect.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "value",
+        "type": "FrequencySelectOption",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onChange",
+        "type": "(value: FrequencySelectOption) => void",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "review",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "description": "If the input is in a loading state",
+        "default": null
+      },
+      {
+        "name": "frequencies",
+        "type": "Set<Frequency | string>",
+        "required": false,
+        "description": "A set of allowed frequencies for the options. If not provided, all default frequencies will be shown.",
+        "default": null
+      },
+      {
+        "name": "onClick",
+        "type": "() => void",
+        "required": false,
+        "description": "A function to be called when the input is clicked",
+        "default": null
+      },
+      {
+        "name": "enableOneTimeFuture",
+        "type": "boolean",
+        "required": false,
+        "description": "If false, will default to \"Today\" instead of showing the calendar for the 'Once' frequency option",
+        "default": null
+      },
+      {
+        "name": "calendarType",
+        "type": "'calendar' | 'simple-calendar'",
+        "required": false,
+        "description": "The type of calendar to display - 'calendar' shows the full Calendar component, 'simple-calendar' shows a generic 31-day grid",
+        "default": null
+      },
+      {
+        "name": "secondarySelection",
+        "type": "Record<string, FrequencySecondarySelection>",
+        "required": false,
+        "description": "Maps a custom frequency's `startText` to its secondary selection config.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelectSwitchOptions",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectSwitchOptionsProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectSwitchOptions.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "as",
+        "type": "\"div\"",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "any",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "refName",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "static",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "anchor",
+        "type": "false | ((\"top\" | \"right\" | \"bottom\" | \"left\") | \"selection\" | \"top start\" | \"top end\" | \"right start\" | \"right end\" | \"bottom start\" | \"bottom end\" |...",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "portal",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "modal",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "transition",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[]",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "radioGroup",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inlist",
+        "type": "any",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoCorrect",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "autoSave",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, adjusts the dropdown positioning to account for inline label layout.\nShould match the `inlineLabel` prop on ComplexSelectButton.",
+        "default": "false"
+      },
+      {
+        "name": "emptyContent",
+        "type": "any",
+        "required": false,
+        "description": "Content to display when there are no options available.\nOnly shown when children is null/empty.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelectSwitchContainer",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectSwitchContainerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectSwitchContainer.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "review",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelectSwitchButton",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectSwitchButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectSwitchButton.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "startText",
+        "type": "string",
+        "required": false,
+        "description": "Selected value displayed to the user. Defaults to placeholderText if undefined.",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": "Optional icon displayed to the left of startText",
+        "default": null
+      },
+      {
+        "name": "iconTitle",
+        "type": "string",
+        "required": false,
+        "description": "Optional title for the icon",
+        "default": null
+      },
+      {
+        "name": "endText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "placeholderText",
+        "type": "string",
+        "required": false,
+        "description": "Placeholder for select",
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "review",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Label for select",
+        "default": null
+      },
+      {
+        "name": "startTextStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "endTextStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "isSelectOpen",
+        "type": "boolean",
+        "required": true,
+        "description": "If one of the ComplexSelectSwitchOptions is open",
+        "default": null
+      },
+      {
+        "name": "onOpenChange",
+        "type": "(isSelectOpen: boolean) => void",
+        "required": true,
+        "description": "Callback for when one of the select options is opened",
+        "default": null
+      },
+      {
+        "name": "uniqueOptionsGroupId",
+        "type": "string",
+        "required": false,
+        "description": "Unique id for the group of options which controls transition when account groups are switched",
+        "default": null
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "description": "If the input is in a loading state",
+        "default": null
+      },
+      {
+        "name": "isFirst",
+        "type": "boolean",
+        "required": false,
+        "description": "If the button is the first in the set, applies the correct top border styles",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelectOptions",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectOptionsProps",
+    "description": "Props for the ComplexSelectOptions component.",
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectOptions.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "ComplexSelectOption components to render as selectable options.\nCan also include custom content or be null/empty when using emptyContent.",
+        "default": null
+      },
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": "CSS class name. Only Glassbox masking class ('sr-mask') is allowed.\nUse the StyleX `style` prop for custom styling.",
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles to customize the options container appearance.",
+        "default": null
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, adjusts the dropdown positioning to account for inline label layout.\nShould match the `inlineLabel` prop on ComplexSelectButton.",
+        "default": "false"
+      },
+      {
+        "name": "emptyContent",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Content to display when there are no options available.\nOnly shown when children is null/empty.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelectOption",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectOptionProps",
+    "description": "Props for the ComplexSelectOption component.",
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectOption.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "The option's display text or content.",
+        "default": null
+      },
+      {
+        "name": "childrenStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles to customize the children text appearance.",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": "Optional icon displayed to the left of the option text.",
+        "default": null
+      },
+      {
+        "name": "iconTitle",
+        "type": "string",
+        "required": false,
+        "description": "Accessible title/label for the icon.",
+        "default": null
+      },
+      {
+        "name": "endText",
+        "type": "string",
+        "required": false,
+        "description": "Secondary text displayed on the right side of the option.\nCommonly used to show additional info like account balances or status.",
+        "default": null
+      },
+      {
+        "name": "secondaryText",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Secondary node that appears below the main text",
+        "default": null
+      },
+      {
+        "name": "secondaryTextColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": "Color for secondary text - accepts any content color token (e.g., 'contentDanger', 'contentCaution', 'contentSecondary')",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, prevents selection and applies disabled styling.\nDisabled options remain visible but are not selectable.",
+        "default": "false"
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelectEmpty",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectEmptyProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectEmpty.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "String or React/HTML element passed as a child element to the component",
+        "default": null
+      },
+      {
+        "name": "childrenStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ActionButton",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ActionButtonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectContainer.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "Text to display on the action button",
+        "default": null
+      },
+      {
+        "name": "onClick",
+        "type": "() => void",
+        "required": true,
+        "description": "Click handler for the action button",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelectContainer",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectContainerProps",
+    "description": "Props for the ComplexSelectContainer component.",
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectContainer.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "The `ComplexSelect` and its child components (`ComplexSelectButton`, `ComplexSelectOptions`).\nMust include a `ComplexSelect` component as a child.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelect",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectProps",
+    "description": "`ComplexSelect` is an advanced select component built on Headless UI Listbox.\nIt supports icons, secondary text, action buttons, loading states, and inline labels.\n\nUse `ComplexSelectContainer` as the wrapper, `ComplexSelect` for state management,\n`ComplexSelectButton` for the trigger, and `ComplexSelectOptions`/`ComplexSelectOption` for the dropdown.",
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectContainer.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "value",
+        "type": "T | null",
+        "required": true,
+        "description": "The currently selected value",
+        "default": null
+      },
+      {
+        "name": "onChange",
+        "type": "(value: T) => void",
+        "required": false,
+        "description": "Callback when a new value is selected",
+        "default": null
+      },
+      {
+        "name": "actionButton",
+        "type": "ActionButtonProps",
+        "required": false,
+        "description": "Optional action button configuration",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "ComplexSelectButton",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "ComplexSelectButtonProps",
+    "description": "Props for the ComplexSelectButton component.",
+    "hasMatchingExport": true,
+    "sourceFile": "ComplexSelect/ComplexSelectButton.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Selected value displayed to the user.",
+        "default": null
+      },
+      {
+        "name": "icon",
+        "type": "IconElement",
+        "required": false,
+        "description": "Optional icon displayed to the left of children when a value is selected.",
+        "default": null
+      },
+      {
+        "name": "iconTitle",
+        "type": "string",
+        "required": false,
+        "description": "Accessible title/label for the icon.",
+        "default": null
+      },
+      {
+        "name": "endText",
+        "type": "string",
+        "required": false,
+        "description": "Secondary text displayed next to the chevron icon.\nCommonly used to show additional info like account balances.",
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": "Error message to display below the input.\nWhen provided, applies error styling (red border) and shows the error text.",
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": "Helper text displayed below the input in smaller text.\nUse for tips, hints, or additional guidance. Hidden when errorText is present.",
+        "default": null
+      },
+      {
+        "name": "placeholderText",
+        "type": "string",
+        "required": false,
+        "description": "Text shown when no value is selected.",
+        "default": null
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": "Unique identifier for the input.\nAuto-generated if not provided.",
+        "default": null
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, prevents interaction and applies disabled styling.",
+        "default": "false"
+      },
+      {
+        "name": "review",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, displays the select in a read-only review state.\nUsed for confirmation screens where editing is not allowed.",
+        "default": "false"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Label text displayed above or inline with the select. Required for accessibility.",
+        "default": null
+      },
+      {
+        "name": "childrenStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles to customize the selected value text appearance.",
+        "default": null
+      },
+      {
+        "name": "endTextStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles to customize the endText appearance.",
+        "default": null
+      },
+      {
+        "name": "labelStyle",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles to customize the label appearance.",
+        "default": null
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, displays the label inline with the selected value for a compact layout.",
+        "default": "false"
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "description": "When true, shows a loading skeleton inside the button.\nUse while fetching options data.",
+        "default": "false"
+      },
+      {
+        "name": "forceChevronOpen",
+        "type": "boolean",
+        "required": false,
+        "description": "Force the chevron to point up (open state).\nUseful when displaying content other than ComplexSelectOptions (e.g., Calendar)\nand you want a visual indication that something is open.",
+        "default": "false"
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Checkbox",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "CheckboxProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Checkbox/Checkbox.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "ariaDescribedby",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "checkboxBackground",
+        "type": "| typeof colorTokens.surfaceSecondaryDefault\n    | 'transparent'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "idError",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "idHelper",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "React.InputHTMLAttributes<HTMLInputElement>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isCenter",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "isHiddenInput",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelProps",
+        "type": "React.LabelHTMLAttributes<HTMLLabelElement>",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "rightCheckbox",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "tile",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "variant",
+        "type": "'brand'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "indeterminate",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": "Checkbox"
+  },
+  {
+    "name": "RangeCalendar",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "RangeCalendarProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Calendar/RangeCalendar.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "monthStyleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "monthTextColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "CalendarHeader",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "CalendarHeaderProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Calendar/CalendarHeader.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "nextButtonProps",
+        "type": "AriaButtonProps",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "prevButtonProps",
+        "type": "AriaButtonProps",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "styleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "textColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "CalendarGrid",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "CalendarGridProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Calendar/CalendarGrid.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "state",
+        "type": "CalendarState | RangeCalendarState",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "CalendarCell",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "CalendarCellProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Calendar/CalendarCell.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "state",
+        "type": "CalendarState | RangeCalendarState",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "date",
+        "type": "CalendarDate",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "Calendar",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "CalendarProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Calendar/Calendar.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "monthStyleOf",
+        "type": "StyleOfType",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "monthTextColor",
+        "type": "TextColorTokenTypes",
+        "required": false,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "LoadingSkeleton",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "LoadingSkeletonProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "BaseInput/LoadingSkeleton.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Adds a label to the skeleton that describes what is loading.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "AutocompleteOptions",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "AutocompleteOptionsProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Autocomplete/AutocompleteOptions.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "className",
+        "type": "'sr-mask'",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "AutocompleteOption",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "AutocompleteOptionProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Autocomplete/AutocompleteOption.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "AutocompleteContainer",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "AutocompleteContainerProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Autocomplete/AutocompleteContainer.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null,
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  },
+  {
+    "name": "AutocompleteInput",
+    "package": "@sofi-web-ui/form-inputs",
+    "importPath": "@sofi-web-ui/form-inputs",
+    "propsInterface": "AutocompleteInputProps",
+    "description": null,
+    "hasMatchingExport": true,
+    "sourceFile": "Autocomplete/Autocomplete.tsx",
+    "figmaGroup": null,
+    "props": [
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "review",
+        "type": "boolean",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "displayValue",
+        "type": "(item: Item) => string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "errorText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "hasValue",
+        "type": "boolean",
+        "required": true,
+        "description": "Whether the combobox has a value selected",
+        "default": null
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "description": "If the input is in a loading state",
+        "default": null
+      },
+      {
+        "name": "inputProps",
+        "type": "Omit<\n    ComboboxInputProps<'input', Item>,\n    'displayValue' | 'onChange' | 'as' | 'placeholder'\n  >",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "labelProps",
+        "type": "ExtractProps<typeof ComboboxLabel>",
+        "required": false,
+        "description": "Props for the underlying <label>",
+        "default": null
+      },
+      {
+        "name": "onClear",
+        "type": "() => void",
+        "required": false,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "onChange",
+        "type": "(event: React.ChangeEvent<HTMLInputElement>) => void",
+        "required": true,
+        "description": null,
+        "default": null
+      },
+      {
+        "name": "style",
+        "type": "stylex.StyleXStyles",
+        "required": false,
+        "description": "StyleX styles - can be used to overwrite or add styles to the component.",
+        "default": null
+      },
+      {
+        "name": "immediate",
+        "type": "boolean",
+        "required": false,
+        "description": "Whether the combobox should show options immediately on focus without requiring input",
+        "default": null
+      }
+    ],
+    "supernovaFile": null
+  }
+]

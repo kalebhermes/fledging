@@ -1,0 +1,30 @@
+{
+  "name": "pacific-dashboard",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node inline-css.mjs",
+    "preview": "vite preview",
+    "serve": "vite build && node inline-css.mjs && vite preview"
+  },
+  "dependencies": {
+    "@sofi-web-ui/base": "PINNED_BY_SCAFFOLD",
+    "@sofi-web-ui/core": "PINNED_BY_SCAFFOLD",
+    "@sofi-web-ui/form-inputs": "PINNED_BY_SCAFFOLD",
+    "@sofi-web-ui/icons": "PINNED_BY_SCAFFOLD",
+    "@stylexjs/stylex": "^0.17.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@stylexjs/unplugin": "^0.17.5",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "typescript": "^5.8.0",
+    "vite": "^6.0.0",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}

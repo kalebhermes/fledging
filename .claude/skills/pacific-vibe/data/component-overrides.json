@@ -1,0 +1,24 @@
+{
+  "_comment": "Manual overrides applied after auto-indexing. Keys are component names, values are fields to merge into the indexed entry.",
+  "Button": {
+    "description": "Callout/annotation button for informational messages (info, tip, caution, warning). NOT for user actions — use ContainedButton, OutlinedButton, or TextButton instead."
+  },
+  "ContainedButton": {
+    "description": "Primary action button with a solid filled background. Use for the main call-to-action on a page (e.g., Submit, Sign in, Get started)."
+  },
+  "OutlinedButton": {
+    "description": "Secondary action button with an outlined border and no fill. Use for secondary actions alongside a ContainedButton."
+  },
+  "TextButton": {
+    "description": "Tertiary action button with no border or fill, styled as text. Use for low-emphasis actions (e.g., Cancel, Skip)."
+  },
+  "ContainedLink": {
+    "description": "Primary navigation link styled as a filled button. Use when navigating to another page/URL with a prominent CTA appearance."
+  },
+  "OutlinedLink": {
+    "description": "Secondary navigation link styled as an outlined button. Use for less prominent navigation actions."
+  },
+  "TextLink": {
+    "description": "Tertiary navigation link styled as a text button. Use for low-emphasis navigation."
+  }
+}

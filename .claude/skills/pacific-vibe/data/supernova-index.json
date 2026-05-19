@@ -1,0 +1,744 @@
+{
+  "Accordion": {
+    "description": "An accordion is a UI component that displays a vertical stack of collapsible panels.",
+    "keywords": [
+      "collapsible",
+      "expandable",
+      "disclosure",
+      "panel",
+      "section",
+      "fold",
+      "accordion",
+      "organizing",
+      "content",
+      "details",
+      "hidden",
+      "ideal",
+      "allowing",
+      "expand",
+      "sections"
+    ]
+  },
+  "Action bar": {
+    "description": "The Action Bar is a UI component designed to display a set of actions in a single row, providing users with quick access to key functions.",
+    "keywords": [
+      "actions",
+      "quick",
+      "access",
+      "interact",
+      "visible",
+      "screen",
+      "space",
+      "limited",
+      "compact",
+      "organized",
+      "layout",
+      "required",
+      "equally",
+      "important",
+      "presented"
+    ]
+  },
+  "Action sheet": {
+    "description": "An Action Sheet is a bottom-aligned overlay that presents a set of contextual actions.",
+    "keywords": [
+      "menu",
+      "options",
+      "actions",
+      "contextual",
+      "tied",
+      "initiated",
+      "task",
+      "tapping",
+      "settings",
+      "icon",
+      "quick",
+      "choice",
+      "continuing",
+      "mobile",
+      "first"
+    ]
+  },
+  "App bar": {
+    "description": "The App Bar (or Navigation Header) is a top-anchored component that helps establish the context of the current screen and allows users to navigate through different flows.",
+    "keywords": [
+      "content",
+      "actions",
+      "screen",
+      "navigation",
+      "headlines",
+      "information",
+      "contextual",
+      "access",
+      "cross",
+      "journeys"
+    ]
+  },
+  "Banners": {
+    "description": "The PacificBanner component is a versatile UI element used to display important messages.",
+    "keywords": [
+      "alert",
+      "notification",
+      "message",
+      "info",
+      "warning",
+      "caution",
+      "feedback"
+    ]
+  },
+  "Bottom nav bar": {
+    "description": "The Bottom Navigation component provides users with quick access to key sections of the app, improving navigation efficiency and accessibility.",
+    "keywords": [
+      "primary",
+      "destinations",
+      "quick",
+      "access",
+      "anywhere",
+      "navigating",
+      "sections",
+      "maintain",
+      "clarity",
+      "usability",
+      "smaller",
+      "screen",
+      "sizes",
+      "mobile",
+      "devices"
+    ]
+  },
+  "Bottom sheet": {
+    "description": "A Bottom Sheet is a surface that slides up from the bottom of the screen to present additional content, actions, or contextual information.",
+    "keywords": [
+      "drawer",
+      "panel",
+      "slide up",
+      "tray",
+      "short",
+      "tasks",
+      "follow",
+      "actions",
+      "scheduling",
+      "selecting",
+      "options",
+      "focus",
+      "task",
+      "stay",
+      "context"
+    ]
+  },
+  "Button groups v1": {
+    "description": "Vertical and horizontal stacking of buttons defining padding, spacing, and position of primary, secondary, and tertiary buttons"
+  },
+  "Button groups v2": {
+    "description": "A Button Group is a UI component that clusters a set of related buttons together, either in a horizontal or vertical stack, to create a single, cohesive unit.",
+    "keywords": [
+      "action",
+      "cta",
+      "submit",
+      "click",
+      "press"
+    ]
+  },
+  "Buttons v1": {
+    "description": "Interactive elements that allow users to perform actions or trigger functions"
+  },
+  "Buttons v2": {
+    "description": "A button component is a fundamental interactive element in a user interface that allows users to perform an action or trigger an event.",
+    "keywords": [
+      "action",
+      "cta",
+      "submit",
+      "click",
+      "press"
+    ]
+  },
+  "Card container": {
+    "description": "Cards are used to contain related information.",
+    "keywords": [
+      "card",
+      "tile",
+      "surface",
+      "container"
+    ]
+  },
+  "Checkbox": {
+    "description": "Checkboxes are designed for multiple choices, not for mutually exclusive options.",
+    "keywords": [
+      "check",
+      "tick",
+      "multi select",
+      "boolean",
+      "checkboxes",
+      "select",
+      "number",
+      "options",
+      "list",
+      "accept",
+      "terms",
+      "conditions",
+      "checkbox",
+      "independent",
+      "group"
+    ]
+  },
+  "Control pill": {
+    "description": "The Control Pill is an interactive, pill-shaped element used to display and edit contextual settings—like account selection, coin switching, or stock selection—without navigating away from the current screen.",
+    "keywords": [
+      "chip",
+      "tag",
+      "badge",
+      "label",
+      "context",
+      "account",
+      "asset",
+      "currency",
+      "remain",
+      "visible",
+      "perform",
+      "actions",
+      "selection",
+      "distinct",
+      "limited"
+    ]
+  },
+  "Date picker": {
+    "description": "The Date Picker component enables users to select a date or date range through an intuitive calendar interface, making date selection quick and easy.",
+    "keywords": [
+      "calendar",
+      "date",
+      "date select",
+      "select",
+      "range",
+      "popup",
+      "selection",
+      "restricted",
+      "valid",
+      "future",
+      "appointments",
+      "booking",
+      "windows",
+      "workflows",
+      "accuracy"
+    ]
+  },
+  "Dialog": {
+    "description": "Dialogs are modal windows that interrupt the current flow to present important information or require user action.",
+    "keywords": [
+      "modal",
+      "popup",
+      "overlay",
+      "confirm",
+      "alert dialog",
+      "dialogs",
+      "high",
+      "priority",
+      "interruptive",
+      "flows",
+      "confirmations",
+      "delete",
+      "item",
+      "critical",
+      "decisions"
+    ]
+  },
+  "Dropdown inputs": {
+    "description": "Dropdown components are a special type of text input.",
+    "keywords": [
+      "select",
+      "dropdown",
+      "picker",
+      "combobox",
+      "menu",
+      "limited",
+      "predefined",
+      "options",
+      "medium",
+      "sized",
+      "list",
+      "mutually",
+      "exclusive",
+      "country",
+      "selection"
+    ]
+  },
+  "File uploader": {
+    "description": "The File uploader component allows users to upload file(s) from their device using a native file input or by dragging and dropping files into a designated drop zone.",
+    "keywords": [
+      "upload",
+      "file",
+      "attachment",
+      "browse"
+    ]
+  },
+  "Filter pill": {
+    "description": "Filter pill or item uses tags or descriptive words to narrow down or organize content based on specific criteria.",
+    "keywords": [
+      "filter",
+      "tag",
+      "chip",
+      "facet",
+      "pills",
+      "contexts",
+      "narrow",
+      "down",
+      "list",
+      "results",
+      "based",
+      "criteria",
+      "compact",
+      "design",
+      "flexibility"
+    ]
+  },
+  "Floating Action Button FAB": {
+    "description": "A Floating Action Button (FAB) can serve as a navigational element that represents a primary, high-priority action that often leads users to key destinations."
+  },
+  "Global Header": {
+    "description": "The Global Header appears at the top of the page and remains consistent across the product."
+  },
+  "Keypad": {
+    "description": "The keypad component allows users to input numerical values in a structured and intuitive manner.",
+    "keywords": [
+      "keypad",
+      "whenever",
+      "input",
+      "numeric",
+      "values",
+      "otps",
+      "pins",
+      "similar",
+      "digit",
+      "based",
+      "inputs"
+    ]
+  },
+  "Legalese": {
+    "description": "The Legalese Component is designed to display legal disclaimers, terms, or agreements in a structured and user-friendly manner.",
+    "keywords": [
+      "consent",
+      "agreements",
+      "explicitly",
+      "agree",
+      "terms",
+      "proceeding",
+      "regulatory",
+      "compliance",
+      "disclosures",
+      "legal",
+      "requirements",
+      "financial",
+      "privacy",
+      "policies",
+      "authorization"
+    ]
+  },
+  "Loaders": {
+    "description": "Loaders are UI elements that notify users that an application is performing an action in the background.",
+    "keywords": [
+      "loading",
+      "spinner",
+      "skeleton",
+      "progress",
+      "wait"
+    ]
+  },
+  "Marquee input": {
+    "description": "Input components are interactive elements that collect data from users.",
+    "keywords": [
+      "input",
+      "marquee",
+      "reserved",
+      "dollar",
+      "inputs",
+      "desired",
+      "loan",
+      "transfer",
+      "sending",
+      "money",
+      "payment",
+      "interactive",
+      "form",
+      "elements",
+      "require"
+    ]
+  },
+  "Marquee": {
+    "description": "The static Marquee is a large, visually prominent typographic element used to introduce key content on a page or within a section.",
+    "keywords": [
+      "hero",
+      "banner",
+      "highlight",
+      "feature",
+      "draw",
+      "attention",
+      "data",
+      "point",
+      "message",
+      "page",
+      "section",
+      "emphasizing",
+      "primary",
+      "metric",
+      "account"
+    ]
+  },
+  "Page header": {
+    "description": "The header-page component is a typographic header component that defines the spacing and dimension relationship between a page title and subtitle."
+  },
+  "Pagination": {
+    "description": "Pagination is a component that breaks large sets of data or content into smaller, easier-to-navigate pages.",
+    "keywords": [
+      "paging",
+      "page",
+      "next previous",
+      "navigation"
+    ]
+  },
+  "Performance pill": {
+    "description": "The Performance Pill is a compact visual indicator that communicates changes in numerical data, such as stock holdings fluctuating in value."
+  },
+  "Pill group": {
+    "description": "A Pill Group arranges a small set of pills into a single, scannable control cluster with shared behavior and layout rules.",
+    "keywords": [
+      "pill",
+      "group",
+      "predefined",
+      "options",
+      "toggle",
+      "navigate",
+      "states",
+      "contexts",
+      "directly",
+      "surface",
+      "viewing"
+    ]
+  },
+  "Progress meters": {
+    "description": "This page focuses on guidelines and documentation for Progress Meter components.",
+    "keywords": [
+      "progress bar",
+      "meter",
+      "completion",
+      "percentage",
+      "process",
+      "known",
+      "number",
+      "steps",
+      "measurable",
+      "motivate",
+      "complete",
+      "task",
+      "showing",
+      "come",
+      "sections"
+    ]
+  },
+  "Radio": {
+    "description": "Radio buttons are used for mutually exclusive choices, not for multiple choices.",
+    "keywords": [
+      "radio button",
+      "option",
+      "single select",
+      "choice",
+      "list",
+      "form",
+      "table",
+      "presented",
+      "options",
+      "select",
+      "selection",
+      "take",
+      "effect",
+      "immediately",
+      "requires"
+    ]
+  },
+  "Rows Small": {
+    "description": "The Small Row is an alternative to the Standard Row where a condensed and contained layout is required."
+  },
+  "Rows": {
+    "description": "The PacificRow is a key structural element used to display a collection of related data points in a clean, easy-to-read format.",
+    "keywords": [
+      "list item",
+      "row",
+      "cell",
+      "list"
+    ]
+  },
+  "Scroll picker": {
+    "description": "The scrollPicker component is used to display one or more scrollable lists of values from which users can choose.",
+    "keywords": [
+      "selecting",
+      "month",
+      "year",
+      "form",
+      "keyboard",
+      "input",
+      "cumbersome",
+      "dates",
+      "precise",
+      "structured",
+      "format",
+      "times",
+      "typing",
+      "choosing",
+      "finite"
+    ]
+  },
+  "Search input": {
+    "description": "The Search Input component is a special type of text-based input that allows users to quickly locate specific information within large datasets, such as transactions, holdings, accounts, or stocks.",
+    "keywords": [
+      "search",
+      "find",
+      "filter",
+      "lookup",
+      "discoverability",
+      "input",
+      "locate",
+      "content",
+      "items",
+      "information",
+      "dataset",
+      "accounts",
+      "transactions",
+      "products",
+      "efficiency"
+    ]
+  },
+  "Section header": {
+    "description": "The Section Header component is a typographic component that introduces and labels distinct sections of content, helping to establish a clear visual hierarchy."
+  },
+  "Segmented control": {
+    "description": "A segmentedControl is a linear set of 2-3 options with one segment selected at a time.",
+    "keywords": [
+      "segment",
+      "toggle group",
+      "button group",
+      "switcher",
+      "switch",
+      "views",
+      "area",
+      "content",
+      "changing",
+      "view",
+      "filter",
+      "navigating",
+      "sections",
+      "lightweight",
+      "local"
+    ]
+  },
+  "Selector pill": {
+    "description": "The Selector Pill is a compact, pill-shaped element used to represent a selectable context, category, or mode.",
+    "keywords": [
+      "options",
+      "fixed",
+      "recognizable",
+      "glance",
+      "scanning",
+      "speed",
+      "matters",
+      "apple",
+      "segmented",
+      "control",
+      "guidance",
+      "recommends",
+      "sets",
+      "mobile",
+      "selector"
+    ]
+  },
+  "Selector tile": {
+    "description": "Selector Tiles offer users clear, scannable options to choose from, presenting relevant and actionable information in a compact and visually appealing format.",
+    "keywords": [
+      "selection",
+      "choice",
+      "option tile",
+      "picker"
+    ]
+  },
+  "Slide to Action button": {
+    "description": "The Slide to {Action} or Slide Button is a high-intent interactive component that requires users to slide a draggable handle from one side to the other to complete an action."
+  },
+  "Sliders": {
+    "description": "Sliders let users select a value or range of values along a defined scale.",
+    "keywords": [
+      "range",
+      "slider",
+      "adjust",
+      "value picker"
+    ]
+  },
+  "Status pill": {
+    "description": "The Status Pill is a simple visual element that helps users quickly understand important information.",
+    "keywords": [
+      "status",
+      "badge",
+      "indicator",
+      "state"
+    ]
+  },
+  "Steppers": {
+    "description": "This documentation focuses on vertical and horizontal steppers.",
+    "keywords": [
+      "stepper",
+      "wizard",
+      "progress",
+      "multi step",
+      "flow",
+      "process",
+      "defined",
+      "number",
+      "steps",
+      "completed",
+      "sequence",
+      "flexibility",
+      "help",
+      "track",
+      "place"
+    ]
+  },
+  "Sub header": {
+    "description": "A subHeader is used to visually group and separate related content by date."
+  },
+  "Table": {
+    "description": "Tables organize and present data in a structured, easy-to-scan layout.",
+    "keywords": [
+      "data table",
+      "grid",
+      "spreadsheet",
+      "data grid",
+      "structured",
+      "repetitive",
+      "data",
+      "scan",
+      "compare",
+      "analyze",
+      "displaying",
+      "financial",
+      "information",
+      "loan",
+      "account"
+    ]
+  },
+  "Tabs": {
+    "description": "Tabs allows users to toggle between different views or subsets within an application or webpage.",
+    "keywords": [
+      "tab bar",
+      "navigation",
+      "tabbed",
+      "pane",
+      "organize",
+      "information",
+      "tabs",
+      "categorize",
+      "groups",
+      "easy",
+      "switch",
+      "sections",
+      "quick",
+      "access",
+      "ideal"
+    ]
+  },
+  "Task list": {
+    "description": "A Task List component displays a list of tasks or items, often with checkboxes or status indicators, allowing users to track progress, mark tasks as complete, or take action on individual items.",
+    "keywords": [
+      "guide",
+      "onboarding",
+      "account",
+      "setup",
+      "highlight",
+      "incomplete",
+      "actions",
+      "unlock",
+      "features",
+      "improve",
+      "performance",
+      "track",
+      "progress",
+      "defined",
+      "sequence"
+    ]
+  },
+  "Text inputs": {
+    "description": "Text Inputs are UI elements that allow users to input and edit text.",
+    "keywords": [
+      "text field",
+      "input",
+      "form field",
+      "text box",
+      "direct",
+      "collect",
+      "essential",
+      "data",
+      "name",
+      "email",
+      "account",
+      "details",
+      "inputting",
+      "sensitive",
+      "financial"
+    ]
+  },
+  "Toast": {
+    "description": "A Toast is a brief, non-intrusive notification that confirms the outcome of a recent action or process.",
+    "keywords": [
+      "snackbar",
+      "notification",
+      "flash",
+      "feedback",
+      "confirm",
+      "successful",
+      "completion",
+      "initiated",
+      "task",
+      "notify",
+      "critical",
+      "updates",
+      "require",
+      "immediate",
+      "action"
+    ]
+  },
+  "Toggle": {
+    "description": "Toggles (aka Switch) let users turn an individual option on or off, typically for activating or deactivating specific settings.",
+    "keywords": [
+      "switch",
+      "on off",
+      "binary",
+      "setting",
+      "offering",
+      "simple",
+      "choice",
+      "turning",
+      "option",
+      "situations",
+      "action",
+      "take",
+      "immediate",
+      "effect",
+      "requiring"
+    ]
+  },
+  "Tooltip": {
+    "description": "Our Tooltip component is a small, contextual pop-up that provides brief, informative text when a user hovers over, focuses on, or interacts with an element.",
+    "keywords": [
+      "hint",
+      "popover",
+      "info bubble",
+      "help",
+      "providing",
+      "definitions",
+      "terms",
+      "abbreviations",
+      "hovering",
+      "annual",
+      "percentage",
+      "rate",
+      "explaining",
+      "purpose",
+      "glyphs"
+    ]
+  }
+}

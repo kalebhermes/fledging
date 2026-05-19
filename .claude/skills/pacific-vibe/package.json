@@ -1,0 +1,14 @@
+{
+  "name": "pacific-vibe-skill",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test test.mjs"
+  },
+  "dependencies": {
+    "ts-morph": "^25.0.0",
+    "playwright": "^1.52.0",
+    "glob": "^11.0.0"
+  }
+}
