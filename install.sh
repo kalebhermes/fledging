@@ -385,7 +385,11 @@ install_homebrew() {
   if [[ "$HEADLESS" == "true" ]]; then
     NONINTERACTIVE=1 _run_brew_installer
   else
-    _run_brew_installer
+    # Redirect stdin from /dev/tty so Homebrew's installer can prompt for the
+    # sudo password interactively. Without this, piped execution (curl | bash)
+    # leaves stdin as an exhausted pipe — Homebrew detects a non-TTY, switches
+    # to non-interactive mode, uses sudo -n, and fails on a fresh machine.
+    _run_brew_installer < /dev/tty
   fi
 
   # Make brew available in this session (Homebrew doesn't update PATH itself)
