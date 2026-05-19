@@ -65,7 +65,7 @@ setup() {
   )
 }
 
-@test "recover_env: sets HOME from eval echo ~USER when unset" {
+@test "recover_env: sets HOME when unset" {
   (
     source "${BATS_TEST_DIRNAME}/../install.sh"
     unset HOME

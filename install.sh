@@ -25,7 +25,7 @@ VERBOSE=false
 # Accumulator for paths to clean up on EXIT. Use _register_cleanup instead of
 # calling trap directly — multiple trap calls overwrite each other.
 _CLEANUP_PATHS=()
-_cleanup_on_exit() { for _p in "${_CLEANUP_PATHS[@]:-}"; do ignore rm -rf "$_p"; done; }
+_cleanup_on_exit() { for _p in "${_CLEANUP_PATHS[@]+"${_CLEANUP_PATHS[@]}"}"; do ignore rm -rf "$_p"; done; }
 trap '_cleanup_on_exit' EXIT
 
 _register_cleanup() { _CLEANUP_PATHS+=("$1"); }
@@ -47,12 +47,11 @@ fi
 if is_tty; then
   BOLD="\033[1m"
   RED="\033[31m"
-  GREEN="\033[32m"
   YELLOW="\033[33m"
   CYAN="\033[36m"
   RESET="\033[0m"
 else
-  BOLD="" RED="" GREEN="" YELLOW="" CYAN="" RESET=""
+  BOLD="" RED="" YELLOW="" CYAN="" RESET=""
 fi
 
 # ============================================================
@@ -472,16 +471,12 @@ for r in data["releases"]:
     release_arch = r.get("dart_sdk_arch", "x64")
     if release_arch != dart_arch:
         continue
-    if requested_version:
-        if r.get("version") == requested_version:
-            print(r["archive"])
-            print(r["sha256"])
-            sys.exit(0)
-    else:
-        if r["hash"] == stable_hash:
-            print(r["archive"])
-            print(r["sha256"])
-            sys.exit(0)
+    match = (requested_version and r.get("version") == requested_version) or \
+            (not requested_version and r["hash"] == stable_hash)
+    if match:
+        print(r["archive"])
+        print(r["sha256"])
+        sys.exit(0)
 
 if requested_version:
     print(f"ERROR: Flutter {requested_version} not found for {dart_arch}", file=sys.stderr)
