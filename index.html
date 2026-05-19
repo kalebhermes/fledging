@@ -235,10 +235,24 @@
       font-size: 13px;
       color: var(--teal-300);
       flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      overflow-x: auto;
       white-space: nowrap;
       text-align: left;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.15) transparent;
+    }
+
+    .command-text::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .command-text::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .command-text::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
     }
 
     .copy-btn {
