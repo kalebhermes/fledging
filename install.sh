@@ -12,6 +12,11 @@ FLEDGING_TMP=""
 
 FLUTTER_RELEASES_BASE="https://storage.googleapis.com/flutter_infra_release/releases"
 
+# Install path fragments (relative to $HOME). Single source of truth for any
+# code that constructs or checks flutter/fvm bin directory paths.
+FVM_BIN_DIR="fvm/default/bin"
+FLUTTER_DIRECT_BIN_DIR="development/flutter/bin"
+
 # Globals set during execution
 FLEDGING_OS=""     # "macos" | "linux"
 FLEDGING_ARCH=""   # "arm64" | "x64"
@@ -425,11 +430,11 @@ install_via_fvm() {
 
   # Expose flutter/dart binaries in this session.
   # fvm global creates $HOME/fvm/default → symlink to the active version.
-  export PATH="${HOME}/fvm/default/bin:${PATH}"
+  export PATH="${HOME}/${FVM_BIN_DIR}:${PATH}"
 
   if ! _dart_installed; then
     error "dart not found after fvm install."
-    error "Expected it at: ${HOME}/fvm/default/bin/dart"
+    error "Expected it at: ${HOME}/${FVM_BIN_DIR}/dart"
     error "Try running: fvm global ${version}"
     exit 1
   fi
@@ -487,6 +492,10 @@ PYEOF
 }
 
 install_flutter_direct() {
+  [[ -n "${FLEDGING_OS:-}" && -n "${FLEDGING_ARCH:-}" ]] || {
+    error "install_flutter_direct called before detect_platform"
+    exit 1
+  }
   if _flutter_installed; then
     info "Flutter already installed"
     return 0
@@ -553,6 +562,10 @@ _shell_name() { basename "${SHELL:-bash}"; }
 # Returns the config file path for the current shell.
 # Separated out so tests can stub it.
 _shell_config_file() {
+  [[ -n "${FLEDGING_OS:-}" ]] || {
+    error "_shell_config_file called before detect_platform"
+    exit 1
+  }
   local shell
   shell="$(_shell_name)"
   case "$shell" in
@@ -591,7 +604,7 @@ persist_path() {
   # (e.g. dots in usernames like john.doe would over-match as a regex).
   if ([[ -f "$config_file" ]] || [[ -h "$config_file" ]]) && \
      { grep -qF "$dir" "$config_file" 2>/dev/null || \
-       grep -qE "(fvm/default/bin|development/flutter/bin)" "$config_file" 2>/dev/null; }; then
+       grep -qE "(${FVM_BIN_DIR}|${FLUTTER_DIRECT_BIN_DIR})" "$config_file" 2>/dev/null; }; then
     info "PATH already configured in ${config_file}"
     return 0
   fi
@@ -686,10 +699,10 @@ main() {
 
   if [[ "$NO_FVM" == "true" ]]; then
     install_flutter_direct
-    persist_path "${HOME}/development/flutter/bin"
+    persist_path "${HOME}/${FLUTTER_DIRECT_BIN_DIR}"
   else
     install_via_fvm
-    persist_path "${HOME}/fvm/default/bin"
+    persist_path "${HOME}/${FVM_BIN_DIR}"
   fi
 
   info ""

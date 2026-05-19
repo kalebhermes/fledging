@@ -336,6 +336,8 @@ setup() {
 }
 
 @test "install_flutter_direct: skips when flutter already in PATH" {
+  FLEDGING_OS="macos"
+  FLEDGING_ARCH="arm64"
   stub_fn _flutter_installed 'return 0'
   run install_flutter_direct
   [ "$status" -eq 0 ]
