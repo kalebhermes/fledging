@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fledging — Flutter dev environment installer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-900: #0D1B2A;
+      --blue-800: #1565C0;
+      --blue-700: #1976D2;
+      --blue-100: #E3F2FD;
+      --blue-50:  #F0F7FF;
+      --teal-300: #80CBC4;
+      --teal-100: #E0F2F1;
+      --gray-600: #546E7A;
+      --gray-400: #90A4AE;
+      --gray-200: #ECEFF1;
+      --text-primary: #0D1B2A;
+      --text-secondary: #546E7A;
+      --radius: 10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--blue-50);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--blue-100);
+      background: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--blue-800);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg { display: block; }
+
+    .logo-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .header-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .header-link:hover {
+      background: var(--blue-100);
+      color: var(--blue-800);
+    }
+
+    /* ── Hero ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+    }
+
+    .hero {
+      max-width: 580px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue-100);
+      color: var(--blue-800);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: var(--text-primary);
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      color: var(--blue-800);
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 36px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── OS Selector ── */
+    .os-selector {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .os-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.18s;
+      user-select: none;
+      background: white;
+      color: var(--gray-400);
+      border-color: var(--gray-200);
+    }
+
+    .os-pill.active {
+      background: var(--blue-800);
+      color: white;
+      border-color: var(--blue-800);
+      box-shadow: 0 2px 8px rgba(21,101,192,0.28);
+    }
+
+    .os-pill.coming-soon {
+      opacity: 0.65;
+    }
+
+    .os-pill.coming-soon:hover {
+      background: var(--blue-50);
+      color: var(--gray-600);
+      border-color: var(--gray-200);
+    }
+
+    .os-pill.active:hover {
+      background: var(--blue-700);
+      border-color: var(--blue-700);
+    }
+
+    .os-pill .pill-icon { font-size: 16px; line-height: 1; }
+
+    /* ── Detection notice ── */
+    .detection-notice {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      min-height: 18px;
+    }
+
+    .detection-notice .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #43A047;
+      margin-right: 5px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    /* ── Command box ── */
+    .command-wrap {
+      background: var(--blue-900);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(13,27,42,0.18);
+      margin-bottom: 12px;
+    }
+
+    .command-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 20px;
+    }
+
+    .command-prompt {
+      color: var(--gray-400);
+      font-family: "SF Mono", "Fira Code", "Fira Mono", monospace;
+      font-size: 14px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .command-text {
+      font-family: "SF Mono", "Fira Code", "Fira Mono", monospace;
+      font-size: 13px;
+      color: var(--teal-300);
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .copy-btn {
+      flex-shrink: 0;
+      background: var(--blue-800);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .copy-btn:hover { background: var(--blue-700); }
+    .copy-btn:active { transform: scale(0.97); }
+    .copy-btn.copied { background: #43A047; }
+
+    /* ── Coming soon state ── */
+    .coming-soon-box {
+      display: none;
+      padding: 24px 20px;
+      text-align: center;
+      color: var(--gray-400);
+    }
+
+    .coming-soon-box .cs-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .coming-soon-box p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .coming-soon-box a {
+      color: var(--teal-300);
+      text-decoration: none;
+    }
+
+    .coming-soon-box a:hover { text-decoration: underline; }
+
+    /* ── Options note ── */
+    .options-note {
+      font-size: 12px;
+      color: var(--gray-400);
+      margin-bottom: 36px;
+    }
+
+    .options-note a {
+      color: var(--blue-800);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .options-note a:hover { text-decoration: underline; }
+
+    /* ── Feature chips ── */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .feature-chip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: white;
+      border: 1px solid var(--blue-100);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .feature-chip .chip-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue-800);
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: var(--gray-400);
+      border-top: 1px solid var(--blue-100);
+      background: white;
+    }
+
+    footer a {
+      color: var(--blue-800);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 500px) {
+      .hero h1 { font-size: 36px; }
+      .os-pill { padding: 7px 14px; font-size: 13px; }
+      .command-text { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a class="logo" href="#">
+      <div class="logo-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 14L9 4L14 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6.5 10.5H11.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="logo-name">fledging</span>
+    </a>
+    <a class="header-link" href="https://github.com/kalebhermes/fledging" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <div class="hero">
+      <div class="hero-badge">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+        Open source · Phase 1: macOS
+      </div>
+
+      <h1>Flutter dev setup,<br><span>one command.</span></h1>
+
+      <p class="hero-subtitle">
+        Installs Xcode CLT, Homebrew, Flutter, and hands off to the fledging CLI for the rest. No manual steps.
+      </p>
+
+      <!-- OS selector -->
+      <div class="os-selector">
+        <button class="os-pill" data-os="macos" onclick="selectOS('macos')">
+          <span class="pill-icon">🍎</span> macOS
+        </button>
+        <button class="os-pill coming-soon" data-os="linux" onclick="selectOS('linux')">
+          <span class="pill-icon">🐧</span> Linux
+        </button>
+        <button class="os-pill coming-soon" data-os="windows" onclick="selectOS('windows')">
+          <span class="pill-icon">🪟</span> Windows
+        </button>
+      </div>
+
+      <!-- Detection notice -->
+      <p class="detection-notice" id="detection-notice"></p>
+
+      <!-- Command block -->
+      <div class="command-wrap">
+        <!-- macOS command -->
+        <div id="cmd-macos" class="command-box" style="display:none;">
+          <span class="command-prompt">$</span>
+          <span class="command-text" id="cmd-macos-text">curl -fsSL https://raw.githubusercontent.com/kalebhermes/fledging/main/install.sh | bash</span>
+          <button class="copy-btn" onclick="copyCommand('macos')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span id="copy-label-macos">Copy</span>
+          </button>
+        </div>
+        <!-- Linux / Windows coming soon -->
+        <div id="cmd-linux" class="coming-soon-box">
+          <div class="cs-icon">🐧</div>
+          <p>Linux support is coming soon.<br><a href="https://github.com/kalebhermes/fledging" target="_blank">Watch the repo</a> for updates.</p>
+        </div>
+        <div id="cmd-windows" class="coming-soon-box">
+          <div class="cs-icon">🪟</div>
+          <p>Windows support is coming soon.<br><a href="https://github.com/kalebhermes/fledging" target="_blank">Watch the repo</a> for updates.</p>
+        </div>
+      </div>
+
+      <p class="options-note" id="options-note"></p>
+
+      <!-- Feature chips -->
+      <div class="features">
+        <div class="feature-chip"><span class="chip-dot"></span> Xcode CLT</div>
+        <div class="feature-chip"><span class="chip-dot"></span> Homebrew</div>
+        <div class="feature-chip"><span class="chip-dot"></span> Flutter via fvm</div>
+        <div class="feature-chip"><span class="chip-dot"></span> Dart CLI</div>
+        <div class="feature-chip"><span class="chip-dot"></span> Apple Silicon aware</div>
+        <div class="feature-chip"><span class="chip-dot"></span> Headless / CI ready</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="https://github.com/kalebhermes/fledging" target="_blank" rel="noopener">kalebhermes/fledging</a>
+    &nbsp;·&nbsp;
+    MIT License
+  </footer>
+
+  <script>
+    const COMMANDS = {
+      macos: 'curl -fsSL https://raw.githubusercontent.com/kalebhermes/fledging/main/install.sh | bash',
+    };
+
+    const OPTIONS_NOTES = {
+      macos: 'Optional flags: <a href="https://github.com/kalebhermes/fledging#flags" target="_blank"><code>--no-fvm</code></a>, <a href="https://github.com/kalebhermes/fledging#flags" target="_blank"><code>--flutter-version</code></a>, <a href="https://github.com/kalebhermes/fledging#flags" target="_blank"><code>--headless</code></a>',
+    };
+
+    let currentOS = null;
+
+    function detectOS() {
+      const ua = navigator.userAgent;
+      const platform = navigator.platform || '';
+      if (/Mac|iPhone|iPad|iPod/.test(platform) || /Mac/.test(ua)) return 'macos';
+      if (/Win/.test(platform) || /Windows/.test(ua)) return 'windows';
+      if (/Linux/.test(platform) || /Linux/.test(ua)) return 'linux';
+      return 'macos';
+    }
+
+    function detectArch() {
+      // Modern browsers expose this via userAgentData
+      const uad = navigator.userAgentData;
+      if (uad && uad.getHighEntropyValues) {
+        uad.getHighEntropyValues(['architecture']).then(data => {
+          if (data.architecture === 'arm') {
+            const notice = document.getElementById('detection-notice');
+            if (notice && currentOS === 'macos') {
+              notice.innerHTML = '<span class="dot"></span>Detected: macOS &middot; Apple Silicon';
+            }
+          }
+        }).catch(() => {});
+      }
+    }
+
+    function selectOS(os) {
+      currentOS = os;
+
+      // Update pills
+      document.querySelectorAll('.os-pill').forEach(p => p.classList.remove('active'));
+      document.querySelector(`[data-os="${os}"]`).classList.add('active');
+
+      // Show/hide command blocks
+      ['macos', 'linux', 'windows'].forEach(o => {
+        const el = document.getElementById(`cmd-${o}`);
+        if (el) el.style.display = 'none';
+      });
+      const target = document.getElementById(`cmd-${os}`);
+      if (target) target.style.display = 'flex';
+      // coming-soon boxes use block not flex
+      if (os === 'linux' || os === 'windows') {
+        target.style.display = 'block';
+      }
+
+      // Detection notice
+      const notice = document.getElementById('detection-notice');
+      if (os === 'macos') {
+        notice.innerHTML = '<span class="dot"></span>Detected: macOS · auto-detecting architecture…';
+        detectArch();
+      } else {
+        notice.innerHTML = '';
+      }
+
+      // Options note
+      const optNote = document.getElementById('options-note');
+      optNote.innerHTML = OPTIONS_NOTES[os] || '';
+    }
+
+    function copyCommand(os) {
+      const cmd = COMMANDS[os];
+      if (!cmd) return;
+      navigator.clipboard.writeText(cmd).then(() => {
+        const btn = document.querySelector(`#cmd-${os} .copy-btn`);
+        const label = document.getElementById(`copy-label-${os}`);
+        if (btn) btn.classList.add('copied');
+        if (label) label.textContent = 'Copied!';
+        setTimeout(() => {
+          if (btn) btn.classList.remove('copied');
+          if (label) label.textContent = 'Copy';
+        }, 2000);
+      }).catch(() => {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = cmd;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        const label = document.getElementById(`copy-label-${os}`);
+        if (label) { label.textContent = 'Copied!'; setTimeout(() => label.textContent = 'Copy', 2000); }
+      });
+    }
+
+    // Init on load
+    const detected = detectOS();
+    selectOS(detected);
+  </script>
+
+</body>
+</html>
