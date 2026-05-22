@@ -16,6 +16,7 @@ FLUTTER_RELEASES_BASE="https://storage.googleapis.com/flutter_infra_release/rele
 # code that constructs or checks flutter/fvm bin directory paths.
 FVM_BIN_DIR="fvm/default/bin"
 FLUTTER_DIRECT_BIN_DIR="development/flutter/bin"
+FVM_INSTALL_URL="https://fvm.app/install.sh"
 
 # Globals set during execution
 FLEDGING_OS=""     # "macos" | "linux"
@@ -414,14 +415,20 @@ install_homebrew() {
 
 _fvm_installed()  { command -v fvm > /dev/null 2>&1; }
 _dart_installed() { command -v dart > /dev/null 2>&1; }
-_brew_install_fvm() { ensure brew install fvm; }
 _fvm_install() { ensure fvm install "$1"; }
 _fvm_global()  { ensure fvm global "$1"; }
+
+# Thin wrapper so tests can stub without a network call
+_run_fvm_installer() {
+  curl -fsSL "$FVM_INSTALL_URL" | bash
+}
 
 install_via_fvm() {
   if ! _fvm_installed; then
     info "Installing fvm..."
-    _brew_install_fvm
+    _run_fvm_installer
+    # fvm.app/install.sh puts the fvm binary at $HOME/fvm/bin
+    export PATH="${HOME}/fvm/bin:${PATH}"
   else
     info "fvm already installed"
   fi
@@ -432,8 +439,7 @@ install_via_fvm() {
   _fvm_install "$version"
   _fvm_global "$version"
 
-  # Expose flutter/dart binaries in this session.
-  # fvm global creates $HOME/fvm/default → symlink to the active version.
+  # After fvm global, flutter/dart are at $HOME/fvm/default/bin
   export PATH="${HOME}/${FVM_BIN_DIR}:${PATH}"
 
   if ! _dart_installed; then

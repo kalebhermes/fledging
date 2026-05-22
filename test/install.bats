@@ -292,15 +292,15 @@ setup() {
   [ "$captured_env" = "1" ]
 }
 
-@test "install_via_fvm: skips brew install when fvm already present" {
+@test "install_via_fvm: skips fvm installer when fvm already present" {
   stub_fn _fvm_installed 'return 0'
-  local brew_called=false
-  _brew_install_fvm() { brew_called=true; }
+  local installer_called=false
+  _run_fvm_installer() { installer_called=true; }
   stub_fn _fvm_install 'return 0'
   stub_fn _fvm_global 'return 0'
   stub_fn _dart_installed 'return 0'
   install_via_fvm
-  [ "$brew_called" = "false" ]
+  [ "$installer_called" = "false" ]
 }
 
 @test "install_via_fvm: passes flutter version to fvm install when set" {
