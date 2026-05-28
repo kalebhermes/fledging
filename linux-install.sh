@@ -37,7 +37,7 @@ trap '_cleanup_on_exit' EXIT
 _register_cleanup() { _CLEANUP_PATHS+=("$1"); }
 
 # ============================================================
-# TTY detection — evaluated once at startup, subshell-safe.
+# TTY detection
 # ============================================================
 if [ -t 1 ]; then
   is_tty() { true; }
@@ -46,7 +46,7 @@ else
 fi
 
 # ============================================================
-# Colors — empty strings when not a TTY; no per-call branching
+# Colors — empty strings when not a TTY
 # ============================================================
 if is_tty; then
   BOLD="\033[1m"
@@ -59,8 +59,7 @@ else
 fi
 
 # ============================================================
-# Output — ALL diagnostic output goes to stderr so stdout
-# stays clean for command substitution
+# Output — all diagnostic functions write to stderr
 # ============================================================
 info()  { command printf "${CYAN}==>${RESET} ${BOLD}%s${RESET}\n" "$*" >&2; }
 warn()  { command printf "${YELLOW}Warning${RESET}: %s\n" "$*" >&2; }
@@ -202,7 +201,6 @@ _detect_pkg_manager() {
 
 # ============================================================
 # System prerequisites
-# Replaces the macOS Xcode CLT + Homebrew steps.
 # ============================================================
 install_prereqs() {
   local pkg_mgr
@@ -290,8 +288,6 @@ verify_sha256() {
 
 # ============================================================
 # FVM + Flutter install (fvm path)
-# On Linux, fvm is installed via its official install script,
-# not Homebrew.
 # ============================================================
 
 _fvm_installed()  { command -v fvm > /dev/null 2>&1; }
@@ -299,9 +295,7 @@ _dart_installed() { command -v dart > /dev/null 2>&1; }
 _fvm_install() { ensure fvm install "$1"; }
 _fvm_global()  { ensure fvm global "$1"; }
 
-# Thin wrapper so tests can stub without a network call.
-# Applies the same snap-curl guard as download_file — snap curl on Ubuntu
-# has broken SSL and will fail on this HTTPS URL without the wget fallback.
+# snap curl on Ubuntu has broken SSL — fall back to wget when detected.
 _run_fvm_installer() {
   if is_snap_curl; then
     if command -v wget > /dev/null 2>&1; then
@@ -319,9 +313,7 @@ _run_fvm_installer() {
 install_via_fvm() {
   if ! _fvm_installed; then
     info "Installing fvm..."
-    # fvm.app/install.sh installs the fvm binary to $HOME/fvm/bin
     _run_fvm_installer
-    # Make fvm callable in this session
     export PATH="${HOME}/fvm/bin:${PATH}"
   else
     info "fvm already installed"
@@ -348,20 +340,15 @@ install_via_fvm() {
 
 # ============================================================
 # Direct Flutter download (--no-fvm path)
-# Linux archives are .tar.xz; only x64 is available.
 # ============================================================
 
 _flutter_installed() { command -v flutter > /dev/null 2>&1; }
 
-# Parse the Flutter releases JSON using only awk — no python3 dependency.
-# Prints: archive (line 1), sha256 (line 2). Exits 1 if not found.
-# Reads globals: FLEDGING_ARCH, FLUTTER_VERSION
 _parse_flutter_release() {
   local json_file="$1"
   local dart_arch="${FLEDGING_ARCH}"
   local req_version="${FLUTTER_VERSION:-}"
 
-  # Extract the stable commit hash from the current_release section
   local stable_hash
   stable_hash=$(awk '/"stable":/ {
     val=$0; gsub(/.*"stable": "/, "", val); gsub(/".*/, "", val); print val; exit
@@ -372,9 +359,7 @@ _parse_flutter_release() {
     exit 1
   fi
 
-  # Walk the releases array with plain awk (POSIX-compatible, no python3 needed).
-  # Each release object has one JSON field per line; we accumulate fields until
-  # we hit a closing brace and check if the record matches our target.
+  # Accumulate fields from each release object; emit on closing brace if it matches.
   local result
   result=$(awk \
     -v stable_hash="$stable_hash" \
@@ -467,7 +452,6 @@ install_flutter_direct() {
   info "Extracting Flutter..."
   local install_dir="${HOME}/development"
   mkdir -p "$install_dir"
-  # Linux archives are .tar.xz
   ensure tar xf "$archive_path" -C "$install_dir"
   ignore rm -f "$archive_path"
 
@@ -496,7 +480,7 @@ _shell_config_file() {
   shell="$(_shell_name)"
   case "$shell" in
     zsh)  echo "${ZDOTDIR:-$HOME}/.zshrc" ;;
-    bash) echo "${HOME}/.bashrc" ;;   # Linux always uses .bashrc
+    bash) echo "${HOME}/.bashrc" ;;
     fish) echo "${HOME}/.config/fish/config.fish" ;;
     *)    echo "" ;;
   esac
