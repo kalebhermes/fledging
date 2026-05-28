@@ -3,21 +3,22 @@
 # Success = Flutter installed (pub.dev handoff always fails until fledging is published).
 #
 # Usage:
-#   ./test-linux-all.sh                  # run all variants
-#   ./test-linux-all.sh ubuntu-arm64     # run a specific variant
+#   ./test/run-linux.sh                  # run all variants
+#   ./test/run-linux.sh ubuntu-arm64     # run a specific variant
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-LINUX_SCRIPT="${SCRIPT_DIR}/linux-install.sh"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+LINUX_SCRIPT="${REPO_ROOT}/linux-install.sh"
 
 if [[ ! -f "$LINUX_SCRIPT" ]]; then
-  echo "Error: linux-install.sh not found at $SCRIPT_DIR"
+  echo "Error: linux-install.sh not found at ${REPO_ROOT}"
   exit 1
 fi
 
 if [[ ! -f "${SCRIPT_DIR}/zscaler-ca.pem" ]]; then
-  echo "Error: zscaler-ca.pem not found. Copy it to the repo root before running tests."
+  echo "Error: zscaler-ca.pem not found. Copy it to test/ before running."
   exit 1
 fi
 
