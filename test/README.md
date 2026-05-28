@@ -25,7 +25,9 @@ Runs `linux-install.sh` end-to-end in a clean Docker container for each supporte
 **Prerequisites:**
 
 - Docker
-- `test/zscaler-ca.pem` — required when running on a network with SSL inspection (e.g. corporate Zscaler proxy). Copy the root CA certificate into `test/` before running. This file is gitignored.
+
+**Corporate SSL proxies (optional):**
+If your network uses SSL inspection (Zscaler, etc.), drop your org's root CA certificate(s) into `test/certificates/` before running. Any `.pem` or `.crt` files found there are injected into each Docker image's trust store at build time. The directory is gitignored — tests run fine without any certs present.
 
 **Run all distros:**
 

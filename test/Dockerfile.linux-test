@@ -1,32 +1,19 @@
-# Test environment for linux-install.sh
-# Simulates a clean Ubuntu developer machine with a non-root user + sudo access.
-#
-# Build:  docker build -t fledging-linux-test -f Dockerfile.linux-test .
-# Run:    docker run -it --rm fledging-linux-test
-#
-# Inside the container, run:
-#   curl -fsSL https://raw.githubusercontent.com/kalebhermes/fledging/main/linux-install.sh | bash
-#
-# Or to test the local script (from repo root):
-#   docker run -it --rm -v "$(pwd)/linux-install.sh:/home/fledger/linux-install.sh" fledging-linux-test
-#   Then: bash linux-install.sh --headless
-
 FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install only what's needed to bootstrap the installer
-# (curl is needed to fetch linux-install.sh; sudo is needed because
-#  our script calls "sudo apt-get" as a non-root user)
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends sudo curl ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Inject corporate Zscaler CA so curl can reach proxied HTTPS endpoints
-COPY zscaler-ca.pem /usr/local/share/ca-certificates/zscaler.crt
-RUN update-ca-certificates
+# Install any CA certificates found in test/certificates/ (org-specific certs,
+# e.g. corporate SSL inspection proxies). No-op if the directory is empty.
+COPY certificates/ /tmp/certs/
+RUN for cert in /tmp/certs/*.pem /tmp/certs/*.crt; do \
+      [ -f "$cert" ] || continue; \
+      cp "$cert" "/usr/local/share/ca-certificates/$(basename "${cert%.*}").crt"; \
+    done && update-ca-certificates
 
-# Create a non-root user with passwordless sudo — mirrors a real developer machine
 RUN useradd -m -s /bin/bash fledger && \
     echo "fledger ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 

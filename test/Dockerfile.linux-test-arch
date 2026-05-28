@@ -1,9 +1,12 @@
-# Test environment for linux-install.sh on Arch Linux (pacman)
 FROM archlinux:latest
 
-# Inject Zscaler CA BEFORE any pacman commands — Arch base ships p11-kit/trust
-COPY zscaler-ca.pem /etc/ca-certificates/trust-source/anchors/zscaler.crt
-RUN trust extract-compat
+# Inject CA certificates BEFORE pacman — Arch base ships p11-kit/trust,
+# and any SSL-inspecting proxy must be trusted before package downloads.
+COPY certificates/ /tmp/certs/
+RUN for cert in /tmp/certs/*.pem /tmp/certs/*.crt; do \
+      [ -f "$cert" ] || continue; \
+      cp "$cert" /etc/ca-certificates/trust-source/anchors/; \
+    done && trust extract-compat
 
 # pacman's seccomp sandbox fails under QEMU x86_64 emulation on Apple Silicon
 RUN echo "DisableSandbox" >> /etc/pacman.conf && \

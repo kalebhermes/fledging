@@ -17,10 +17,9 @@ if [[ ! -f "$LINUX_SCRIPT" ]]; then
   exit 1
 fi
 
-if [[ ! -f "${SCRIPT_DIR}/zscaler-ca.pem" ]]; then
-  echo "Error: zscaler-ca.pem not found. Copy it to test/ before running."
-  exit 1
-fi
+# test/certificates/ is the drop zone for org-specific CA certs (e.g. corporate
+# SSL inspection proxies). Files there are gitignored and loaded into each
+# Docker image at build time. No certs = no-op; tests still run for everyone.
 
 # ── Test variants ────────────────────────────────────────────
 # Format: "name|platform|image-tag|dockerfile"

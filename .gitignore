@@ -1,2 +1,5 @@
 .superpowers/
-*.pem
+# Cert files in test/certificates are org-specific and should not be committed.
+# Drop your org's CA certificates there to have them trusted inside Docker.
+test/certificates/*.pem
+test/certificates/*.crt

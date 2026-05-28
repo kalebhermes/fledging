@@ -1,13 +1,15 @@
-# Test environment for linux-install.sh on Alpine Linux (apk)
-# Alpine APK uses HTTP repos by default so Zscaler CA injection can happen after initial install.
-# bash must be installed — Alpine ships sh only.
 FROM alpine:3.21
 
+# Alpine APK uses HTTP repos, so CA injection can happen after the initial install.
+# bash must be installed — Alpine ships sh only.
 RUN apk add --no-cache sudo bash curl ca-certificates
 
-# Inject Zscaler CA after ca-certificates is installed
-COPY zscaler-ca.pem /usr/local/share/ca-certificates/zscaler.crt
-RUN update-ca-certificates
+# Install any CA certificates found in test/certificates/. No-op if empty.
+COPY certificates/ /tmp/certs/
+RUN for cert in /tmp/certs/*.pem /tmp/certs/*.crt; do \
+      [ -f "$cert" ] || continue; \
+      cp "$cert" "/usr/local/share/ca-certificates/$(basename "${cert%.*}").crt"; \
+    done && update-ca-certificates
 
 RUN adduser -D -s /bin/bash fledger && \
     echo "fledger ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
