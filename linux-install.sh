@@ -228,7 +228,9 @@ install_prereqs() {
       ensure sudo pacman -Sy --noconfirm git curl unzip xz zip mesa
       ;;
     apk)
-      ensure sudo apk add --no-cache git curl unzip xz zip mesa-gl
+      # gcompat provides glibc compatibility shim required by Flutter/Dart binaries,
+      # which are glibc-linked and won't run on Alpine's musl libc without it.
+      ensure sudo apk add --no-cache git curl unzip xz zip mesa-gl gcompat
       ;;
   esac
 
