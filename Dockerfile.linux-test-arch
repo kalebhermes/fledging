@@ -1,0 +1,19 @@
+# Test environment for linux-install.sh on Arch Linux (pacman)
+FROM archlinux:latest
+
+# Inject Zscaler CA BEFORE any pacman commands — Arch base ships p11-kit/trust
+COPY zscaler-ca.pem /etc/ca-certificates/trust-source/anchors/zscaler.crt
+RUN trust extract-compat
+
+# pacman's seccomp sandbox fails under QEMU x86_64 emulation on Apple Silicon
+RUN echo "DisableSandbox" >> /etc/pacman.conf && \
+    pacman -Sy --noconfirm sudo curl ca-certificates && \
+    pacman -Sc --noconfirm
+
+RUN useradd -m -s /bin/bash fledger && \
+    echo "fledger ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER fledger
+WORKDIR /home/fledger
+
+CMD ["/bin/bash"]

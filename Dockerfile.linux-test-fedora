@@ -1,0 +1,17 @@
+# Test environment for linux-install.sh on Fedora (dnf)
+FROM fedora:40
+
+# Inject Zscaler CA BEFORE any dnf commands — Fedora base ships update-ca-trust
+COPY zscaler-ca.pem /etc/pki/ca-trust/source/anchors/zscaler.crt
+RUN update-ca-trust extract
+
+RUN dnf install -y sudo curl ca-certificates && \
+    dnf clean all
+
+RUN useradd -m -s /bin/bash fledger && \
+    echo "fledger ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER fledger
+WORKDIR /home/fledger
+
+CMD ["/bin/bash"]
