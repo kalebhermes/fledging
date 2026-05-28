@@ -1,0 +1,32 @@
+# Test environment for linux-install.sh
+# Simulates a clean Ubuntu developer machine with a non-root user + sudo access.
+#
+# Build:  docker build -t fledging-linux-test -f Dockerfile.linux-test .
+# Run:    docker run -it --rm fledging-linux-test
+#
+# Inside the container, run:
+#   curl -fsSL https://raw.githubusercontent.com/kalebhermes/fledging/main/linux-install.sh | bash
+#
+# Or to test the local script (from repo root):
+#   docker run -it --rm -v "$(pwd)/linux-install.sh:/home/fledger/linux-install.sh" fledging-linux-test
+#   Then: bash linux-install.sh --headless
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install only what's needed to bootstrap the installer
+# (curl is needed to fetch linux-install.sh; sudo is needed because
+#  our script calls "sudo apt-get" as a non-root user)
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends sudo curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user with passwordless sudo — mirrors a real developer machine
+RUN useradd -m -s /bin/bash fledger && \
+    echo "fledger ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER fledger
+WORKDIR /home/fledger
+
+CMD ["/bin/bash"]
