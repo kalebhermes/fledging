@@ -20,7 +20,7 @@ FLUTTER_DIRECT_BIN_DIR="development/flutter/bin"
 
 # Globals set during execution
 FLEDGING_OS="linux"
-FLEDGING_ARCH=""   # "x64" only (no arm64 pre-built Linux Flutter from Google)
+FLEDGING_ARCH=""   # "x64" | "arm64"
 
 # Flags (set by parse_args)
 NO_FVM=false
@@ -164,14 +164,7 @@ detect_platform() {
 
   case "$arch" in
     x86_64)        FLEDGING_ARCH="x64" ;;
-    aarch64|arm64)
-      # Flutter does not ship pre-built arm64 Linux archives.
-      # arm64 Linux users must install via snap or build from source.
-      error "Flutter does not provide pre-built arm64 Linux SDK archives."
-      error "Install Flutter on arm64 Linux via snap:"
-      error "  sudo snap install flutter --classic"
-      exit 1
-      ;;
+    aarch64|arm64) FLEDGING_ARCH="arm64" ;;
     *)
       error "Unsupported architecture: $arch"
       exit 1
@@ -381,6 +374,14 @@ install_flutter_direct() {
     error "install_flutter_direct called before detect_platform"
     exit 1
   }
+
+  # Google does not publish pre-built arm64 Linux Flutter archives.
+  # The fvm path (default) handles arm64 via fvm's own arm64 binaries.
+  if [[ "$FLEDGING_ARCH" == "arm64" ]]; then
+    error "--no-fvm is not supported on arm64 Linux: Flutter has no pre-built arm64 Linux SDK."
+    error "Remove --no-fvm to install Flutter via fvm, which supports arm64."
+    exit 1
+  fi
 
   if _flutter_installed; then
     info "Flutter already installed"
