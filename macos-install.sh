@@ -37,9 +37,7 @@ trap '_cleanup_on_exit' EXIT
 _register_cleanup() { _CLEANUP_PATHS+=("$1"); }
 
 # ============================================================
-# TTY detection — evaluated once at startup, subshell-safe.
-# Subshells always have fd 1 as a pipe, so [ -t 1 ] inside
-# $(...) always returns false. Baking the result here fixes that.
+# TTY detection
 # ============================================================
 if [ -t 1 ]; then
   is_tty() { true; }
@@ -48,7 +46,7 @@ else
 fi
 
 # ============================================================
-# Colors — empty strings when not a TTY; no per-call branching
+# Colors — empty strings when not a TTY
 # ============================================================
 if is_tty; then
   BOLD="\033[1m"
@@ -61,8 +59,7 @@ else
 fi
 
 # ============================================================
-# Output — ALL diagnostic output goes to stderr so stdout
-# stays clean for command substitution
+# Output — all diagnostic functions write to stderr
 # ============================================================
 info()  { command printf "${CYAN}==>${RESET} ${BOLD}%s${RESET}\n" "$*" >&2; }
 warn()  { command printf "${YELLOW}Warning${RESET}: %s\n" "$*" >&2; }
@@ -72,7 +69,6 @@ error() { command printf "${RED}Error${RESET}: %s\n" "$*" >&2; }
 # Utility wrappers
 # ============================================================
 
-# Exit 1 if a required command is not in PATH
 need_cmd() {
   if ! command -v "$1" > /dev/null 2>&1; then
     error "Required command not found: $1"
@@ -80,8 +76,6 @@ need_cmd() {
   fi
 }
 
-# Run a command; exit 1 with a clear message if it fails.
-# Use for operations that should never fail.
 ensure() {
   if ! "$@"; then
     error "Command failed: $*"
@@ -89,8 +83,6 @@ ensure() {
   fi
 }
 
-# Run a command, swallowing all errors.
-# Use in error-path cleanup so cleanup never masks the real error.
 ignore() {
   "$@" 2>/dev/null || true
 }
@@ -152,15 +144,13 @@ parse_args() {
     esac
   done
 
-  # Honor env var override
   if [[ "${FLEDGING_NONINTERACTIVE:-}" == "1" ]]; then
     HEADLESS=true
   fi
 }
 
 # ============================================================
-# Platform detection — thin wrappers around system calls so
-# tests can override them via function shadowing
+# Platform detection
 # ============================================================
 _get_raw_os()          { uname -s; }
 _get_raw_arch()        { uname -m; }
@@ -243,10 +233,6 @@ setup_tmp() {
   _register_cleanup "$FLEDGING_TMP"
 }
 
-# Download a URL to a destination path.
-# Uses curl if available and not a snap package; falls back to wget.
-# Downloads to <dest>.part first; renames to <dest> only on success.
-# Usage: download_file <url> <dest>
 download_file() {
   local url="$1" dest="$2"
   local part="${dest}.part"
@@ -266,9 +252,6 @@ download_file() {
   mv "$part" "$dest"
 }
 
-# Verify the SHA256 of a file against an expected hex digest.
-# Deletes the file and exits 1 on mismatch.
-# Usage: verify_sha256 <file> <expected_sha256>
 verify_sha256() {
   local file="$1" expected="$2"
   local actual
@@ -295,7 +278,6 @@ verify_sha256() {
 # Xcode Command Line Tools
 # ============================================================
 
-# Thin wrapper for testability
 _xcode_clt_installed() {
   xcode-select -p > /dev/null 2>&1
 }
@@ -309,13 +291,10 @@ install_xcode_clt() {
   info "Installing Xcode Command Line Tools..."
 
   if [[ "$HEADLESS" == "true" ]]; then
-    # Headless install via softwareupdate (no GUI dialog)
-    # Create the placeholder file that triggers CLT availability in the catalog
+    # Placeholder file triggers CLT availability in the softwareupdate catalog
     local placeholder="/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress"
     ensure touch "$placeholder"
 
-    # Run softwareupdate -l as a direct call (not command substitution) so that
-    # any shell-function stubs take effect in the current scope, then parse output
     local tmplist
     tmplist="$(mktemp)"
     softwareupdate -l > "$tmplist" 2>&1
@@ -331,18 +310,15 @@ install_xcode_clt() {
     if [[ -n "$clt_label" ]]; then
       ensure softwareupdate -i "$clt_label" --agree-to-license
     else
-      # Fallback: install all available updates (works on some macOS versions)
-      warn "Could not find a specific CLT label in softwareupdate catalog; falling back to --install --all"
+        warn "Could not find a specific CLT label in softwareupdate catalog; falling back to --install --all"
       ensure softwareupdate --install --all --agree-to-license
     fi
   else
-    # Interactive: trigger the system dialog and wait
     xcode-select --install 2>/dev/null || true
     info "A dialog appeared to install Xcode Command Line Tools."
     info "Complete the installation, then press ENTER to continue."
     set +e; read -r < /dev/tty; set -e
 
-    # Poll until installed (max 5 min)
     local elapsed=0
     until _xcode_clt_installed; do
       sleep 5; elapsed=$((elapsed + 5))
@@ -393,7 +369,6 @@ install_homebrew() {
     _run_brew_installer < /dev/tty
   fi
 
-  # Make brew available in this session (Homebrew doesn't update PATH itself)
   if [[ -f "/opt/homebrew/bin/brew" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   elif [[ -f "/usr/local/bin/brew" ]]; then
@@ -418,7 +393,6 @@ _dart_installed() { command -v dart > /dev/null 2>&1; }
 _fvm_install() { ensure fvm install "$1"; }
 _fvm_global()  { ensure fvm global "$1"; }
 
-# Thin wrapper so tests can stub without a network call
 _run_fvm_installer() {
   curl -fsSL "$FVM_INSTALL_URL" | bash
 }
@@ -427,7 +401,6 @@ install_via_fvm() {
   if ! _fvm_installed; then
     info "Installing fvm..."
     _run_fvm_installer
-    # fvm.app/install.sh puts the fvm binary at $HOME/fvm/bin
     export PATH="${HOME}/fvm/bin:${PATH}"
   else
     info "fvm already installed"
@@ -458,12 +431,8 @@ install_via_fvm() {
 
 _flutter_installed() { command -v flutter > /dev/null 2>&1; }
 
-# Parse the Flutter releases JSON and print: archive sha256 (one per line)
-# Exits 1 with a message if the requested version/arch combo is not found.
-# Usage: _parse_flutter_release <releases_json_path>
-# Reads: FLEDGING_ARCH, FLUTTER_VERSION (globals)
-# Note: base_url is intentionally NOT read from the JSON — we use our own
-# FLUTTER_RELEASES_BASE constant to avoid trusting a URL from a remote source.
+# base_url is intentionally NOT read from the JSON — we use FLUTTER_RELEASES_BASE
+# to avoid constructing a download URL from a remote-controlled value.
 _parse_flutter_release() {
   local json_file="$1"
   need_cmd python3
@@ -520,9 +489,6 @@ install_flutter_direct() {
   download_file "$releases_url" "$releases_json"
 
   local archive sha256
-  # _parse_flutter_release prints two lines; read them into variables.
-  # The download base URL comes from our own FLUTTER_RELEASES_BASE constant,
-  # not from the JSON, so we never follow a URL provided by a remote source.
   { read -r archive; read -r sha256; } \
     < <(_parse_flutter_release "$releases_json") || {
       error "Could not find a matching Flutter release."
@@ -569,8 +535,6 @@ install_flutter_direct() {
 
 _shell_name() { basename "${SHELL:-bash}"; }
 
-# Returns the config file path for the current shell.
-# Separated out so tests can stub it.
 _shell_config_file() {
   [[ -n "${FLEDGING_OS:-}" ]] || {
     error "_shell_config_file called before detect_platform"
@@ -592,8 +556,6 @@ _shell_config_file() {
   esac
 }
 
-# Append <dir> to the active shell's config file if not already present.
-# Usage: persist_path <dir>
 persist_path() {
   local dir="$1"
   local shell config_file
@@ -608,10 +570,8 @@ persist_path() {
 
   mkdir -p "$(dirname "$config_file")"
 
-  # Dedup: skip if this directory or a known flutter/fvm path is already present.
-  # Uses [ -f ] || [ -h ] to handle symlinked config files (chezmoi, stow, etc.)
-  # $dir is checked with -F (fixed string) to avoid ERE metacharacter issues in paths
-  # (e.g. dots in usernames like john.doe would over-match as a regex).
+  # -F (fixed string) on $dir avoids ERE metacharacter issues — dots in
+  # usernames like john.doe would over-match as a regex.
   if ([[ -f "$config_file" ]] || [[ -h "$config_file" ]]) && \
      { grep -qF "$dir" "$config_file" 2>/dev/null || \
        grep -qE "(${FVM_BIN_DIR}|${FLUTTER_DIRECT_BIN_DIR})" "$config_file" 2>/dev/null; }; then
@@ -619,7 +579,6 @@ persist_path() {
     return 0
   fi
 
-  # Back up before modifying — timestamped so multiple runs don't collide
   if [[ -f "$config_file" ]] || [[ -h "$config_file" ]]; then
     local backup="${config_file}.pre-fledging-$(date +%Y-%m-%d_%H-%M-%S)"
     cp "$config_file" "$backup"
@@ -635,8 +594,6 @@ persist_path() {
     real_config="$config_file"
   fi
 
-  # Atomic write: write to .tmp, then mv -f to the real (non-symlink) target.
-  # Never write to the config file in-place.
   local tmp_config="${real_config}.fledging-tmp"
   if [[ -f "$real_config" ]]; then
     cp "$real_config" "$tmp_config"
@@ -659,7 +616,6 @@ persist_path() {
 # Dart tool handoff
 # ============================================================
 
-# Separated for testability
 _handoff_to_dart() {
   if [[ "$NO_FVM" == "true" ]]; then
     ensure dart pub global activate fledging
@@ -723,17 +679,10 @@ main() {
 }
 
 # ============================================================
-# Sourceable for testing.
-#
-# Three execution contexts:
-#   sourced (. install.sh)   — BASH_SOURCE[0] is set and differs from $0
-#                              → return to skip main (used by BATS tests)
-#   run as file (bash install.sh / ./install.sh)
-#                            — BASH_SOURCE[0] == $0 → fall through to main
-#   piped (curl ... | bash)  — BASH_SOURCE[0] is empty → fall through to main
-#
-# The old pattern "return 0 2>/dev/null; main" silently exits when piped
-# because bash treats stdin-fed scripts like sourced scripts.
+# Sourceable for testing — when sourced, BASH_SOURCE[0] differs from $0.
+# When piped (curl | bash), BASH_SOURCE[0] is empty; both fall through to main.
+# Note: "return 0 2>/dev/null; main" silently exits when piped because bash
+# treats stdin-fed scripts like sourced scripts — hence the BASH_SOURCE check.
 # ============================================================
 if [[ -n "${BASH_SOURCE[0]:-}" && "${BASH_SOURCE[0]}" != "${0}" ]]; then
   return 0
