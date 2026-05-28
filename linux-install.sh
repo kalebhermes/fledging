@@ -299,11 +299,28 @@ _dart_installed() { command -v dart > /dev/null 2>&1; }
 _fvm_install() { ensure fvm install "$1"; }
 _fvm_global()  { ensure fvm global "$1"; }
 
+# Thin wrapper so tests can stub without a network call.
+# Applies the same snap-curl guard as download_file — snap curl on Ubuntu
+# has broken SSL and will fail on this HTTPS URL without the wget fallback.
+_run_fvm_installer() {
+  if is_snap_curl; then
+    if command -v wget > /dev/null 2>&1; then
+      wget -qO- "$FVM_INSTALL_URL" | bash
+    else
+      error "snap curl has broken SSL and wget is not available."
+      error "Install wget (sudo apt-get install wget) and re-run."
+      exit 1
+    fi
+  else
+    ensure curl -fsSL "$FVM_INSTALL_URL" | bash
+  fi
+}
+
 install_via_fvm() {
   if ! _fvm_installed; then
     info "Installing fvm..."
     # fvm.app/install.sh installs the fvm binary to $HOME/fvm/bin
-    curl -fsSL "$FVM_INSTALL_URL" | bash
+    _run_fvm_installer
     # Make fvm callable in this session
     export PATH="${HOME}/fvm/bin:${PATH}"
   else
@@ -336,39 +353,69 @@ install_via_fvm() {
 
 _flutter_installed() { command -v flutter > /dev/null 2>&1; }
 
+# Parse the Flutter releases JSON using only awk — no python3 dependency.
+# Prints: archive (line 1), sha256 (line 2). Exits 1 if not found.
+# Reads globals: FLEDGING_ARCH, FLUTTER_VERSION
 _parse_flutter_release() {
   local json_file="$1"
-  need_cmd python3
+  local dart_arch="${FLEDGING_ARCH}"
+  local req_version="${FLUTTER_VERSION:-}"
 
-  python3 - "$json_file" "$FLEDGING_ARCH" "${FLUTTER_VERSION:-}" <<'PYEOF'
-import json, sys
+  # Extract the stable commit hash from the current_release section
+  local stable_hash
+  stable_hash=$(awk '/"stable":/ {
+    val=$0; gsub(/.*"stable": "/, "", val); gsub(/".*/, "", val); print val; exit
+  }' "$json_file")
 
-json_file = sys.argv[1]
-dart_arch = sys.argv[2]
-requested_version = sys.argv[3]
+  if [[ -z "$stable_hash" && -z "$req_version" ]]; then
+    error "Could not parse stable hash from Flutter releases JSON."
+    exit 1
+  fi
 
-with open(json_file) as f:
-    data = json.load(f)
+  # Walk the releases array with plain awk (POSIX-compatible, no python3 needed).
+  # Each release object has one JSON field per line; we accumulate fields until
+  # we hit a closing brace and check if the record matches our target.
+  local result
+  result=$(awk \
+    -v stable_hash="$stable_hash" \
+    -v dart_arch="$dart_arch" \
+    -v req_version="$req_version" \
+  '
+  /^[ \t]*\{/ { hash=""; version=""; arch="x64"; archive=""; sha256="" }
+  /"hash":/ {
+    val=$0; gsub(/.*"hash": "/, "", val); gsub(/".*/, "", val); hash=val
+  }
+  /"version":/ {
+    val=$0; gsub(/.*"version": "/, "", val); gsub(/".*/, "", val); version=val
+  }
+  /"dart_sdk_arch":/ {
+    val=$0; gsub(/.*"dart_sdk_arch": "/, "", val); gsub(/".*/, "", val); arch=val
+  }
+  /"archive":/ {
+    val=$0; gsub(/.*"archive": "/, "", val); gsub(/".*/, "", val); archive=val
+  }
+  /"sha256":/ {
+    val=$0; gsub(/.*"sha256": "/, "", val); gsub(/".*/, "", val); sha256=val
+  }
+  /^[ \t]*\},?[ \t]*$/ {
+    if (hash != "" && archive != "" && sha256 != "" && arch == dart_arch) {
+      matched = (req_version == "" && hash == stable_hash) || \
+                (req_version != "" && version == req_version)
+      if (matched) { print archive; print sha256; exit 0 }
+    }
+  }
+  ' "$json_file")
 
-stable_hash = data["current_release"]["stable"]
+  if [[ -z "$result" ]]; then
+    if [[ -n "$req_version" ]]; then
+      error "Flutter ${req_version} not found for ${dart_arch}."
+    else
+      error "No stable Flutter release found for ${dart_arch}."
+    fi
+    exit 1
+  fi
 
-for r in data["releases"]:
-    release_arch = r.get("dart_sdk_arch", "x64")
-    if release_arch != dart_arch:
-        continue
-    match = (requested_version and r.get("version") == requested_version) or \
-            (not requested_version and r["hash"] == stable_hash)
-    if match:
-        print(r["archive"])
-        print(r["sha256"])
-        sys.exit(0)
-
-if requested_version:
-    print(f"ERROR: Flutter {requested_version} not found for {dart_arch}", file=sys.stderr)
-else:
-    print(f"ERROR: No stable Flutter release found for {dart_arch}", file=sys.stderr)
-sys.exit(1)
-PYEOF
+  echo "$result"
 }
 
 install_flutter_direct() {
@@ -427,7 +474,6 @@ install_flutter_direct() {
   ensure chmod +x "${install_dir}/flutter/bin/flutter"
   ensure chmod +x "${install_dir}/flutter/bin/dart"
 
-  export PATH="${install_dir}/${FLUTTER_DIRECT_BIN_DIR#development/}/../bin:${PATH}"
   export PATH="${install_dir}/flutter/bin:${PATH}"
 
   if ! _flutter_installed; then
@@ -446,10 +492,6 @@ install_flutter_direct() {
 _shell_name() { basename "${SHELL:-bash}"; }
 
 _shell_config_file() {
-  [[ -n "${FLEDGING_OS:-}" ]] || {
-    error "_shell_config_file called before detect_platform"
-    exit 1
-  }
   local shell
   shell="$(_shell_name)"
   case "$shell" in
@@ -487,7 +529,7 @@ persist_path() {
   fi
 
   local real_config="$config_file"
-  if [[ -L "$config_file" ]]; then
+  if [[ -h "$config_file" ]]; then
     real_config="$(readlink -f "$config_file" 2>/dev/null || realpath "$config_file" 2>/dev/null || echo "$config_file")"
   fi
 
