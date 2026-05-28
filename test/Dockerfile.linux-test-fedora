@@ -1,7 +1,6 @@
 FROM fedora:40
 
-# Inject CA certificates BEFORE dnf — Fedora base ships update-ca-trust,
-# and any SSL-inspecting proxy must be trusted before package downloads.
+# Must happen before package downloads — an untrusted proxy CA will cause dnf to fail.
 COPY certificates/ /tmp/certs/
 RUN for cert in /tmp/certs/*.pem /tmp/certs/*.crt; do \
       [ -f "$cert" ] || continue; \

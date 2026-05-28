@@ -6,8 +6,7 @@ RUN apt-get update -y && \
     apt-get install -y --no-install-recommends sudo curl ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Install any CA certificates found in test/certificates/ (org-specific certs,
-# e.g. corporate SSL inspection proxies). No-op if the directory is empty.
+# Trust any CA certificates placed in test/certificates/ before building.
 COPY certificates/ /tmp/certs/
 RUN for cert in /tmp/certs/*.pem /tmp/certs/*.crt; do \
       [ -f "$cert" ] || continue; \

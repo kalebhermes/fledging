@@ -1,10 +1,9 @@
 FROM alpine:3.21
 
-# Alpine APK uses HTTP repos, so CA injection can happen after the initial install.
 # bash must be installed — Alpine ships sh only.
 RUN apk add --no-cache sudo bash curl ca-certificates
 
-# Install any CA certificates found in test/certificates/. No-op if empty.
+# Trust any CA certificates placed in test/certificates/ before building.
 COPY certificates/ /tmp/certs/
 RUN for cert in /tmp/certs/*.pem /tmp/certs/*.crt; do \
       [ -f "$cert" ] || continue; \

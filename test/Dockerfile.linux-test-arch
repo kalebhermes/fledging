@@ -1,7 +1,6 @@
 FROM archlinux:latest
 
-# Inject CA certificates BEFORE pacman — Arch base ships p11-kit/trust,
-# and any SSL-inspecting proxy must be trusted before package downloads.
+# Must happen before package downloads — an untrusted proxy CA will cause pacman to fail.
 COPY certificates/ /tmp/certs/
 RUN for cert in /tmp/certs/*.pem /tmp/certs/*.crt; do \
       [ -f "$cert" ] || continue; \
