@@ -41,9 +41,13 @@ $script:Headless = $false
 $script:VerboseOutput = $false
 
 # When executed via `irm ... | iex`, there is no script file on disk, so
-# MyCommand.Path is $null. Calling `exit` in that mode would kill the user's
-# entire PowerShell session — Exit-Installer returns instead. See the research doc.
-$script:IsExecutedFromIex = ($null -eq $MyInvocation.MyCommand.Path)
+# $PSCommandPath is empty; when run as a real .ps1 it holds the file path.
+# We use $PSCommandPath (an automatic variable) rather than
+# $MyInvocation.MyCommand.Path because under `iex` that object has no Path
+# property, and Set-StrictMode turns a missing property into a hard error.
+# Calling `exit` under iex would kill the user's whole session — Exit-Installer
+# returns instead.
+$script:IsExecutedFromIex = [string]::IsNullOrEmpty($PSCommandPath)
 
 # ============================================================
 # Output — all diagnostic functions write to the information stream (6) via

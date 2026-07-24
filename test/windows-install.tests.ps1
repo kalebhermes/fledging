@@ -28,6 +28,15 @@ Describe "script skeleton" {
     It "defines Invoke-Main" {
         (Get-Command Invoke-Main -ErrorAction SilentlyContinue) | Should -Not -BeNullOrEmpty
     }
+
+    It "loads via Invoke-Expression under StrictMode without error (the 'irm | iex' path)" {
+        # Dot-sourcing gives $MyInvocation.MyCommand.Path a value; the real iex path
+        # does not, and StrictMode turns a missing property into a hard error. This
+        # exercises that path so the iex-only bug can't regress. FLEDGING_NO_MAIN is
+        # already set by BeforeAll, so Invoke-Main does not run here.
+        $content = Get-Content "$PSScriptRoot/../windows-install.ps1" -Raw
+        { Invoke-Expression $content } | Should -Not -Throw
+    }
 }
 
 Describe "Invoke-Handoff" {
