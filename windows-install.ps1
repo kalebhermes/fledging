@@ -529,6 +529,11 @@ function Invoke-Main {
     # adding the extras bucket — Scoop buckets are git repos, so `scoop bucket
     # add` fails without git. fvm/Flutter then come from the extras bucket.
     Install-ScoopPackage -Package 'git'
+
+    # Point Git at the Windows cert store BEFORE the first clone. On corporate
+    # networks (Zscaler etc.) Git for Windows' bundled OpenSSL doesn't trust the
+    # proxy CA, so the extras-bucket clone below would fail without this.
+    Set-GitSslBackend
     Add-ScoopExtrasBucket
 
     if ($script:NoFvm) {
@@ -537,7 +542,6 @@ function Invoke-Main {
         Install-ViaFvm
     }
 
-    Set-GitSslBackend
     Enable-DeveloperMode
     Add-DefenderExclusions
 

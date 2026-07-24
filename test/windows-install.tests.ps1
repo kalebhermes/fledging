@@ -81,7 +81,7 @@ Describe "Invoke-Main orchestration" {
     It "runs the fvm path in the expected order" {
         Mock Initialize-Flags { $script:Headless = $true; $script:NoFvm = $false; $script:FlutterVersion = ''; $script:VerboseOutput = $false }
         Invoke-Main
-        $script:mainCalls -join ',' | Should -Be 'long-paths,scoop,pkg:git,bucket,fvm,ssl,devmode,defender,path:C:\Users\jane\fvm\default\bin,handoff' -Because ($script:mainCalls -join ',')
+        $script:mainCalls -join ',' | Should -Be 'long-paths,scoop,pkg:git,ssl,bucket,fvm,devmode,defender,path:C:\Users\jane\fvm\default\bin,handoff' -Because ($script:mainCalls -join ',')
     }
 
     It "uses the direct-download path when NoFvm is set" {
@@ -103,6 +103,14 @@ Describe "Invoke-Main orchestration" {
         Mock Initialize-Flags { $script:Headless = $true; $script:NoFvm = $false; $script:FlutterVersion = ''; $script:VerboseOutput = $false }
         Invoke-Main
         $script:mainCalls.IndexOf('pkg:git') | Should -BeLessThan $script:mainCalls.IndexOf('bucket')
+    }
+
+    It "sets git schannel before the first git clone (bucket add) for corp proxies" {
+        # Git for Windows ignores the Windows cert store until http.sslBackend=schannel,
+        # so schannel MUST be configured before the extras bucket is cloned.
+        Mock Initialize-Flags { $script:Headless = $true; $script:NoFvm = $false; $script:FlutterVersion = ''; $script:VerboseOutput = $false }
+        Invoke-Main
+        $script:mainCalls.IndexOf('ssl') | Should -BeLessThan $script:mainCalls.IndexOf('bucket')
     }
 }
 

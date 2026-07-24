@@ -122,12 +122,13 @@ Reset to a clean baseline (§3) between scenarios. In a Sandbox, close and relau
 1. `This script will install:` summary listing Scoop, Git, fvm, Flutter (latest stable)
 2. Long-path step (enables it if admin, or warns + continues if not)
 3. `Installing Scoop...` → `Scoop installed`
-4. `Adding Scoop extras bucket...`
-5. `Installing git via Scoop...`
-6. `Installing fvm...` → `Installing Flutter stable via fvm...` → `Flutter stable installed via fvm`
-7. Git schannel + Developer Mode + Defender steps (each runs or warns based on admin)
-8. `Added …\fvm\default\bin to your user PATH`
-9. `Flutter is installed. Handing off to fledging...`
+4. `Installing git via Scoop...` (git from the default bucket — needed before any git clone)
+5. `Configuring Git to use the Windows certificate store...` (schannel — must precede the bucket clone)
+6. `Adding Scoop extras bucket...`
+7. `Installing fvm...` → `Installing Flutter stable via fvm...` → `Flutter stable installed via fvm`
+8. Developer Mode + Defender steps (each runs or warns based on admin)
+9. `Added …\fvm\default\bin to your user PATH`
+10. `Flutter is installed. Handing off to fledging...`
 
 ✅ **Verify — tools present in a NEW shell** (open a fresh PowerShell window so PATH is reloaded):
 ```powershell
