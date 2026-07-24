@@ -81,7 +81,7 @@ Describe "Invoke-Main orchestration" {
     It "runs the fvm path in the expected order" {
         Mock Initialize-Flags { $script:Headless = $true; $script:NoFvm = $false; $script:FlutterVersion = ''; $script:VerboseOutput = $false }
         Invoke-Main
-        $script:mainCalls -join ',' | Should -Be 'long-paths,scoop,bucket,pkg:git,fvm,ssl,devmode,defender,path:C:\Users\jane\fvm\default\bin,handoff' -Because ($script:mainCalls -join ',')
+        $script:mainCalls -join ',' | Should -Be 'long-paths,scoop,pkg:git,bucket,fvm,ssl,devmode,defender,path:C:\Users\jane\fvm\default\bin,handoff' -Because ($script:mainCalls -join ',')
     }
 
     It "uses the direct-download path when NoFvm is set" {
@@ -97,6 +97,12 @@ Describe "Invoke-Main orchestration" {
         $gitIdx = $script:mainCalls.IndexOf('pkg:git')
         $fvmIdx = $script:mainCalls.IndexOf('fvm')
         $gitIdx | Should -BeLessThan $fvmIdx
+    }
+
+    It "installs git before adding the extras bucket (Scoop buckets are git repos)" {
+        Mock Initialize-Flags { $script:Headless = $true; $script:NoFvm = $false; $script:FlutterVersion = ''; $script:VerboseOutput = $false }
+        Invoke-Main
+        $script:mainCalls.IndexOf('pkg:git') | Should -BeLessThan $script:mainCalls.IndexOf('bucket')
     }
 }
 

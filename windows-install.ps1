@@ -504,8 +504,11 @@ function Invoke-Main {
     Enable-LongPaths
 
     Install-Scoop
+    # git comes from Scoop's default 'main' bucket and must be installed BEFORE
+    # adding the extras bucket — Scoop buckets are git repos, so `scoop bucket
+    # add` fails without git. fvm/Flutter then come from the extras bucket.
+    Install-ScoopPackage -Package 'git'
     Add-ScoopExtrasBucket
-    Install-ScoopPackage -Package 'git'   # required by fvm and Flutter
 
     if ($script:NoFvm) {
         Install-FlutterDirect
