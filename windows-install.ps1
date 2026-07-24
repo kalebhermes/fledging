@@ -108,13 +108,34 @@ function _Invoke-ScoopInstaller {
     Invoke-Expression (Invoke-RestMethod -Uri 'https://get.scoop.sh')
 }
 
+# Scoop's shim directory — honors a custom $SCOOP root, defaults to the per-user location.
+function _Get-ScoopShimDir {
+    if ($env:SCOOP) { return "$env:SCOOP\shims" }
+    return "$env:USERPROFILE\scoop\shims"
+}
+
+# Add the shims dir to the CURRENT session's PATH if it exists but isn't there.
+# Installing Scoop only updates the persistent User PATH, which new shells pick
+# up — but this running process won't see `scoop`/`git` until we add it here.
+function _Add-ScoopShimsToSessionPath {
+    $shims = _Get-ScoopShimDir
+    if ((Test-Path $shims) -and ($env:PATH -notlike "*$shims*")) {
+        $env:PATH = "$shims;$env:PATH"
+    }
+}
+
 function Install-Scoop {
+    # Expose an already-installed Scoop that a fresh child shell inherited a
+    # pre-Scoop PATH from, so the check below sees it.
+    _Add-ScoopShimsToSessionPath
+
     if (_Test-ScoopInstalled) {
         Write-Info 'Scoop already installed'
         return
     }
     Write-Info 'Installing Scoop...'
     _Invoke-ScoopInstaller
+    _Add-ScoopShimsToSessionPath
     if (-not (_Test-ScoopInstalled)) {
         throw 'Scoop installation completed but scoop is not on PATH. Open a new terminal and re-run.'
     }

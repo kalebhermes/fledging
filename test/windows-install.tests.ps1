@@ -333,6 +333,43 @@ Describe "Scoop" {
             Mock _Invoke-ScoopInstaller { }
             { Install-Scoop } | Should -Throw -ExpectedMessage '*scoop*'
         }
+
+        It "adds the shims dir to the session PATH after installing" {
+            # A freshly-installed Scoop only lands on the *persistent* User PATH; the
+            # current process must have the shims dir added explicitly or the post-check
+            # (and later scoop/git calls) can't find it.
+            $script:fakeShims = Join-Path ([System.IO.Path]::GetTempPath()) "fledging-shims-$([System.IO.Path]::GetRandomFileName())"
+            New-Item -ItemType Directory -Path $script:fakeShims -Force | Out-Null
+            $savedPath = $env:PATH
+            try {
+                Mock _Get-ScoopShimDir { $script:fakeShims }
+                $script:scoopCheckCalls = 0
+                Mock _Test-ScoopInstalled { $script:scoopCheckCalls++; return ($script:scoopCheckCalls -gt 1) }
+                Mock _Invoke-ScoopInstaller { }
+                Install-Scoop
+                $env:PATH | Should -BeLike "*$script:fakeShims*"
+            } finally {
+                $env:PATH = $savedPath
+                Remove-Item -Recurse -Force $script:fakeShims -ErrorAction SilentlyContinue
+            }
+        }
+
+        It "exposes an already-installed Scoop that is missing from the session PATH" {
+            $script:fakeShims = Join-Path ([System.IO.Path]::GetTempPath()) "fledging-shims-$([System.IO.Path]::GetRandomFileName())"
+            New-Item -ItemType Directory -Path $script:fakeShims -Force | Out-Null
+            $savedPath = $env:PATH
+            try {
+                Mock _Get-ScoopShimDir { $script:fakeShims }
+                Mock _Test-ScoopInstalled { $true }
+                Mock _Invoke-ScoopInstaller { }
+                Install-Scoop
+                $env:PATH | Should -BeLike "*$script:fakeShims*"
+                Should -Invoke _Invoke-ScoopInstaller -Times 0 -Exactly
+            } finally {
+                $env:PATH = $savedPath
+                Remove-Item -Recurse -Force $script:fakeShims -ErrorAction SilentlyContinue
+            }
+        }
     }
 
     Context "Add-ScoopExtrasBucket" {
