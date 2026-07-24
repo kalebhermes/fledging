@@ -18,6 +18,26 @@ bats test/install.bats
 
 ---
 
+## Windows unit tests (Pester)
+
+Covers individual functions in `windows-install.ps1` without running any actual installs. External calls (network, registry, Scoop, fvm, Defender) are wrapped in thin `_`-prefixed functions and mocked — no network, no system changes. The tests run on any platform with PowerShell Core, not just Windows.
+
+**Install the test runner:**
+
+```powershell
+Install-Module -Name Pester -Force -Scope CurrentUser -SkipPublisherCheck
+```
+
+On macOS/Linux, install PowerShell Core first (`brew install powershell`), then the same `Install-Module` command.
+
+**Run:**
+
+```powershell
+Invoke-Pester -Path test/windows-install.tests.ps1
+```
+
+---
+
 ## Linux integration tests (Docker)
 
 Runs `linux-install.sh` end-to-end in a clean Docker container for each supported distro. The test is considered passing when Flutter is fully installed — the final `dart pub global run fledging` handoff is expected to fail until the `fledging` package is published to pub.dev.
